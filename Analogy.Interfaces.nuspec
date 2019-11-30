@@ -8,6 +8,7 @@
     <owners>Lior Banai</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</projectUrl>
+	  <repository type="git" url="https://github.com/Analogy-LogViewer/Analogy.Interfaces" />
     <icon>icon.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer (Interfaces)</description>

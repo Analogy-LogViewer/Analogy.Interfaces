@@ -8,10 +8,23 @@ namespace Analogy.Interfaces
 {
     public interface IAnalogyDataProvider
     {
+        /// <summary>
+        /// ID of the data provider
+        /// </summary>
         Guid ID { get; }
-        void InitDataProvider();
-
+        /// <summary>
+        /// call to initialize to provider
+        /// </summary>
+        Task InitializeDataProviderAsync();
+        /// <summary>
+        /// //Optional title to display in the ribbon bar
+        /// </summary>
         string OptionalTitle { get; }
+        /// <summary>
+        /// called when the message is open in Analogy in full view mode (detailed view). Should not throw exception
+        /// </summary>
+        /// <param name="message"></param>
+        void MessageOpened(AnalogyLogMessage message);
 
     }
     

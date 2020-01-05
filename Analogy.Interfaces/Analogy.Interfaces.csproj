@@ -2,16 +2,28 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Description>Analogy.Interfaces dll compiled in .net Standard</Description>
     <PackageReleaseNotes>Analogy.Interfaces dll compiled in .net Standard</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/philips-software/logviewer</PackageProjectUrl>
     <AssemblyName>Analogy.Interfaces</AssemblyName>
     <RootNamespace>Analogy.Interfaces</RootNamespace>
     <PackageId>Analogy.LogViewer.Interfaces</PackageId>
-    <Version>2.1.7.0</Version>
+    <Version>2.1.7.1</Version>
     <Authors>Lior Banai</Authors>
     <Product>Analogy.LogViewer.Interfaces</Product>
+    <AssemblyVersion>2.1.7.1</AssemblyVersion>
+    <FileVersion>2.1.7.1</FileVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>

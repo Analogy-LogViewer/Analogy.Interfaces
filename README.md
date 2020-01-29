@@ -1,2 +1,2 @@
-# Analogy.Interfaces              [![NuGet](Assets/nuget.svg)](https://www.nuget.org/packages/Analogy.LogViewer.Interfaces/)
+# Analogy.Interfaces              [![NuGet](Assets/nuget.svg)](https://www.nuget.org/packages/Analogy.LogViewer.Interfaces/) [![Build Status](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_apis/build/status/Analogy-LogViewer.Analogy.Interfaces)](https://dev.azure.com/Analogy-LogViewer/Analogy%20Log%20Viewer/_build/latest?definitionId=2)
 the common interfaces for creating custom data providers for Analogy Log Viewer UI

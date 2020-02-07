@@ -16,7 +16,7 @@ namespace Analogy.Interfaces
         string Layout { get; set; }
         Dictionary<int, AnalogyLogMessagePropertyName> Maps { get; set; }
         int ValidItemsCount { get; set; }
-        string AsJson();
+        //string AsJson();
         void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<int, AnalogyLogMessagePropertyName> maps);
         void AddMap(int index, AnalogyLogMessagePropertyName name);
         bool CanOpenFile(string fileName);

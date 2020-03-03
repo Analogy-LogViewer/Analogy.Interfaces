@@ -372,8 +372,7 @@ namespace Analogy.Interfaces
     public enum AnalogChangeLogType
     {
         None,
-        Defect,
-        Refactoring,
+        Bug,
         Feature,
         Improvement
     }

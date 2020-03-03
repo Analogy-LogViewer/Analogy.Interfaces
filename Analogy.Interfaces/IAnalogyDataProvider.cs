@@ -27,7 +27,7 @@ namespace Analogy.Interfaces
         void MessageOpened(AnalogyLogMessage message);
 
     }
-    
+
     public interface IAnalogyRealTimeDataProvider : IAnalogyDataProvider
     {
         event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
@@ -45,6 +45,7 @@ namespace Analogy.Interfaces
 
     public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider
     {
+        bool DisableFilePoolingOption { get; }
         bool CanSaveToLogFile { get; }
         string FileOpenDialogFilters { get; }
         string FileSaveDialogFilters { get; }

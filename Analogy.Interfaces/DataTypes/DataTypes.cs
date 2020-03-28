@@ -127,13 +127,11 @@ namespace Analogy.Interfaces
         {
             ID = Guid.NewGuid();
             Date = DateTime.Now;
-            Parameters = new string[0];
+            Parameters = Array.Empty<string>();
             Source = string.Empty;
             MethodName = string.Empty;
             FileName = string.Empty;
-            Parameters = new string[0];
             User = string.Empty;
-
         }
         public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName]string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
@@ -147,7 +145,7 @@ namespace Analogy.Interfaces
             Level = level;
             Module = moduleOrProcessName ?? _currentProcessName;
             ProcessID = processId != 0 ? processId : _currentProcessId;
-            Parameters = parameters ?? new string[0];
+            Parameters = parameters ?? Array.Empty<string>();
             User = user ?? string.Empty;
             Thread = threadID != 0 ? Thread : System.Threading.Thread.CurrentThread.ManagedThreadId;
         }
@@ -161,12 +159,11 @@ namespace Analogy.Interfaces
                    LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
                    Module == other.Module && ProcessID == other.ProcessID && Thread == other.Thread &&
                    User == other.User;
-            if ((!areEqual) ||
-                (Parameters is null && other.Parameters != null) ||
-                (Parameters != null && other.Parameters is null))
+            if (!areEqual ||
+                Parameters is null && other.Parameters != null ||
+                Parameters != null && other.Parameters is null)
                 return false;
-            return (Parameters is null && other.Parameters is null) ||
-                Parameters.SequenceEqual(other.Parameters);
+            return other.Parameters != null && Parameters != null && Parameters.SequenceEqual(other.Parameters);
         }
 
         public override bool Equals(object obj)

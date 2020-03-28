@@ -12,7 +12,7 @@
     <AssemblyName>Analogy.Interfaces</AssemblyName>
     <RootNamespace>Analogy.Interfaces</RootNamespace>
     <PackageId>Analogy.LogViewer.Interfaces</PackageId>
-    <Version>2.2.0-rc.1</Version>
+    <Version>2.2.0-rc.2</Version>
     <Authors>Lior Banai</Authors>
     <Product>Analogy.LogViewer.Interfaces</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

@@ -59,4 +59,13 @@ namespace Analogy.Interfaces
         bool CanOpenAllFiles(IEnumerable<string> fileNames);
     }
 
+    public interface IAnalogySingleFileDataProvider : IAnalogyDataProvider
+    {
+        bool DisableFilePoolingOption { get; }
+        /// <summary>
+        /// Full path of the file to open
+        /// </summary>
+        string FileNamePath { get; }
+        Task<IEnumerable<AnalogyLogMessage>> ProcessFile(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+    }
 }

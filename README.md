@@ -13,7 +13,7 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.Interfaces/releases">
     <img alt="Latest Release" src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.Interfaces"/>
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.Interfaces/compare/V2.1.7.0...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer/latest"/>
+<a href="https://github.com/Analogy-LogViewer/Analogy.Interfaces/compare/V2.1.7.0...master"> <img alt="Commits Since Latest Release" src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.Interfaces/latest"/>
 </a>
 </p>
 

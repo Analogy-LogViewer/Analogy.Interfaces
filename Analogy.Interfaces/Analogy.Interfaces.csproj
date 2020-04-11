@@ -7,16 +7,16 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Analogy.Interfaces assembly for creating custom data providers for Analogy Log Viewer</Description>
-    <PackageReleaseNotes>Analogy.Interfaces assembly for creating custom data providers for Analogy Log Viewer</PackageReleaseNotes>
+    <PackageReleaseNotes>add new IAnalogySingleDataProvider interface (#10, #13, #14)</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</PackageProjectUrl>
     <AssemblyName>Analogy.Interfaces</AssemblyName>
     <RootNamespace>Analogy.Interfaces</RootNamespace>
     <PackageId>Analogy.LogViewer.Interfaces</PackageId>
-    <Version>2.2.0</Version>
+    <Version>2.2.1</Version>
     <Authors>Lior Banai</Authors>
     <Product>Analogy.LogViewer.Interfaces</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>Lior Banai</Copyright>
+    <Copyright>Lior Banai @ 2020</Copyright>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</RepositoryUrl>

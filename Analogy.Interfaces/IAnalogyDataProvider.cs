@@ -66,6 +66,10 @@ namespace Analogy.Interfaces
         /// Full path of the file to open
         /// </summary>
         string FileNamePath { get; }
-        Task<IEnumerable<AnalogyLogMessage>> ProcessFile(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+        Task<IEnumerable<AnalogyLogMessage>> Process(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+    }
+    public interface IAnalogySingleDataProvider : IAnalogyDataProvider
+    {
+        Task<IEnumerable<AnalogyLogMessage>> Execute(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
 }

@@ -40,8 +40,8 @@ namespace Analogy.Interfaces
         Task<bool> CanStartReceiving();
         void StartReceiving();
         void StopReceiving();
-        bool IsConnected { get; }
     }
+
 
     public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider
     {

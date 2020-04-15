@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,7 +26,22 @@ namespace Analogy.Interfaces
         /// </summary>
         /// <param name="message"></param>
         void MessageOpened(AnalogyLogMessage message);
-
+        /// <summary>
+        /// indicate that the data provider will supply coloring logic per row/message
+        /// if true the 
+        /// </summary>
+        bool UseCustomColors { get; set; }
+        /// <summary>
+        /// get the colors to use in the data grid of Analogy
+        /// </summary>
+        /// <param name="logMessage"></param>
+        /// <returns></returns>
+        (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
+        /// <summary>
+        /// if implemented, return replacement titles/headers for the data grid
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders();
     }
 
     public interface IAnalogyRealTimeDataProvider : IAnalogyDataProvider

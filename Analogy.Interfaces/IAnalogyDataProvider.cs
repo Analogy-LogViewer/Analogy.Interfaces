@@ -39,6 +39,8 @@ namespace Analogy.Interfaces
         (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
         /// <summary>
         /// if implemented, return replacement titles/headers for the data grid
+        /// OriginalHeader options are:
+        /// DataProvider,Date,Text,Source,Level,Class,Category,User,Module,Audit,ProcessID,ThreadID
         /// </summary>
         /// <returns></returns>
         IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders();

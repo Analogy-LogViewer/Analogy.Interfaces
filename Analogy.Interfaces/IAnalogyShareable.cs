@@ -5,6 +5,7 @@ namespace Analogy.Interfaces
 {
     public interface IAnalogyShareable
     {
+        string OptionalTitle { get; set; }
         Task<bool> InitializeSender();
         void SendMessage(AnalogyLogMessage message, string source);
         void SendMessages(IEnumerable<AnalogyLogMessage> messages, string source);

@@ -8,7 +8,7 @@ namespace Analogy.Interfaces
         string OptionalTitle { get; set; }
         Task<bool> InitializeSender();
         void SendMessage(AnalogyLogMessage message, string source);
-        void SendMessages(IEnumerable<AnalogyLogMessage> messages, string source);
+        void SendMessages(List<AnalogyLogMessage> messages, string source);
         void SendMessages(byte[] messages, string source); 
         Task<bool> CleanupSender();
     }

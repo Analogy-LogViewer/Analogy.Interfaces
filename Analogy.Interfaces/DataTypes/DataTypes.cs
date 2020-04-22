@@ -277,6 +277,11 @@ namespace Analogy.Interfaces
             }
         }
 
+        public override string ToString()
+        {
+            return $"{nameof(Date)}: {Date}, {nameof(Level)}: {Level}, {nameof(Text)}: {Text}, {nameof(Source)}: {Source}, {nameof(Module)}: {Module}, {nameof(MethodName)}: {MethodName}, {nameof(Category)}: {Category}, {nameof(FileName)}: {FileName}, {nameof(LineNumber)}: {LineNumber}, {nameof(Class)}: {Class}, {nameof(ProcessID)}: {ProcessID}, {nameof(Thread)}: {Thread}, {nameof(User)}: {User}, {nameof(Parameters)}: {(Parameters!=null? string.Join(",",Parameters):string.Empty)}, {nameof(ID)}: {ID}";
+        }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static AnalogyLogMessage Parse(IEnumerable<(AnalogyLogMessagePropertyName PropertyName, string propertyValue)> data)
         {

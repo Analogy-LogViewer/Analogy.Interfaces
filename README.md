@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.Interfaces" alt="Latest Release" />
 </a>
 <a href="https://github.com/Analogy-LogViewer/Analogy.Interfaces/compare/V2.1.7.0...master"> 
-  <img src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.Interfaces/latest"  alt="Commits Since Latest Release" />
+  <img src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.Interfaces/latest" alt="Commits Since Latest Release"  />
 </a>
 </p>
 

@@ -7,12 +7,12 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Analogy.Interfaces assembly for creating custom data providers for Analogy Log Viewer</Description>
-    <PackageReleaseNotes>add custom row/message coloring and replacement headers (if implemented)</PackageReleaseNotes>
+    <PackageReleaseNotes>add more options to AnalogyLogLevel constructors</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</PackageProjectUrl>
     <AssemblyName>Analogy.Interfaces</AssemblyName>
     <RootNamespace>Analogy.Interfaces</RootNamespace>
     <PackageId>Analogy.LogViewer.Interfaces</PackageId>
-    <Version>2.2.5</Version>
+    <Version>2.2.6</Version>
     <Authors>Lior Banai</Authors>
     <Product>Analogy.LogViewer.Interfaces</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

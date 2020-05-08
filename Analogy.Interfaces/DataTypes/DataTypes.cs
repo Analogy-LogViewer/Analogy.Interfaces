@@ -206,6 +206,15 @@ namespace Analogy.Interfaces
             FileName = string.Empty;
             User = string.Empty;
         }
+
+        public AnalogyLogMessage(string text, AnalogyLogLevel level, string source = null,
+            [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null,
+            [CallerLineNumber] int lineNumber = 0) : this(text, level, AnalogyLogClass.General, source, string.Empty,
+            methodName: methodName, fileName: fileName, lineNumber: lineNumber)
+        {
+
+        }
+
         public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName]string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
             Text = text;
@@ -279,7 +288,7 @@ namespace Analogy.Interfaces
 
         public override string ToString()
         {
-            return $"{nameof(Date)}: {Date}, {nameof(Level)}: {Level}, {nameof(Text)}: {Text}, {nameof(Source)}: {Source}, {nameof(Module)}: {Module}, {nameof(MethodName)}: {MethodName}, {nameof(Category)}: {Category}, {nameof(FileName)}: {FileName}, {nameof(LineNumber)}: {LineNumber}, {nameof(Class)}: {Class}, {nameof(ProcessID)}: {ProcessID}, {nameof(Thread)}: {Thread}, {nameof(User)}: {User}, {nameof(Parameters)}: {(Parameters!=null? string.Join(",",Parameters):string.Empty)}, {nameof(ID)}: {ID}";
+            return $"{nameof(Date)}: {Date}, {nameof(Level)}: {Level}, {nameof(Text)}: {Text}, {nameof(Source)}: {Source}, {nameof(Module)}: {Module}, {nameof(MethodName)}: {MethodName}, {nameof(Category)}: {Category}, {nameof(FileName)}: {FileName}, {nameof(LineNumber)}: {LineNumber}, {nameof(Class)}: {Class}, {nameof(ProcessID)}: {ProcessID}, {nameof(Thread)}: {Thread}, {nameof(User)}: {User}, {nameof(Parameters)}: {(Parameters != null ? string.Join(",", Parameters) : string.Empty)}, {nameof(ID)}: {ID}";
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -403,70 +412,25 @@ namespace Analogy.Interfaces
         }
     }
 
-    /// <summary>
-    /// LogClass identifies the class of a log event.
-    /// </summary>
-    public enum AnalogyLogClass
+    public class AnalogyEventMessage : AnalogyLogMessage
     {
-        /// <summary>
-        /// Most log events
-        /// </summary>
-        General,
+        public AnalogyEventMessage(string text, string source = null,
+            [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null,
+            [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Event, AnalogyLogClass.General, source,
+            methodName: methodName, fileName: fileName, lineNumber: lineNumber)
+        {
 
-        /// <summary>
-        /// Security logs (audit trails)
-        /// </summary>
-        Security,
-
-        /// <summary>
-        /// Hazard issues
-        /// </summary>
-        Hazard,
-        //
-        // Summary:
-        //Protected Health Information
-        PHI
-    }
-    /// <summary>
-    /// LogLevel enumerates the possible logging levels.
-    /// </summary>
-    public enum AnalogyLogLevel
-    {
-        Unknown,
-        Disabled,
-        Trace,
-        Verbose,
-        Debug,
-        Event,
-        Warning,
-        Error,
-        Critical,
-        AnalogyInformation
+        }
     }
 
-    public enum AnalogChangeLogType
+    public class AnalogyErrorMessage : AnalogyLogMessage
     {
-        None,
-        Bug,
-        Feature,
-        Improvement
-    }
+        public AnalogyErrorMessage(string text, string source = null,
+            [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null,
+            [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Error, AnalogyLogClass.General, source,
+            methodName: methodName, fileName: fileName, lineNumber: lineNumber)
+        {
 
-    public enum AnalogyLogMessagePropertyName
-    {
-        Date,
-        ID,
-        Text,
-        Category,
-        Source,
-        Module,
-        MethodName,
-        FileName,
-        User,
-        LineNumber,
-        ProcessID,
-        Thread,
-        Level,
-        Class
+        }
     }
 }

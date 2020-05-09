@@ -6,6 +6,7 @@ namespace Analogy.Interfaces
     public interface IAnalogyExtension
     {
         Guid ID { get; }
+        Guid TargetProviderId { get; }
         string Author { get; }
         string AuthorMail { get; }
         List<string> AdditionalContributors { get; }

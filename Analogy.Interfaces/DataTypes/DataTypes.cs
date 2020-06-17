@@ -194,17 +194,21 @@ namespace Analogy.Interfaces
         public string[] Parameters { get; set; }
 
         public string User { get; set; }
+
         private static string _currentProcessName = Process.GetCurrentProcess().ProcessName;
         private static int _currentProcessId = Process.GetCurrentProcess().Id;
         public AnalogyLogMessage()
         {
             ID = Guid.NewGuid();
+            Text = string.Empty;
             Date = DateTime.Now;
-            Parameters = Array.Empty<string>();
-            Source = string.Empty;
-            MethodName = string.Empty;
-            FileName = string.Empty;
             User = string.Empty;
+            Parameters = Array.Empty<string>();
+            Module = string.Empty;
+            FileName = string.Empty;
+            MethodName = string.Empty;
+            Source = string.Empty;
+            Category = string.Empty;
         }
 
         public AnalogyLogMessage(string text, AnalogyLogLevel level, string source = null,
@@ -215,7 +219,7 @@ namespace Analogy.Interfaces
 
         }
 
-        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName]string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
+        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
             Text = text;
             Category = category ?? string.Empty;

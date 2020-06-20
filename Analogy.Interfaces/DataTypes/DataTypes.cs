@@ -97,12 +97,16 @@ namespace Analogy.Interfaces
         AnalogyLogLevel Level { get; set; }
 
         /// <summary>
-        /// Gets/Sets the module (process) name of message generator
+        /// Gets/Sets the module (process) name of message
         /// </summary>
         string Module { get; set; }
+        /// <summary>
+        /// Gets/Sets the Machine Name of message
+        /// </summary>
+        string MachineName { get; set; }
 
         /// <summary>
-        /// Gets/Sets the system process ID of message generator
+        /// Gets/Sets the system process ID of message
         /// </summary>
         int ProcessID { get; set; }
 
@@ -170,7 +174,7 @@ namespace Analogy.Interfaces
         /// Gets/Sets the log class of the message
         /// </summary>
         public AnalogyLogClass Class { get; set; }
-
+        public string MachineName { get; set; }
         /// <summary>
         /// Gets/Sets the log level of the message
         /// </summary>
@@ -209,6 +213,7 @@ namespace Analogy.Interfaces
             MethodName = string.Empty;
             Source = string.Empty;
             Category = string.Empty;
+            MachineName = string.Empty;
         }
 
         public AnalogyLogMessage(string text, AnalogyLogLevel level, string source = null,
@@ -219,13 +224,14 @@ namespace Analogy.Interfaces
 
         }
 
-        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
+        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, string machineName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
             Text = text;
             Category = category ?? string.Empty;
             Source = source ?? string.Empty;
             MethodName = methodName ?? string.Empty;
             FileName = fileName ?? string.Empty;
+            MachineName = machineName ?? string.Empty;
             LineNumber = lineNumber;
             Class = logClass;
             Level = level;
@@ -240,11 +246,12 @@ namespace Analogy.Interfaces
         {
             if (other is null) return false;
             if (ReferenceEquals(this, other)) return true;
-            bool areEqual = Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text && Category == other.Category &&
-                   Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
-                   LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
-                   Module == other.Module && ProcessID == other.ProcessID && Thread == other.Thread &&
-                   User == other.User;
+            bool areEqual = Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text &&
+                            Category == other.Category &&
+                            Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
+                            LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
+                            Module == other.Module && ProcessID == other.ProcessID && Thread == other.Thread &&
+                            User == other.User && MachineName == other.MachineName;
             if (!areEqual ||
                 Parameters is null && other.Parameters != null ||
                 Parameters != null && other.Parameters is null)
@@ -256,8 +263,7 @@ namespace Analogy.Interfaces
         {
             if (obj is null) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((AnalogyLogMessage)obj);
+            return obj.GetType() == this.GetType() && Equals((AnalogyLogMessage)obj);
         }
 
         public override int GetHashCode()
@@ -271,6 +277,7 @@ namespace Analogy.Interfaces
                 hashCode = (hashCode * 397) ^ (Source != null ? Source.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (MethodName != null ? MethodName.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (FileName != null ? FileName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (MachineName != null ? MachineName.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ LineNumber;
                 hashCode = (hashCode * 397) ^ (int)Class;
                 hashCode = (hashCode * 397) ^ (int)Level;
@@ -298,12 +305,14 @@ namespace Analogy.Interfaces
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static AnalogyLogMessage Parse(IEnumerable<(AnalogyLogMessagePropertyName PropertyName, string propertyValue)> data)
         {
-            AnalogyLogMessage m = new AnalogyLogMessage();
-            m.Date = DateTime.MinValue;
-            m.ID = Guid.Empty;
-            m.Module = "Unknown";
-            m.Thread = -1;
-            m.ProcessID = -1;
+            AnalogyLogMessage m = new AnalogyLogMessage
+            {
+                Date = DateTime.MinValue,
+                ID = Guid.Empty,
+                Module = "Unknown",
+                Thread = -1,
+                ProcessID = -1
+            };
             foreach (var (propertyName, propertyValue) in data)
             {
                 switch (propertyName)
@@ -337,6 +346,9 @@ namespace Analogy.Interfaces
                         continue;
                     case AnalogyLogMessagePropertyName.Module:
                         m.Module = propertyValue;
+                        continue;
+                    case AnalogyLogMessagePropertyName.MachineName:
+                        m.MachineName = propertyValue;
                         continue;
                     case AnalogyLogMessagePropertyName.User:
                         m.User = propertyValue;

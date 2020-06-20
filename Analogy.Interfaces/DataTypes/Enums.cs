@@ -65,6 +65,7 @@
         ProcessID,
         Thread,
         Level,
-        Class
+        Class,
+        MachineName
     }
 }

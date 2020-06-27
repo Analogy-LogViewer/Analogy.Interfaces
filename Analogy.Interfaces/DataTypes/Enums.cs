@@ -53,7 +53,7 @@
     public enum AnalogyLogMessagePropertyName
     {
         Date,
-        ID,
+        Id,
         Text,
         Category,
         Source,
@@ -62,8 +62,8 @@
         FileName,
         User,
         LineNumber,
-        ProcessID,
-        Thread,
+        ProcessId,
+        ThreadId,
         Level,
         Class,
         MachineName

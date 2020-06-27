@@ -249,7 +249,7 @@ namespace Analogy.Interfaces
                                 m.Date = time;
                         }
                         continue;
-                    case AnalogyLogMessagePropertyName.ID:
+                    case AnalogyLogMessagePropertyName.Id:
                         {
                             if (Guid.TryParse(propertyValue, out Guid id))
                                 m.Id = id;
@@ -285,13 +285,13 @@ namespace Analogy.Interfaces
                                 m.LineNumber = num;
                         }
                         continue;
-                    case AnalogyLogMessagePropertyName.ProcessID:
+                    case AnalogyLogMessagePropertyName.ProcessId:
                         {
                             if (int.TryParse(propertyValue, out int num))
                                 m.ProcessId = num;
                         }
                         continue;
-                    case AnalogyLogMessagePropertyName.Thread:
+                    case AnalogyLogMessagePropertyName.ThreadId:
                         {
                             if (int.TryParse(propertyValue, out int num))
                                 m.ThreadId = num;

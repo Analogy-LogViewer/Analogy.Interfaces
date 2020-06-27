@@ -16,7 +16,7 @@ namespace Analogy.Interfaces.UnitTests
             Assert.IsNotNull(message.MethodName);
             Assert.IsNotNull(message.Module);
             Assert.IsNotNull(message.User);
-            Assert.IsNotNull(message.Parameters);
+        
         }
     }
 }

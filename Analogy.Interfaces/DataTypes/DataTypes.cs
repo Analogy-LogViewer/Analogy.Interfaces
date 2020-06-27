@@ -43,82 +43,7 @@ namespace Analogy.Interfaces
         }
     }
 
-    public interface IAnalogyLogMessage
-    {
-        /// <summary>
-        /// Gets/Sets date and time of arrival of log message
-        /// Applicable only at server or pilot adapter
-        /// </summary>
-        DateTime Date { get; set; }
 
-        /// <summary>
-        /// Gets/Sets a unique identifier of the log message
-        /// </summary>
-        Guid ID { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the log message text
-        /// </summary>
-        string Text { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the category of the log message
-        /// </summary>
-        string Category { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the source of the log message
-        /// </summary>
-        string Source { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the method name of message generator
-        /// </summary>
-        string MethodName { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the filename of message generator
-        /// </summary>
-        string FileName { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the line number of message generator
-        /// </summary>
-        int LineNumber { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the log class of the message
-        /// </summary>
-        AnalogyLogClass Class { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the log level of the message
-        /// </summary>
-        AnalogyLogLevel Level { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the module (process) name of message
-        /// </summary>
-        string Module { get; set; }
-        /// <summary>
-        /// Gets/Sets the Machine Name of message
-        /// </summary>
-        string MachineName { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the system process ID of message
-        /// </summary>
-        int ProcessID { get; set; }
-
-        int Thread { get; set; }
-
-        /// <summary>
-        /// Gets or sets LogMessage parameter array that will be inserted into message text
-        /// </summary>
-        string[] Parameters { get; set; }
-
-        string User { get; set; }
-    }
 
     /// <summary>
     /// Class representing Log message
@@ -138,7 +63,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Gets/Sets a unique identifier of the log message
         /// </summary>
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Gets/Sets the log message text
@@ -188,14 +113,15 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Gets/Sets the system process ID of message generator
         /// </summary>
-        public int ProcessID { get; set; }
+        public int ProcessId { get; set; }
 
-        public int Thread { get; set; }
+        public int ThreadId { get; set; }
 
         /// <summary>
-        /// Gets or sets LogMessage parameter array that will be inserted into message text
+        /// Additional information that will be presented as new columns in the UI
         /// </summary>
-        public string[] Parameters { get; set; }
+        [XmlIgnore]
+        public Dictionary<string, string> AdditionalInformation { get; set; }
 
         public string User { get; set; }
 
@@ -203,11 +129,10 @@ namespace Analogy.Interfaces
         private static int _currentProcessId = Process.GetCurrentProcess().Id;
         public AnalogyLogMessage()
         {
-            ID = Guid.NewGuid();
+            Id = Guid.NewGuid();
             Text = string.Empty;
             Date = DateTime.Now;
             User = string.Empty;
-            Parameters = Array.Empty<string>();
             Module = string.Empty;
             FileName = string.Empty;
             MethodName = string.Empty;
@@ -224,7 +149,7 @@ namespace Analogy.Interfaces
 
         }
 
-        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, string machineName = null, int processId = 0, int threadID = 0, string[] parameters = null, string user = null, [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
+        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, string machineName = null, int processId = 0, int threadId = 0, Dictionary<string,string> additionalInfo = null, string user = null, [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
             Text = text;
             Category = category ?? string.Empty;
@@ -236,27 +161,29 @@ namespace Analogy.Interfaces
             Class = logClass;
             Level = level;
             Module = moduleOrProcessName ?? _currentProcessName;
-            ProcessID = processId != 0 ? processId : _currentProcessId;
-            Parameters = parameters ?? Array.Empty<string>();
+            ProcessId = processId != 0 ? processId : _currentProcessId;
+            AdditionalInformation = additionalInfo;
             User = user ?? string.Empty;
-            Thread = threadID != 0 ? Thread : System.Threading.Thread.CurrentThread.ManagedThreadId;
+            ThreadId = threadId != 0 ? threadId : System.Threading.Thread.CurrentThread.ManagedThreadId;
         }
 
         public bool Equals(AnalogyLogMessage other)
         {
             if (other is null) return false;
             if (ReferenceEquals(this, other)) return true;
-            bool areEqual = Date.Equals(other.Date) && ID.Equals(other.ID) && Text == other.Text &&
+            bool areEqual = Date.Equals(other.Date) && Id.Equals(other.Id) && Text == other.Text &&
                             Category == other.Category &&
                             Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
                             LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
-                            Module == other.Module && ProcessID == other.ProcessID && Thread == other.Thread &&
+                            Module == other.Module && ProcessId == other.ProcessId && ThreadId == other.ThreadId &&
                             User == other.User && MachineName == other.MachineName;
             if (!areEqual ||
-                Parameters is null && other.Parameters != null ||
-                Parameters != null && other.Parameters is null)
+                AdditionalInformation == null && other.AdditionalInformation != null ||
+                AdditionalInformation != null && other.AdditionalInformation == null)
                 return false;
-            return other.Parameters != null && Parameters != null && Parameters.SequenceEqual(other.Parameters);
+            if (AdditionalInformation == null && other.AdditionalInformation == null)
+                return true;
+            return AdditionalInformation.SequenceEqual(other.AdditionalInformation);
         }
 
         public override bool Equals(object obj)
@@ -271,7 +198,7 @@ namespace Analogy.Interfaces
             unchecked
             {
                 var hashCode = Date.GetHashCode();
-                hashCode = (hashCode * 397) ^ ID.GetHashCode();
+                hashCode = (hashCode * 397) ^ Id.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Text != null ? Text.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Category != null ? Category.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Source != null ? Source.GetHashCode() : 0);
@@ -282,14 +209,13 @@ namespace Analogy.Interfaces
                 hashCode = (hashCode * 397) ^ (int)Class;
                 hashCode = (hashCode * 397) ^ (int)Level;
                 hashCode = (hashCode * 397) ^ (Module != null ? Module.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ ProcessID;
-                hashCode = (hashCode * 397) ^ Thread;
-                if (Parameters != null && Parameters.Any())
+                hashCode = (hashCode * 397) ^ ProcessId;
+                hashCode = (hashCode * 397) ^ ThreadId;
+                if (AdditionalInformation != null && AdditionalInformation.Any())
                 {
-                    foreach (string parameter in Parameters)
+                    foreach (var parameter in AdditionalInformation)
                     {
-                        if (!string.IsNullOrEmpty(parameter))
-                            hashCode = (hashCode * 397) ^ parameter.GetHashCode();
+                        hashCode = (hashCode * 397) ^ parameter.GetHashCode();
                     }
                 }
                 hashCode = (hashCode * 397) ^ (User != null ? User.GetHashCode() : 0);
@@ -299,7 +225,7 @@ namespace Analogy.Interfaces
 
         public override string ToString()
         {
-            return $"{nameof(Date)}: {Date}, {nameof(Level)}: {Level}, {nameof(Text)}: {Text}, {nameof(Source)}: {Source}, {nameof(Module)}: {Module}, {nameof(MethodName)}: {MethodName}, {nameof(Category)}: {Category}, {nameof(FileName)}: {FileName}, {nameof(LineNumber)}: {LineNumber}, {nameof(Class)}: {Class}, {nameof(ProcessID)}: {ProcessID}, {nameof(Thread)}: {Thread}, {nameof(User)}: {User}, {nameof(Parameters)}: {(Parameters != null ? string.Join(",", Parameters) : string.Empty)}, {nameof(ID)}: {ID}";
+            return $"{nameof(Date)}: {Date}, {nameof(Level)}: {Level}, {nameof(Text)}: {Text}, {nameof(Source)}: {Source}, {nameof(Module)}: {Module}, {nameof(MethodName)}: {MethodName}, {nameof(Category)}: {Category}, {nameof(FileName)}: {FileName}, {nameof(LineNumber)}: {LineNumber}, {nameof(Class)}: {Class}, {nameof(ProcessId)}: {ProcessId}, {nameof(ThreadId)}: {ThreadId}, {nameof(User)}: {User}, {nameof(AdditionalInformation)}: {(AdditionalInformation != null ? string.Join(",", AdditionalInformation) : string.Empty)}, {nameof(Id)}: {Id}";
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -308,10 +234,10 @@ namespace Analogy.Interfaces
             AnalogyLogMessage m = new AnalogyLogMessage
             {
                 Date = DateTime.MinValue,
-                ID = Guid.Empty,
+                Id = Guid.Empty,
                 Module = "Unknown",
-                Thread = -1,
-                ProcessID = -1
+                ThreadId = -1,
+                ProcessId = -1
             };
             foreach (var (propertyName, propertyValue) in data)
             {
@@ -326,7 +252,7 @@ namespace Analogy.Interfaces
                     case AnalogyLogMessagePropertyName.ID:
                         {
                             if (Guid.TryParse(propertyValue, out Guid id))
-                                m.ID = id;
+                                m.Id = id;
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.Text:
@@ -362,13 +288,13 @@ namespace Analogy.Interfaces
                     case AnalogyLogMessagePropertyName.ProcessID:
                         {
                             if (int.TryParse(propertyValue, out int num))
-                                m.ProcessID = num;
+                                m.ProcessId = num;
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.Thread:
                         {
                             if (int.TryParse(propertyValue, out int num))
-                                m.Thread = num;
+                                m.ThreadId = num;
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.Level:

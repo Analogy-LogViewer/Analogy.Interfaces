@@ -14,12 +14,12 @@ namespace Analogy.Interfaces
         bool IsConfigured { get; set; }
         string Splitter { get; set; }
         string Layout { get; set; }
-        Dictionary<int, AnalogyLogMessagePropertyName> Maps { get; set; }
+        Dictionary<string, AnalogyLogMessagePropertyName> Maps { get; set; }
         int ValidItemsCount { get; set; }
-        //string AsJson();
-        void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<int, AnalogyLogMessagePropertyName> maps);
-        void AddMap(int index, AnalogyLogMessagePropertyName name);
+        void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<string, AnalogyLogMessagePropertyName> maps);
+        void AddMap(string key, AnalogyLogMessagePropertyName name);
         bool CanOpenFile(string fileName);
         bool CanOpenFiles(IEnumerable<string> fileNames);
+        AnalogyLogMessagePropertyName? GetAnalogyPropertyName(string key);
     }
 }

@@ -14,30 +14,31 @@ namespace Analogy.Interfaces.DataTypes
         public bool IsConfigured { get; set; }
         public string Splitter { get; set; }
         public string Layout { get; set; }
-        public Dictionary<int, AnalogyLogMessagePropertyName> Maps { get; set; }
+        public Dictionary<string, AnalogyLogMessagePropertyName> Maps { get; set; }
         public int ValidItemsCount { get; set; }
 
-       // public string AsJson() => JsonConvert.SerializeObject(this);
-      //  public static LogParserSettings FromJson(string json) => JsonConvert.DeserializeObject<LogParserSettings>(json);
+        // public string AsJson() => JsonConvert.SerializeObject(this);
+        //  public static LogParserSettings FromJson(string json) => JsonConvert.DeserializeObject<LogParserSettings>(json);
         public LogParserSettings()
         {
             IsConfigured = false;
             Layout = string.Empty;
             Splitter = string.Empty;
-            Maps = new Dictionary<int, AnalogyLogMessagePropertyName>();
+            Maps = new Dictionary<string, AnalogyLogMessagePropertyName>(StringComparer.InvariantCultureIgnoreCase);
             SupportedFilesExtensions = new List<string>();
         }
 
-        public void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<int, AnalogyLogMessagePropertyName> maps)
+        public void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<string, AnalogyLogMessagePropertyName> maps)
         {
             Layout = layout;
             Splitter = splitter;
             SupportedFilesExtensions = supportedFilesExtension;
-            Maps = maps ?? new Dictionary<int, AnalogyLogMessagePropertyName>();
+            Maps = maps ?? new Dictionary<string, AnalogyLogMessagePropertyName>(StringComparer.InvariantCultureIgnoreCase);
             IsConfigured = true;
             ValidItemsCount = Layout.Split(splitter.Split(), StringSplitOptions.RemoveEmptyEntries).Length;
         }
-        public void AddMap(int index, AnalogyLogMessagePropertyName name) => Maps.Add(index, name);
+
+        public void AddMap(string key, AnalogyLogMessagePropertyName name) => Maps[key] = name;
 
         public bool CanOpenFile(string fileName)
         {
@@ -46,6 +47,9 @@ namespace Analogy.Interfaces.DataTypes
         }
 
         public bool CanOpenFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
+
+        public AnalogyLogMessagePropertyName? GetAnalogyPropertyName(string key)
+        => Maps.ContainsKey(key) ? Maps[key] : (AnalogyLogMessagePropertyName?)null;
 
     }
 }

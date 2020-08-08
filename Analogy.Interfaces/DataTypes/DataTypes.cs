@@ -127,6 +127,17 @@ namespace Analogy.Interfaces
 
         private static string _currentProcessName = Process.GetCurrentProcess().ProcessName;
         private static int _currentProcessId = Process.GetCurrentProcess().Id;
+
+        private static Dictionary<string, AnalogyLogMessagePropertyName> propertiesName;
+
+        static AnalogyLogMessage()
+        {
+            propertiesName = new Dictionary<string, AnalogyLogMessagePropertyName>(StringComparer.InvariantCultureIgnoreCase);
+            foreach (var property in Enum.GetValues(typeof(AnalogyLogMessagePropertyName)).Cast<AnalogyLogMessagePropertyName>())
+            {
+                propertiesName.Add(property.ToString(), property);
+            }
+        }
         public AnalogyLogMessage()
         {
             Id = Guid.NewGuid();
@@ -149,7 +160,7 @@ namespace Analogy.Interfaces
 
         }
 
-        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, string machineName = null, int processId = 0, int threadId = 0, Dictionary<string,string> additionalInfo = null, string user = null, [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
+        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, string machineName = null, int processId = 0, int threadId = 0, Dictionary<string, string> additionalInfo = null, string user = null, [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
             Text = text;
             Category = category ?? string.Empty;
@@ -233,6 +244,7 @@ namespace Analogy.Interfaces
         {
             AnalogyLogMessage m = new AnalogyLogMessage
             {
+                AdditionalInformation = new Dictionary<string, string>(0),
                 Date = DateTime.MinValue,
                 Id = Guid.Empty,
                 Module = "Unknown",
@@ -352,6 +364,21 @@ namespace Analogy.Interfaces
 
             return m;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static AnalogyLogMessage Parse(IEnumerable<(string PropertyName, string propertyValue)> data)
+        {
+            var valueTuples = data.ToList();
+            var dataProperties = valueTuples.Where(p => propertiesName.ContainsKey(p.PropertyName)).Select(s => (propertiesName[s.PropertyName], s.propertyValue)).ToList();
+            var m = Parse(dataProperties);
+            var dataNotProperties = valueTuples.Where(p => !propertiesName.ContainsKey(p.PropertyName)).ToList();
+            if (dataNotProperties.Any())
+            {
+                m.AdditionalInformation = dataNotProperties.ToDictionary(p => p.PropertyName, p => p.propertyValue);
+            }
+
+            return m;
+        }
+
     }
 
     public class AnalogyEventMessage : AnalogyLogMessage

@@ -320,26 +320,45 @@ namespace Analogy.Interfaces
                             {
                                 switch (propertyValue)
                                 {
+                                    case "Disabled":
+                                    case "Off":
                                     case "OFF":
                                         m.Level = AnalogyLogLevel.Disabled;
                                         break;
+                                    case "Trace":
                                     case "TRACE":
                                         m.Level = AnalogyLogLevel.Trace;
                                         break;
+                                    case "Debug":
                                     case "DEBUG":
+                                    case "DebugVerbose":
                                         m.Level = AnalogyLogLevel.Debug;
                                         break;
+                                    case "Info":
                                     case "INFO":
+                                    case "Event":
                                         m.Level = AnalogyLogLevel.Event;
                                         break;
-                                    case "WARN":
+                                    case "Warn":
+                                    case "Warning":
+                                    case "WARNING":
                                         m.Level = AnalogyLogLevel.Warning;
                                         break;
+                                    case "Error":
                                     case "ERROR":
+                                    case "ERR":
+                                    case "Err":
                                         m.Level = AnalogyLogLevel.Error;
                                         break;
+                                    case "Critical":
+                                    case "Fatal":
                                     case "FATAL":
                                         m.Level = AnalogyLogLevel.Critical;
+                                        break;
+                                    case "Verbose":
+                                    case "VERBOSE":
+                                    case "DebugInfo":
+                                        m.Level = AnalogyLogLevel.Verbose;
                                         break;
                                     default:
                                         m.Level = AnalogyLogLevel.Unknown;

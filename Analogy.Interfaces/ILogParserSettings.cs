@@ -12,11 +12,8 @@ namespace Analogy.Interfaces
         string Directory { get; set; }
         List<string> SupportedFilesExtensions { get; set; }
         bool IsConfigured { get; set; }
-        string Splitter { get; set; }
-        string Layout { get; set; }
         Dictionary<AnalogyLogMessagePropertyName, List<string>> Maps { get; set; }
-        int ValidItemsCount { get; set; }
-        void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<AnalogyLogMessagePropertyName, List<string>> maps);
+        void Configure(List<string> supportedFilesExtension, Dictionary<AnalogyLogMessagePropertyName, List<string>> maps);
         void AddMap(AnalogyLogMessagePropertyName key, string value);
         bool CanOpenFile(string fileName);
         bool CanOpenFiles(IEnumerable<string> fileNames);

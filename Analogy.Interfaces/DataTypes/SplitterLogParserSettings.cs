@@ -24,7 +24,7 @@ namespace Analogy.Interfaces.DataTypes
         bool CanOpenFile(string fileName);
         bool CanOpenFiles(IEnumerable<string> fileNames);
     }
-    class SplitterLogParserSettings: ISplitterLogParserSettings
+    public class SplitterLogParserSettings : ISplitterLogParserSettings
     {
         public string Directory { get; set; }
         public List<string> SupportedFilesExtensions { get; set; }

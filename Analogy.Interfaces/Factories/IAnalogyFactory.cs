@@ -12,6 +12,9 @@ namespace Analogy.Interfaces.Factories
         string Title { get; }
         IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
         IEnumerable<string> Contributors { get; }
+        /// <summary>
+        /// Description of the Factory e.g: "Serilog Parser for Analogy Log Viewer"
+        /// </summary>
         string About { get; }
     }
 

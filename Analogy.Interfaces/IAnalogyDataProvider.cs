@@ -56,8 +56,8 @@ namespace Analogy.Interfaces
         /// </summary>
         IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         Task<bool> CanStartReceiving();
-        void StartReceiving();
-        void StopReceiving();
+        Task StartReceiving();
+        Task StopReceiving();
     }
 
 

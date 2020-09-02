@@ -12,7 +12,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// ID of the data provider
         /// </summary>
-        Guid ID { get; }
+        Guid Id { get; }
         /// <summary>
         /// call to initialize to provider
         /// </summary>
@@ -57,6 +57,10 @@ namespace Analogy.Interfaces
         IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         Task<bool> CanStartReceiving();
         Task StartReceiving();
+        Image ConnectedLargeImage { get; }
+        Image ConnectedSmallImage { get; }
+        Image DisconnectedLargeImage { get; }
+        Image DisconnectedSmallImage { get; }
         Task StopReceiving();
     }
 
@@ -69,7 +73,8 @@ namespace Analogy.Interfaces
         string FileSaveDialogFilters { get; }
         IEnumerable<string> SupportFormats { get; }
         string InitialFolderFullPath { get; }
-
+        Image LargeImage { get; }
+        Image SmallImage { get; }
         Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
         IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad);
         Task SaveAsync(List<AnalogyLogMessage> messages, string fileName);

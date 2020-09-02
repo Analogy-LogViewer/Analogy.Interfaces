@@ -7,7 +7,8 @@ namespace Analogy.Interfaces
     {
         Action Action { get; }
         Guid Id { get; }
-        Image Image { get; }
+        Image SmallImage { get; }
+        Image LargeImage { get; }
         string Title { get; }
     }
 }

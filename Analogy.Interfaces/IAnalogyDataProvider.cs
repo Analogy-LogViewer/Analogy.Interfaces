@@ -63,9 +63,17 @@ namespace Analogy.Interfaces
         Image DisconnectedSmallImage { get; set; }
         Task StopReceiving();
     }
-    
+
     public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider
     {
+        /// <summary>
+        /// Optional 32x32 Image (or null)
+        /// </summary>
+        Image LargeImage { get; set; }
+        /// <summary>
+        /// Optional 16x16 Image (or null)
+        /// </summary>
+        Image SmallImage { get; set; }
         bool DisableFilePoolingOption { get; }
         bool CanSaveToLogFile { get; }
         string FileOpenDialogFilters { get; }
@@ -98,8 +106,8 @@ namespace Analogy.Interfaces
     }
     public interface IAnalogySingleDataProvider : IAnalogyDataProvider
     {        /// <summary>
-        /// Optional 32x32 Image (or null)
-        /// </summary>
+             /// Optional 32x32 Image (or null)
+             /// </summary>
         Image LargeImage { get; set; }
         /// <summary>
         /// Optional 16x16 Image (or null)

@@ -63,8 +63,7 @@ namespace Analogy.Interfaces
         Image DisconnectedSmallImage { get; }
         Task StopReceiving();
     }
-
-
+    
     public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider
     {
         bool DisableFilePoolingOption { get; }
@@ -73,8 +72,6 @@ namespace Analogy.Interfaces
         string FileSaveDialogFilters { get; }
         IEnumerable<string> SupportFormats { get; }
         string InitialFolderFullPath { get; }
-        Image LargeImage { get; }
-        Image SmallImage { get; }
         Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
         IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad);
         Task SaveAsync(List<AnalogyLogMessage> messages, string fileName);
@@ -84,6 +81,14 @@ namespace Analogy.Interfaces
 
     public interface IAnalogySingleFileDataProvider : IAnalogyDataProvider
     {
+        /// <summary>
+        /// Optional 32x32 Image (or null)
+        /// </summary>
+        Image LargeImage { get; }
+        /// <summary>
+        /// Optional 16x16 Image (or null)
+        /// </summary>
+        Image SmallImage { get; }
         bool DisableFilePoolingOption { get; }
         /// <summary>
         /// Full path of the file to open
@@ -92,7 +97,14 @@ namespace Analogy.Interfaces
         Task<IEnumerable<AnalogyLogMessage>> Process(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
     public interface IAnalogySingleDataProvider : IAnalogyDataProvider
-    {
+    {        /// <summary>
+        /// Optional 32x32 Image (or null)
+        /// </summary>
+        Image LargeImage { get; }
+        /// <summary>
+        /// Optional 16x16 Image (or null)
+        /// </summary>
+        Image SmallImage { get; }
         Task<IEnumerable<AnalogyLogMessage>> Execute(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
 }

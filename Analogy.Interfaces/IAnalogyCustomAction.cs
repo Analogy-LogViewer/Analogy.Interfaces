@@ -6,9 +6,9 @@ namespace Analogy.Interfaces
     public interface IAnalogyCustomAction
     {
         Action Action { get; }
-        Guid Id { get; }
-        Image SmallImage { get; }
-        Image LargeImage { get; }
-        string Title { get; }
+        Guid Id { get; set; }
+        Image SmallImage { get; set; }
+        Image LargeImage { get; set; }
+        string Title { get; set; }
     }
 }

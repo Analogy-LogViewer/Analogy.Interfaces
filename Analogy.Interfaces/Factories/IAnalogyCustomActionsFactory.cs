@@ -8,8 +8,8 @@ namespace Analogy.Interfaces.Factories
         /// <summary>
         /// the factory id which this actions providers factory belongs to
         /// </summary>
-        Guid FactoryId { get; }
-        string Title { get; }
+        Guid FactoryId { get; set; }
+        string Title { get; set; }
         IEnumerable<IAnalogyCustomAction> Actions { get; }
     }
 }

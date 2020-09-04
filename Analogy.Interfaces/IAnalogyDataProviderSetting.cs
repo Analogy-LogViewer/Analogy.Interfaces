@@ -15,16 +15,16 @@ namespace Analogy.Interfaces
         /// The id of this item
         /// </summary>
         Guid Id { get; set; }
-        string Title { get; }
+        string Title { get; set; }
         UserControl DataProviderSettings { get; }
         /// <summary>
         /// 16x16 icon to show in the Analogy UI
         /// </summary>
-        Image SmallImage { get; }
+        Image SmallImage { get; set; }
         /// <summary>
         /// 32x32 icon to show in the Analogy UI
         /// </summary>
-        Image LargeImage { get; }
+        Image LargeImage { get; set; }
         Task SaveSettingsAsync();
     }
 

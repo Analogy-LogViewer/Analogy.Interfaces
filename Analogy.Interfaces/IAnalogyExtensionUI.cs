@@ -8,19 +8,19 @@ namespace Analogy.Interfaces
         /// <summary>
         /// ID of the ExtensionUI
         /// </summary>
-        Guid Id { get; }
+        Guid Id { get; set; }
         /// <summary>
         /// ID of the Extension
         /// </summary>
-        Guid ExtensionId { get; }
+        Guid ExtensionId { get; set; }
         /// <summary>
         /// //Optional title to display in the ribbon bar
         /// </summary>
-        string OptionalTitle { get; }
+        string OptionalTitle { get; set; }
         /// <summary>
         /// The user control to show
         /// </summary>
-        UserControl UserControl { get; }
+        UserControl UserControl { get; set; }
     }
 }
 

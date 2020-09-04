@@ -12,7 +12,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// ID of the data provider
         /// </summary>
-        Guid Id { get; }
+        Guid Id { get; set; }
         /// <summary>
         /// call to initialize to provider
         /// </summary>
@@ -20,7 +20,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// //Optional title to display in the ribbon bar
         /// </summary>
-        string OptionalTitle { get; }
+        string OptionalTitle { get; set; }
         /// <summary>
         /// called when the message is open in Analogy in full view mode (detailed view). Should not throw exception
         /// </summary>
@@ -57,10 +57,10 @@ namespace Analogy.Interfaces
         IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         Task<bool> CanStartReceiving();
         Task StartReceiving();
-        Image ConnectedLargeImage { get; }
-        Image ConnectedSmallImage { get; }
-        Image DisconnectedLargeImage { get; }
-        Image DisconnectedSmallImage { get; }
+        Image ConnectedLargeImage { get; set; }
+        Image ConnectedSmallImage { get; set; }
+        Image DisconnectedLargeImage { get; set; }
+        Image DisconnectedSmallImage { get; set; }
         Task StopReceiving();
     }
     
@@ -84,27 +84,27 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Optional 32x32 Image (or null)
         /// </summary>
-        Image LargeImage { get; }
+        Image LargeImage { get; set; }
         /// <summary>
         /// Optional 16x16 Image (or null)
         /// </summary>
-        Image SmallImage { get; }
+        Image SmallImage { get; set; }
         bool DisableFilePoolingOption { get; }
         /// <summary>
         /// Full path of the file to open
         /// </summary>
-        string FileNamePath { get; }
+        string FileNamePath { get; set; }
         Task<IEnumerable<AnalogyLogMessage>> Process(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
     public interface IAnalogySingleDataProvider : IAnalogyDataProvider
     {        /// <summary>
         /// Optional 32x32 Image (or null)
         /// </summary>
-        Image LargeImage { get; }
+        Image LargeImage { get; set; }
         /// <summary>
         /// Optional 16x16 Image (or null)
         /// </summary>
-        Image SmallImage { get; }
+        Image SmallImage { get; set; }
         Task<IEnumerable<AnalogyLogMessage>> Execute(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
 }

@@ -9,7 +9,7 @@ namespace Analogy.Interfaces
     public class AnalogyLogMessageCustomEqualityComparer : IEqualityComparer<AnalogyLogMessage>
     {
         public bool CompareDate { get; set; } = true;
-        public bool CompareID { get; set; } = true;
+        public bool CompareId { get; set; } = true;
         public bool CompareText { get; set; } = true;
         public bool CompareCategory { get; set; } = true;
         public bool CompareSource { get; set; } = true;
@@ -18,7 +18,7 @@ namespace Analogy.Interfaces
         public bool CompareFileName { get; set; } = true;
         public bool CompareUser { get; set; } = true;
         public bool CompareLineNumber { get; set; } = true;
-        public bool CompareProcessID { get; set; } = true;
+        public bool CompareProcessId { get; set; } = true;
         public bool CompareThread { get; set; } = true;
         public bool CompareLevel { get; set; } = true;
         public bool CompareClass { get; set; } = true;
@@ -30,7 +30,7 @@ namespace Analogy.Interfaces
             if (ReferenceEquals(x, y)) return true;
             if (CompareDate && !x.Date.Equals(y.Date))
                 return false;
-            if (CompareID && !x.Id.Equals(y.Id))
+            if (CompareId && !x.Id.Equals(y.Id))
                 return false;
             if (CompareText && !x.Text.Equals(y.Text))
                 return false;
@@ -48,7 +48,7 @@ namespace Analogy.Interfaces
                 return false;
             if (CompareLineNumber && !x.LineNumber.Equals(y.LineNumber))
                 return false;
-            if (CompareProcessID && !x.ProcessId.Equals(y.ProcessId))
+            if (CompareProcessId && !x.ProcessId.Equals(y.ProcessId))
                 return false;
             if (CompareThread && !x.ThreadId.Equals(y.ThreadId))
                 return false;
@@ -74,7 +74,7 @@ namespace Analogy.Interfaces
             {
                 var hashCode = CompareDate ? obj.Date.GetHashCode() : 1;
 
-                if (CompareID)
+                if (CompareId)
                     hashCode = (hashCode * 397) ^ obj.Id.GetHashCode();
                 if (CompareText)
                     hashCode = (hashCode * 397) ^ (obj.Text != null ? obj.Text.GetHashCode() : 0);
@@ -94,7 +94,7 @@ namespace Analogy.Interfaces
                     hashCode = (hashCode * 397) ^ (int)obj.Level;
                 if (CompareModule)
                     hashCode = (hashCode * 397) ^ (obj.Module != null ? obj.Module.GetHashCode() : 0);
-                if (CompareProcessID)
+                if (CompareProcessId)
                     hashCode = (hashCode * 397) ^ obj.ProcessId;
                 if (CompareThread)
                     hashCode = (hashCode * 397) ^ obj.ThreadId;

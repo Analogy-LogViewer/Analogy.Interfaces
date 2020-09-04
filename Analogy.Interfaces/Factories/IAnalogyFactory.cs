@@ -8,14 +8,14 @@ namespace Analogy.Interfaces.Factories
         /// <summary>
         /// Fixed Unique Guid that will be used as The Id of the Factory 
         /// </summary>
-        Guid FactoryId { get; }
-        string Title { get; }
-        IEnumerable<IAnalogyChangeLog> ChangeLog { get; }
-        IEnumerable<string> Contributors { get; }
+        Guid FactoryId { get; set; }
+        string Title { get; set; }
+        IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; }
+        IEnumerable<string> Contributors { get; set; }
         /// <summary>
         /// Description of the Factory e.g: "Serilog Parser for Analogy Log Viewer"
         /// </summary>
-        string About { get; }
+        string About { get;  set; }
     }
 
 }

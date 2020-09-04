@@ -5,13 +5,13 @@ namespace Analogy.Interfaces
 {
     public interface IAnalogyExtension
     {
-        Guid Id { get; }
-        Guid TargetProviderId { get; }
-        string Author { get; }
-        string AuthorMail { get; }
+        Guid Id { get; set; }
+        Guid TargetProviderId { get; set; }
+        string Author { get; set; }
+        string AuthorMail { get; set; }
         List<string> AdditionalContributors { get; }
-        string Title { get; }
-        string Description { get; }
+        string Title { get; set; }
+        string Description { get; set; }
         AnalogyExtensionType ExtensionType { get; }
 
         void CellClicked(object sender, AnalogyCellClickedEventArgs args);

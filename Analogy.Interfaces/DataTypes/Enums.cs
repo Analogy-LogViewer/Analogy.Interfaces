@@ -1,6 +1,10 @@
 ﻿namespace Analogy.Interfaces
 {
-
+    public enum AnalogyCustomActionType
+    {
+        BelongsToProvider,
+        Global,
+    }
     /// <summary>
     /// LogClass identifies the class of a log event.
     /// </summary>

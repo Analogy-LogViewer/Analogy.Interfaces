@@ -13,7 +13,7 @@
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
-		<Version>2.4.7</Version>
+		<Version>2.4.8</Version>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -24,8 +24,8 @@
 		<RepositoryType>git</RepositoryType>
 		<Company>Analogy.LogViewer</Company>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-		<FileVersion>2.4.7.0</FileVersion>
-		<AssemblyVersion>2.4.7.0</AssemblyVersion>
+		<FileVersion>2.4.8.0</FileVersion>
+		<AssemblyVersion>2.4.8.0</AssemblyVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

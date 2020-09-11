@@ -20,7 +20,7 @@ namespace Analogy.Interfaces.DataTypes
         {
             IsConfigured = false;
             Maps = new Dictionary<AnalogyLogMessagePropertyName, List<string>>();
-            foreach (var items in AnalogyLogMessage.AnalogyLogMessagePropertyNames)
+            foreach (var items in AnalogyLogMessage.LogMessagePropertyNames)
             {
                 Maps[items.Value]=new List<string>{items.Key};
             }

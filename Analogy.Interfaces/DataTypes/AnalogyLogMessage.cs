@@ -3,57 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Xml.Serialization;
 
 namespace Analogy.Interfaces
 {
-    public class AnalogyProgressReport
-    {
-        public string Prefix { get; set; }
-        public int Processed { get; set; }
-        public int Total { get; set; }
-        public string FinishedProcessing { get; set; }
-        public AnalogyProgressReport(string prefix, int processed, int total, string finishedProcessing) => (Prefix, Processed, Total, FinishedProcessing) = (prefix, processed, total, finishedProcessing);
-    }
-    [Flags()]
-    public enum AnalogyExtensionType
-    {
-        None = 0,
-        InPlace = 1,
-        UserControl = 2
-    }
-
-    public enum AnalogyDataSourceType
-    {
-        RealTimeDataSource,
-        OfflineDataSource,
-
-    }
-    public class AnalogyColumnInfo
-    {
-        public string ColumnCaption { get; }
-        public string ColumnName { get; }
-        public Type ColumnType { get; }
-
-        public AnalogyColumnInfo(string columnCaption, string columnName, Type columnType)
-        {
-            ColumnCaption = columnCaption;
-            ColumnName = columnName;
-            ColumnType = columnType;
-        }
-    }
-
-
-
-    /// <summary>
-    /// Class representing Log message
-    /// </summary>
-    [Serializable]
-    [XmlRoot("AnalogyLogMessage")]
-
     public class AnalogyLogMessage : IEquatable<AnalogyLogMessage>, IAnalogyLogMessage
     {
-
+        private static readonly string CurrentProcessName = Process.GetCurrentProcess().ProcessName;
+        private static readonly int CurrentProcessId = Process.GetCurrentProcess().Id;
         /// <summary>
         /// Gets/Sets date and time of arrival of log message
         /// Applicable only at server or pilot adapter
@@ -114,28 +70,28 @@ namespace Analogy.Interfaces
         /// Gets/Sets the system process ID of message generator
         /// </summary>
         public int ProcessId { get; set; }
-
-        public int ThreadId { get; set; }
-
         /// <summary>
-        /// Additional information that will be presented as new columns in the UI
+        /// Gets/Sets the Thread ID of message generator
         /// </summary>
-        [XmlIgnore]
+        public int ThreadId { get; set; }
+        /// <summary>
+        /// Key/Value additional information for the message
+        /// </summary>
         public Dictionary<string, string> AdditionalInformation { get; set; }
-
+        /// <summary>
+        /// The user Name for the message
+        /// </summary>
         public string User { get; set; }
 
-        private static string _currentProcessName = Process.GetCurrentProcess().ProcessName;
-        private static int _currentProcessId = Process.GetCurrentProcess().Id;
 
-        public static Dictionary<string, AnalogyLogMessagePropertyName> AnalogyLogMessagePropertyNames { get; set; }
+        public static Dictionary<string, AnalogyLogMessagePropertyName> LogMessagePropertyNames { get; set; }
 
         static AnalogyLogMessage()
         {
-            AnalogyLogMessagePropertyNames = new Dictionary<string, AnalogyLogMessagePropertyName>(StringComparer.InvariantCultureIgnoreCase);
+            LogMessagePropertyNames = new Dictionary<string, AnalogyLogMessagePropertyName>(StringComparer.InvariantCultureIgnoreCase);
             foreach (var property in Enum.GetValues(typeof(AnalogyLogMessagePropertyName)).Cast<AnalogyLogMessagePropertyName>())
             {
-                AnalogyLogMessagePropertyNames.Add(property.ToString(), property);
+                LogMessagePropertyNames.Add(property.ToString(), property);
             }
         }
         public AnalogyLogMessage()
@@ -171,8 +127,8 @@ namespace Analogy.Interfaces
             LineNumber = lineNumber;
             Class = logClass;
             Level = level;
-            Module = moduleOrProcessName ?? _currentProcessName;
-            ProcessId = processId != 0 ? processId : _currentProcessId;
+            Module = moduleOrProcessName ?? CurrentProcessName;
+            ProcessId = processId != 0 ? processId : CurrentProcessId;
             AdditionalInformation = additionalInfo;
             User = user ?? string.Empty;
             ThreadId = threadId != 0 ? threadId : System.Threading.Thread.CurrentThread.ManagedThreadId;
@@ -323,7 +279,9 @@ namespace Analogy.Interfaces
                                     case "Disabled":
                                     case "Off":
                                     case "OFF":
-                                        m.Level = AnalogyLogLevel.Disabled;
+                                    case "None":
+                                    case "NONE":
+                                        m.Level = AnalogyLogLevel.None;
                                         break;
                                     case "Trace":
                                     case "TRACE":
@@ -337,7 +295,9 @@ namespace Analogy.Interfaces
                                     case "Info":
                                     case "INFO":
                                     case "Event":
-                                        m.Level = AnalogyLogLevel.Event;
+                                    case "Information":
+                                    case "information":
+                                        m.Level = AnalogyLogLevel.Information;
                                         break;
                                     case "Warn":
                                     case "Warning":
@@ -359,6 +319,10 @@ namespace Analogy.Interfaces
                                     case "VERBOSE":
                                     case "DebugInfo":
                                         m.Level = AnalogyLogLevel.Verbose;
+                                        break;
+                                    case "AnalogyInformation":
+                                    case "Analogy":
+                                        m.Level = AnalogyLogLevel.Analogy;
                                         break;
                                     default:
                                         m.Level = AnalogyLogLevel.Unknown;
@@ -387,9 +351,9 @@ namespace Analogy.Interfaces
         public static AnalogyLogMessage Parse(IEnumerable<(string PropertyName, string propertyValue)> data)
         {
             var valueTuples = data.ToList();
-            var dataProperties = valueTuples.Where(p => AnalogyLogMessagePropertyNames.ContainsKey(p.PropertyName)).Select(s => (AnalogyLogMessagePropertyNames[s.PropertyName], s.propertyValue)).ToList();
+            var dataProperties = valueTuples.Where(p => LogMessagePropertyNames.ContainsKey(p.PropertyName)).Select(s => (LogMessagePropertyNames[s.PropertyName], s.propertyValue)).ToList();
             var m = Parse(dataProperties);
-            var dataNotProperties = valueTuples.Where(p => !AnalogyLogMessagePropertyNames.ContainsKey(p.PropertyName)).ToList();
+            var dataNotProperties = valueTuples.Where(p => !LogMessagePropertyNames.ContainsKey(p.PropertyName)).ToList();
             if (dataNotProperties.Any())
             {
                 m.AdditionalInformation = dataNotProperties.ToDictionary(p => p.PropertyName, p => p.propertyValue);
@@ -400,11 +364,11 @@ namespace Analogy.Interfaces
 
     }
 
-    public class AnalogyEventMessage : AnalogyLogMessage
+    public class AnalogyInformationMessage : AnalogyLogMessage
     {
-        public AnalogyEventMessage(string text, string source = null,
+        public AnalogyInformationMessage(string text, string source = null,
             [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null,
-            [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Event, AnalogyLogClass.General, source,
+            [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Information, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
 

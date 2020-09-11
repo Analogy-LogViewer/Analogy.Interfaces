@@ -1,4 +1,6 @@
-﻿namespace Analogy.Interfaces
+﻿using System;
+
+namespace Analogy.Interfaces
 {
     public enum AnalogyCustomActionType
     {
@@ -35,15 +37,15 @@
     public enum AnalogyLogLevel
     {
         Unknown,
-        Disabled,
         Trace,
         Verbose,
         Debug,
-        Event,
+        Information,
         Warning,
         Error,
         Critical,
-        AnalogyInformation
+        Analogy,
+        None
     }
 
     public enum AnalogChangeLogType
@@ -71,5 +73,20 @@
         Level,
         Class,
         MachineName
+    }
+
+    [Flags()]
+    public enum AnalogyExtensionType
+    {
+        None = 0,
+        InPlace = 1,
+        UserControl = 2
+    }
+
+    public enum AnalogyDataSourceType
+    {
+        RealTimeDataSource,
+        OfflineDataSource,
+
     }
 }

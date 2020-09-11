@@ -10,7 +10,7 @@ namespace Analogy.Interfaces
     /// </summary>
     public interface IAnalogyLogger
     {
-        void LogEvent(string message, string source = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0, [CallerFilePath] string filePath = "");
+        void LogInformation(string message, string source = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0, [CallerFilePath] string filePath = "");
         void LogWarning(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "");
         void LogDebug(string message, string source = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0, [CallerFilePath] string filePath = "");
         void LogError(string message, string source = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0, [CallerFilePath] string filePath = "");

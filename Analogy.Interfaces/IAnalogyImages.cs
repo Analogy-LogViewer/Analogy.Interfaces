@@ -27,9 +27,9 @@ namespace Analogy.Interfaces
         Image GetSmallCombineLogsImage(Guid analogyComponentId);
         Image GetLargeCompareLogsImage(Guid analogyComponentId);
         Image GetSmallCompareLogsImage(Guid analogyComponentId);
-       Image GetLargeConnectedLogsImage(Guid analogyComponentId);
-       Image GetSmallConnectedLogsImage(Guid analogyComponentId);
-       Image GetLargeDisconnectedLogsImage(Guid analogyComponentId);
-       Image GetSmallDisconnectedLogsImage(Guid analogyComponentId);
+       Image GetRealTimeConnectedLargeImage(Guid analogyComponentId);
+       Image GetRealTimeConnectedSmallImage(Guid analogyComponentId);
+       Image GetRealTimeDisconnectedLargeImage(Guid analogyComponentId);
+       Image GetRealTimeDisconnectedSmallImage(Guid analogyComponentId);
     }
 }

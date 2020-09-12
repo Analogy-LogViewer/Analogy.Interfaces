@@ -11,6 +11,8 @@ namespace Analogy.Interfaces
     {
         Image GetLargeBookmarksImage(Guid analogyComponentId);
         Image GetSmallBookmarksImage(Guid analogyComponentId);
+        Image GetLargeOpenFileImage(Guid analogyComponentId);
+        Image GetSmallOpenFileImage(Guid analogyComponentId);
         Image GetLargeOpenFolderImage(Guid analogyComponentId);
         Image GetSmallOpenFolderImage(Guid analogyComponentId);
         Image GetLargeRecentFoldersImage(Guid analogyComponentId);

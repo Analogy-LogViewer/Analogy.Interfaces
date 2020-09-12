@@ -9,6 +9,8 @@ namespace Analogy.Interfaces
 {
     public interface IAnalogyImages
     {
+        Image GetLargeBookmarksImage(Guid analogyComponentId);
+        Image GetSmallBookmarksImage(Guid analogyComponentId);
         Image GetLargeOpenFolderImage(Guid analogyComponentId);
         Image GetSmallOpenFolderImage(Guid analogyComponentId);
         Image GetLargeRecentFoldersImage(Guid analogyComponentId);

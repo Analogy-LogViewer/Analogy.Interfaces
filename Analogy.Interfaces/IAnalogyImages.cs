@@ -19,7 +19,6 @@ namespace Analogy.Interfaces
         Image GetSmallFilePoolingImage(Guid analogyComponentId);
         Image GetLargeRecentFilesImage(Guid analogyComponentId);
         Image GetSmallRecentFilesImage(Guid analogyComponentId);
-
         Image GetLargeKnownLocationsImage(Guid analogyComponentId);
         Image GetSmallKnownLocationsImage(Guid analogyComponentId);
         Image GetLargeSearchImage(Guid analogyComponentId);
@@ -28,5 +27,9 @@ namespace Analogy.Interfaces
         Image GetSmallCombineLogsImage(Guid analogyComponentId);
         Image GetLargeCompareLogsImage(Guid analogyComponentId);
         Image GetSmallCompareLogsImage(Guid analogyComponentId);
+       Image GetLargeConnectedLogsImage(Guid analogyComponentId);
+       Image GetSmallConnectedLogsImage(Guid analogyComponentId);
+       Image GetLargeDisconnectedLogsImage(Guid analogyComponentId);
+       Image GetSmallDisconnectedLogsImage(Guid analogyComponentId);
     }
 }

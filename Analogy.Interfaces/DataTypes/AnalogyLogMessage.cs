@@ -300,6 +300,7 @@ namespace Analogy.Interfaces
                                         m.Level = AnalogyLogLevel.Information;
                                         break;
                                     case "Warn":
+                                    case "WARN":
                                     case "Warning":
                                     case "WARNING":
                                         m.Level = AnalogyLogLevel.Warning;

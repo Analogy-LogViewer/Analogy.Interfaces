@@ -136,27 +136,50 @@ namespace Analogy.Interfaces
 
         public bool Equals(AnalogyLogMessage other)
         {
-            if (other is null) return false;
-            if (ReferenceEquals(this, other)) return true;
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
             bool areEqual = Date.Equals(other.Date) && Id.Equals(other.Id) && Text == other.Text &&
                             Category == other.Category &&
                             Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
                             LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
                             Module == other.Module && ProcessId == other.ProcessId && ThreadId == other.ThreadId &&
                             User == other.User && MachineName == other.MachineName;
-            if (!areEqual ||
-                AdditionalInformation == null && other.AdditionalInformation != null ||
+            if (!areEqual || AdditionalInformation == null && other.AdditionalInformation != null ||
                 AdditionalInformation != null && other.AdditionalInformation == null)
+            {
                 return false;
+            }
+
             if (AdditionalInformation == null && other.AdditionalInformation == null)
+            {
                 return true;
+            }
+            if (AdditionalInformation == null && other.AdditionalInformation != null ||
+            AdditionalInformation != null && other.AdditionalInformation == null)
+            {
+                return false;
+            }
             return AdditionalInformation.SequenceEqual(other.AdditionalInformation);
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is null) return false;
-            if (ReferenceEquals(this, obj)) return true;
+            if (obj is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
             return obj.GetType() == this.GetType() && Equals((AnalogyLogMessage)obj);
         }
 
@@ -214,13 +237,17 @@ namespace Analogy.Interfaces
                     case AnalogyLogMessagePropertyName.Date:
                         {
                             if (DateTime.TryParse(propertyValue, out DateTime time))
+                            {
                                 m.Date = time;
+                            }
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.Id:
                         {
                             if (Guid.TryParse(propertyValue, out Guid id))
+                            {
                                 m.Id = id;
+                            }
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.Text:
@@ -250,19 +277,25 @@ namespace Analogy.Interfaces
                     case AnalogyLogMessagePropertyName.LineNumber:
                         {
                             if (int.TryParse(propertyValue, out int num))
+                            {
                                 m.LineNumber = num;
+                            }
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.ProcessId:
                         {
                             if (int.TryParse(propertyValue, out int num))
+                            {
                                 m.ProcessId = num;
+                            }
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.ThreadId:
                         {
                             if (int.TryParse(propertyValue, out int num))
+                            {
                                 m.ThreadId = num;
+                            }
                         }
                         continue;
                     case AnalogyLogMessagePropertyName.Level:

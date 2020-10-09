@@ -36,9 +36,14 @@ namespace Analogy.Interfaces.DataTypes
             if (Maps.ContainsKey(key))
             {
                 if (Maps[key] == null)
+                {
                     Maps[key] = new List<string>();
+                }
+
                 if (!Maps[key].Contains(value))
+                {
                     Maps[key].Add(value);
+                }
             }
             else
             {
@@ -51,7 +56,9 @@ namespace Analogy.Interfaces.DataTypes
             if (Maps.ContainsKey(key))
             {
                 if (Maps[key] == null)
+                {
                     Maps[key] = new List<string>();
+                }
                 Maps[key].Remove(value);
 
             }
@@ -59,7 +66,10 @@ namespace Analogy.Interfaces.DataTypes
 
         public bool CanOpenFile(string fileName)
         {
-            if (string.IsNullOrEmpty(fileName)) return false;
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return false;
+            }
             return SupportedFilesExtensions.Any(s => s.EndsWith(Path.GetExtension(fileName), StringComparison.InvariantCultureIgnoreCase));
         }
 
@@ -70,7 +80,9 @@ namespace Analogy.Interfaces.DataTypes
             foreach (var item in Maps)
             {
                 if (item.Value.Contains(value))
+                {
                     return item.Key;
+                }
             }
 
             return null;

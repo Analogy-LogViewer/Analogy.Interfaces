@@ -19,6 +19,8 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Lior Banai @ 2018-2020</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
+		<!--<Nullable>enable</Nullable>
+		<LangVersion>8.0</LangVersion>-->
 		<PackageIconUrl />
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Analogy.Interfaces
+﻿namespace Analogy.Interfaces
 {
     //public static class GeneralExtensionMethods
     //{    /// <summary>

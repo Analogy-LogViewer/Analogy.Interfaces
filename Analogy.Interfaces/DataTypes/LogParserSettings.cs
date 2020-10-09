@@ -21,6 +21,7 @@ namespace Analogy.Interfaces.DataTypes
                 Maps[items.Value]=new List<string>{items.Key};
             }
             SupportedFilesExtensions = new List<string>();
+            Directory = string.Empty;
         }
 
         public void Configure(List<string> supportedFilesExtension, Dictionary<AnalogyLogMessagePropertyName, List<string>> maps)

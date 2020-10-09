@@ -10,11 +10,11 @@ namespace Analogy.Interfaces
         /// <summary>
         /// 16x16 Image
         /// </summary>
-        Image SmallImage { get; set; }
+        Image? SmallImage { get; set; }
         /// <summary>
         /// 32x32 Image
         /// </summary>
-        Image LargeImage { get; set; }
+        Image? LargeImage { get; set; }
         string Title { get; set; }
         AnalogyCustomActionType Type { get; }
     }

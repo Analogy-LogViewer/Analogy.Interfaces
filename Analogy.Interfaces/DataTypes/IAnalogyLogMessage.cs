@@ -75,7 +75,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Additional information that will be presented as new columns in the UI
         /// </summary>
-        Dictionary<string, string> AdditionalInformation { get; set; }
+        Dictionary<string, string>? AdditionalInformation { get; set; }
         string User { get; set; }
     }
 }

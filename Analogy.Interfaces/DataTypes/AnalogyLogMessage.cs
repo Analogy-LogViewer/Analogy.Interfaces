@@ -77,7 +77,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Key/Value additional information for the message
         /// </summary>
-        public Dictionary<string, string> AdditionalInformation { get; set; }
+        public Dictionary<string, string>? AdditionalInformation { get; set; }
         /// <summary>
         /// The user Name for the message
         /// </summary>
@@ -108,15 +108,15 @@ namespace Analogy.Interfaces
             MachineName = string.Empty;
         }
 
-        public AnalogyLogMessage(string text, AnalogyLogLevel level, string source = null,
-            [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null,
+        public AnalogyLogMessage(string text, AnalogyLogLevel level, string? source = "",
+            [CallerMemberName] string? methodName = "", [CallerFilePath] string? fileName = "",
             [CallerLineNumber] int lineNumber = 0) : this(text, level, AnalogyLogClass.General, source, string.Empty,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
 
         }
 
-        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string source, string category = null, string moduleOrProcessName = null, string machineName = null, int processId = 0, int threadId = 0, Dictionary<string, string> additionalInfo = null, string user = null, [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
+        public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string? source, string? category = null, string? moduleOrProcessName = null, string? machineName = null, int processId = 0, int threadId = 0, Dictionary<string, string>? additionalInfo = null, string? user = null, [CallerMemberName] string? methodName = null, [CallerFilePath] string? fileName = null, [CallerLineNumber] int lineNumber = 0) : this()
         {
             Text = text;
             Category = category ?? string.Empty;
@@ -134,7 +134,7 @@ namespace Analogy.Interfaces
             ThreadId = threadId != 0 ? threadId : System.Threading.Thread.CurrentThread.ManagedThreadId;
         }
 
-        public bool Equals(AnalogyLogMessage other)
+        public bool Equals(AnalogyLogMessage? other)
         {
             if (other is null)
             {
@@ -169,7 +169,7 @@ namespace Analogy.Interfaces
             return AdditionalInformation.SequenceEqual(other.AdditionalInformation);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is null)
             {
@@ -400,8 +400,8 @@ namespace Analogy.Interfaces
 
     public class AnalogyInformationMessage : AnalogyLogMessage
     {
-        public AnalogyInformationMessage(string text, string source = null,
-            [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null,
+        public AnalogyInformationMessage(string text, string source = "",
+            [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Information, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
@@ -411,8 +411,8 @@ namespace Analogy.Interfaces
 
     public class AnalogyErrorMessage : AnalogyLogMessage
     {
-        public AnalogyErrorMessage(string text, string source = null,
-            [CallerMemberName] string methodName = null, [CallerFilePath] string fileName = null,
+        public AnalogyErrorMessage(string text, string source = "",
+            [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Error, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {

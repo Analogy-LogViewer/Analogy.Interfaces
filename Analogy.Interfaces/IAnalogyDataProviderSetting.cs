@@ -20,11 +20,11 @@ namespace Analogy.Interfaces
         /// <summary>
         /// 16x16 icon to show in the Analogy UI
         /// </summary>
-        Image SmallImage { get; set; }
+        Image? SmallImage { get; set; }
         /// <summary>
         /// 32x32 icon to show in the Analogy UI
         /// </summary>
-        Image LargeImage { get; set; }
+        Image? LargeImage { get; set; }
         Task SaveSettingsAsync();
     }
 

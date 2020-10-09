@@ -38,6 +38,7 @@ namespace Analogy.Interfaces.DataTypes
             Splitter = string.Empty;
             Maps = new Dictionary<int, AnalogyLogMessagePropertyName>();
             SupportedFilesExtensions = new List<string>();
+            Directory = string.Empty;
         }
 
         public void Configure(string layout, string splitter, List<string> supportedFilesExtension, Dictionary<int, AnalogyLogMessagePropertyName> maps)

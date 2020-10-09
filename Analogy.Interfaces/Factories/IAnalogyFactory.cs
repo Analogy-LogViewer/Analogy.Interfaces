@@ -15,11 +15,11 @@ namespace Analogy.Interfaces.Factories
         /// <summary>
         /// 32x32 image for the Factory (can be null)
         /// </summary>
-        Image LargeImage { get; set; }
+        Image? LargeImage { get; set; }
         /// <summary>
         /// 16x16 image for the Factory (can be null)
         /// </summary>
-        Image SmallImage { get; set; }
+        Image? SmallImage { get; set; }
         IEnumerable<string> Contributors { get; set; }
         /// <summary>
         /// Description of the Factory e.g: "Serilog Parser for Analogy Log Viewer"

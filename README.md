@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c68df5bafedd489094b662452c5a2e5e)](https://app.codacy.com/gh/Analogy-LogViewer/Analogy.Interfaces?utm_source=github.com&utm_medium=referral&utm_content=Analogy-LogViewer/Analogy.Interfaces&utm_campaign=Badge_Grade)
 # Analogy.Interfaces  [![Nuget](https://img.shields.io/nuget/dt/Analogy.LogViewer.Interfaces)](https://www.nuget.org/packages/Analogy.LogViewer.Interfaces/)
 <p align="center">
   

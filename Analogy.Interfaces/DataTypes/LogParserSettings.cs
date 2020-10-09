@@ -12,9 +12,6 @@ namespace Analogy.Interfaces.DataTypes
         public List<string> SupportedFilesExtensions { get; set; }
         public bool IsConfigured { get; set; }
         public Dictionary<AnalogyLogMessagePropertyName, List<string>> Maps { get; set; }
-
-        // public string AsJson() => JsonConvert.SerializeObject(this);
-        //  public static LogParserSettings FromJson(string json) => JsonConvert.DeserializeObject<LogParserSettings>(json);
         public LogParserSettings()
         {
             IsConfigured = false;

@@ -75,7 +75,6 @@ namespace Analogy.Interfaces
         MachineName
     }
 
-    [Flags()]
     public enum AnalogyExtensionType
     {
         None = 0,

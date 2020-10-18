@@ -316,22 +316,28 @@ namespace Analogy.Interfaces
                                     case "NONE":
                                         m.Level = AnalogyLogLevel.None;
                                         break;
+                                    case "TCE":
+                                    case "TRC":
                                     case "Trace":
                                     case "TRACE":
                                         m.Level = AnalogyLogLevel.Trace;
                                         break;
+                                    case "DBG":
                                     case "Debug":
                                     case "DEBUG":
                                     case "DebugVerbose":
                                         m.Level = AnalogyLogLevel.Debug;
                                         break;
+                                    case "INF":
                                     case "Info":
                                     case "INFO":
                                     case "Event":
                                     case "Information":
                                     case "information":
+                                    case "INFORMATION":
                                         m.Level = AnalogyLogLevel.Information;
                                         break;
+                                    case "WRN":
                                     case "Warn":
                                     case "WARN":
                                     case "Warning":
@@ -344,6 +350,7 @@ namespace Analogy.Interfaces
                                     case "Err":
                                         m.Level = AnalogyLogLevel.Error;
                                         break;
+                                    case "FTL":
                                     case "Critical":
                                     case "Fatal":
                                     case "FATAL":

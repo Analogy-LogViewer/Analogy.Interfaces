@@ -13,7 +13,7 @@
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
-		<Version>2.7.7</Version>
+		<Version>2.7.8</Version>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -33,7 +33,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net471|AnyCPU'">
-	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 

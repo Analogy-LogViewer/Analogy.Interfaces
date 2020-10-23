@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Analogy.Interfaces.DataTypes
 {
-    
+
     /// <summary>
     ///     Object of this class gives you all the details about the update useful in handling the update logic yourself.
     /// </summary>
@@ -32,15 +28,48 @@ namespace Analogy.Interfaces.DataTypes
         /// </summary>
         public string? ChangelogURL { get; set; }
 
+        public string? LatestVersionNumber { get; set; }
         /// <summary>
         /// Returns newest version of the application available to download.
         /// </summary>
-        public Version? LatestVersion { get; set; }
+        public Version? LatestVersion
+        {
+            get
+            {
+                if (LatestVersionNumber == null)
+                    return null;
+                try
+                {
+                    return new Version(LatestVersionNumber);
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public string? InstalledVersionNumber { get; set; }
 
         /// <summary>
         ///     Returns version of the application currently installed on the user's PC.
         /// </summary>
-        public Version? InstalledVersion { get; set; }
+        public Version? InstalledVersion
+        {
+            get
+            {
+                if (InstalledVersionNumber == null)
+                    return null;
+                try
+                {
+                    return new Version(InstalledVersionNumber);
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+
+        }
 
         /// <summary>
         ///     Shows if the update is required or optional.
@@ -69,16 +98,16 @@ namespace Analogy.Interfaces.DataTypes
 
         public AnalogyDownloadInformation()
         {
-            
+
         }
-        public AnalogyDownloadInformation(string title, bool isUpdateAvailable, string downloadUrl, string changelogUrl, Version latestVersion, Version installedVersion, bool mandatory, UpdateMode updateMode, string installerArgs, string checksum, string hashingAlgorithm)
+        public AnalogyDownloadInformation(string title, bool isUpdateAvailable, string downloadUrl, string changelogUrl, string latestVersionNumber, string installedVersionNumber, bool mandatory, UpdateMode updateMode, string installerArgs, string checksum, string hashingAlgorithm)
         {
             Title = title;
             IsUpdateAvailable = isUpdateAvailable;
             DownloadURL = downloadUrl;
             ChangelogURL = changelogUrl;
-            LatestVersion = latestVersion;
-            InstalledVersion = installedVersion;
+            LatestVersionNumber = latestVersionNumber;
+            InstalledVersionNumber = installedVersionNumber;
             Mandatory = mandatory;
             UpdateMode = updateMode;
             InstallerArgs = installerArgs;

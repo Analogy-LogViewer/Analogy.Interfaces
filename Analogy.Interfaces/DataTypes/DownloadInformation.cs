@@ -64,5 +64,20 @@ namespace Analogy.Interfaces.DataTypes
         ///     Hash algorithm that generated the checksum provided in the XML file.
         /// </summary>
         public string HashingAlgorithm { get; set; }
+
+        public DownloadInformation(string title, bool isUpdateAvailable, string downloadUrl, string changelogUrl, Version latestVersion, Version installedVersion, bool mandatory, UpdateMode updateMode, string installerArgs, string checksum, string hashingAlgorithm)
+        {
+            Title = title;
+            IsUpdateAvailable = isUpdateAvailable;
+            DownloadURL = downloadUrl;
+            ChangelogURL = changelogUrl;
+            LatestVersion = latestVersion;
+            InstalledVersion = installedVersion;
+            Mandatory = mandatory;
+            UpdateMode = updateMode;
+            InstallerArgs = installerArgs;
+            Checksum = checksum;
+            HashingAlgorithm = hashingAlgorithm;
+        }
     }
 }

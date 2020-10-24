@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Analogy.Interfaces.DataTypes
 {
@@ -58,5 +59,7 @@ namespace Analogy.Interfaces.DataTypes
         ///Hash algorithm that generated the checksum.
         /// </summary>
         string? HashingAlgorithm { get; set; }
+
+        Task<bool> CheckVersion();
     }
 }

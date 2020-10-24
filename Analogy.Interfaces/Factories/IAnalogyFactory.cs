@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Interfaces.Factories
 {
     public interface IAnalogyFactory
     {
+        event EventHandler<IAnalogyNotification>? RaiseNotification;
         /// <summary>
         /// Fixed Unique Guid that will be used as The Id of the Factory 
         /// </summary>

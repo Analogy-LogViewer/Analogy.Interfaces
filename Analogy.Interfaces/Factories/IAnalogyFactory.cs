@@ -7,7 +7,6 @@ namespace Analogy.Interfaces.Factories
 {
     public interface IAnalogyFactory
     {
-        event EventHandler<IAnalogyNotification>? OnRaiseNotification;
         /// <summary>
         /// Fixed Unique Guid that will be used as The Id of the Factory 
         /// </summary>
@@ -27,6 +26,8 @@ namespace Analogy.Interfaces.Factories
         /// Description of the Factory e.g: "Serilog Parser for Analogy Log Viewer"
         /// </summary>
         string About { get; set; }
+
+        void RegisterNotificationCallback(INotificationReporter notificationReporter);
     }
 
 }

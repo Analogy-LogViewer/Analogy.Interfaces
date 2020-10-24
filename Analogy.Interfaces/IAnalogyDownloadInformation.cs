@@ -8,7 +8,7 @@ namespace Analogy.Interfaces.DataTypes
         /// <summary>
         /// ID of the primary Factory it belongs to
         /// </summary>
-        Guid PrimaryFactoryId { get; set; }
+        Guid FactoryId { get; set; }
 
         /// <summary>
         /// The component Title/Name

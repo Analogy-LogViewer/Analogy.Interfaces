@@ -7,7 +7,7 @@ namespace Analogy.Interfaces.Factories
 {
     public interface IAnalogyFactory
     {
-        event EventHandler<IAnalogyNotification>? RaiseNotification;
+        event EventHandler<IAnalogyNotification>? OnRaiseNotification;
         /// <summary>
         /// Fixed Unique Guid that will be used as The Id of the Factory 
         /// </summary>

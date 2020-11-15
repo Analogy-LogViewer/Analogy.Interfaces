@@ -393,6 +393,7 @@ namespace Analogy.Interfaces
                     return AnalogyLogLevel.Verbose;
                 case "AnalogyInformation":
                 case "Analogy":
+                case "ANALOGY":
                     return AnalogyLogLevel.Analogy;
                 default:
                     return AnalogyLogLevel.Unknown;

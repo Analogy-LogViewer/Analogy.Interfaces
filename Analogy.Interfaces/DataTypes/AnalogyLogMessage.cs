@@ -307,69 +307,7 @@ namespace Analogy.Interfaces
                             }
                             else
                             {
-                                switch (propertyValue)
-                                {
-                                    case "Disabled":
-                                    case "Off":
-                                    case "OFF":
-                                    case "None":
-                                    case "NONE":
-                                        m.Level = AnalogyLogLevel.None;
-                                        break;
-                                    case "TCE":
-                                    case "TRC":
-                                    case "Trace":
-                                    case "TRACE":
-                                        m.Level = AnalogyLogLevel.Trace;
-                                        break;
-                                    case "DBG":
-                                    case "Debug":
-                                    case "DEBUG":
-                                    case "DebugVerbose":
-                                        m.Level = AnalogyLogLevel.Debug;
-                                        break;
-                                    case "INF":
-                                    case "Info":
-                                    case "INFO":
-                                    case "Event":
-                                    case "Information":
-                                    case "information":
-                                    case "INFORMATION":
-                                        m.Level = AnalogyLogLevel.Information;
-                                        break;
-                                    case "WRN":
-                                    case "Warn":
-                                    case "WARN":
-                                    case "Warning":
-                                    case "WARNING":
-                                        m.Level = AnalogyLogLevel.Warning;
-                                        break;
-                                    case "Error":
-                                    case "ERROR":
-                                    case "ERR":
-                                    case "Err":
-                                        m.Level = AnalogyLogLevel.Error;
-                                        break;
-                                    case "FTL":
-                                    case "Critical":
-                                    case "Fatal":
-                                    case "FATAL":
-                                        m.Level = AnalogyLogLevel.Critical;
-                                        break;
-                                    case "Verbose":
-                                    case "VERBOSE":
-                                    case "DebugInfo":
-                                        m.Level = AnalogyLogLevel.Verbose;
-                                        break;
-                                    case "AnalogyInformation":
-                                    case "Analogy":
-                                        m.Level = AnalogyLogLevel.Analogy;
-                                        break;
-                                    default:
-                                        m.Level = AnalogyLogLevel.Unknown;
-                                        break;
-                                }
-
+                                m.Level = ParseLogLevelFromString(propertyValue);
                             }
 
                             continue;
@@ -388,6 +326,7 @@ namespace Analogy.Interfaces
 
             return m;
         }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static AnalogyLogMessage Parse(IEnumerable<(string PropertyName, string propertyValue)> data)
         {
@@ -402,7 +341,63 @@ namespace Analogy.Interfaces
 
             return m;
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static AnalogyLogLevel ParseLogLevelFromString(string level)
+        {
+            
+            switch (level)
+            {
+                case "Disabled":
+                case "Off":
+                case "OFF":
+                case "None":
+                case "NONE":
+                    return AnalogyLogLevel.None;
+                case "TCE":
+                case "TRC":
+                case "Trace":
+                case "TRACE":
+                    return AnalogyLogLevel.Trace;
+                case "DBG":
+                case "Debug":
+                case "DEBUG":
+                case "DebugVerbose":
+                    return AnalogyLogLevel.Debug;
+                case "INF":
+                case "Info":
+                case "INFO":
+                case "Event":
+                case "Information":
+                case "information":
+                case "INFORMATION":
+                    return AnalogyLogLevel.Information;
+                case "WRN":
+                case "Warn":
+                case "WARN":
+                case "Warning":
+                case "WARNING":
+                    return AnalogyLogLevel.Warning;
+                case "Error":
+                case "ERROR":
+                case "ERR":
+                case "Err":
+                    return AnalogyLogLevel.Error;
+                case "FTL":
+                case "Critical":
+                case "Fatal":
+                case "FATAL":
+                    return AnalogyLogLevel.Critical;
+                case "Verbose":
+                case "VERBOSE":
+                case "DebugInfo":
+                    return AnalogyLogLevel.Verbose;
+                case "AnalogyInformation":
+                case "Analogy":
+                    return AnalogyLogLevel.Analogy;
+                default:
+                    return AnalogyLogLevel.Unknown;
+            }
+        }
     }
 
     public class AnalogyInformationMessage : AnalogyLogMessage

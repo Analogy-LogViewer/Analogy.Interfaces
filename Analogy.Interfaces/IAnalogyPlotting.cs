@@ -8,7 +8,7 @@ namespace Analogy.Interfaces
     public interface IAnalogyPlotting
     {
         event EventHandler<AnalogyPlottingPointData> OnNewPointData;
-        List<(string SeriesName, AnalogyPlottingSeriesType SeriesViewType)> GetChartSeries();
+        IEnumerable<(string SeriesName, AnalogyPlottingSeriesType SeriesViewType)> GetChartSeries();
         Guid Id { get; set; }
         string Title { get; set; }
         Task InitializePlottingAsync(IAnalogyLogger logger);

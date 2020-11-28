@@ -1,24 +1,40 @@
-﻿using System;
+﻿using Analogy.Interfaces.DataTypes;
+using System;
 using System.Collections.Generic;
-using Analogy.Interfaces.DataTypes;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Analogy.Interfaces
 {
     public interface IAnalogyExtension
     {
         Guid Id { get; set; }
-        Guid TargetProviderId { get; set; }
+        /// <summary>
+        /// //Optional title to display in the ribbon bar
+        /// </summary>
+        string Title { get; set; }
+        Guid TargetComponentId { get; set; }
         string Author { get; set; }
         string AuthorMail { get; set; }
         List<string> AdditionalContributors { get; }
-        string Title { get; set; }
         string Description { get; set; }
-        AnalogyExtensionType ExtensionType { get; }
+    }
+
+    public interface IAnalogyExtensionInPlace : IAnalogyExtension
+    {
 
         void CellClicked(object sender, AnalogyCellClickedEventArgs args);
         object GetValueForCellColumn(AnalogyLogMessage message, string columnName);
         List<AnalogyColumnInfo> GetColumnsInfo();
+    }
+    interface IAnalogyExtensionUserControl : IAnalogyExtension
+    {
         void NewMessage(AnalogyLogMessage message);
         void NewMessages(List<AnalogyLogMessage> messages);
+        /// <summary>
+        /// The user control to load
+        /// </summary>
+        UserControl UserControl { get; set; }
+        Task InitUserControl { get; set; }
     }
 }

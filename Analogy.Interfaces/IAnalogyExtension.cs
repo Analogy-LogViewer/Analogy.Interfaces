@@ -27,7 +27,7 @@ namespace Analogy.Interfaces
         object GetValueForCellColumn(AnalogyLogMessage message, string columnName);
         List<AnalogyColumnInfo> GetColumnsInfo();
     }
-    interface IAnalogyExtensionUserControl : IAnalogyExtension
+    public interface IAnalogyExtensionUserControl : IAnalogyExtension
     {
         void NewMessage(AnalogyLogMessage message);
         void NewMessages(List<AnalogyLogMessage> messages);

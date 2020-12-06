@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.Interfaces.Factories
 {
@@ -26,6 +25,10 @@ namespace Analogy.Interfaces.Factories
         /// Description of the Factory e.g: "Serilog Parser for Analogy Log Viewer"
         /// </summary>
         string About { get; set; }
+        /// <summary>
+        /// Add Additional probing locations
+        /// </summary>
+        IEnumerable<string>? AdditionalProbingLocation { get; set; }
 
         void RegisterNotificationCallback(INotificationReporter notificationReporter);
     }

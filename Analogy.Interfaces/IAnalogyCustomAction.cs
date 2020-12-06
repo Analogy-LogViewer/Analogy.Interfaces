@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Analogy.Interfaces.DataTypes;
+using System;
 using System.Drawing;
 
 namespace Analogy.Interfaces
@@ -17,5 +18,6 @@ namespace Analogy.Interfaces
         Image? LargeImage { get; set; }
         string Title { get; set; }
         AnalogyCustomActionType Type { get; }
+        AnalogyToolTip? ToolTip { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Analogy.Interfaces.DataTypes;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +26,7 @@ namespace Analogy.Interfaces
         /// 32x32 icon to show in the Analogy UI
         /// </summary>
         Image? LargeImage { get; set; }
+        AnalogyToolTip? ToolTip { get; set; }
         Task SaveSettingsAsync();
     }
 

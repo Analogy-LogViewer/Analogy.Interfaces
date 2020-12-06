@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Analogy.Interfaces.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -44,6 +45,13 @@ namespace Analogy.Interfaces
         /// </summary>
         /// <returns></returns>
         IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders();
+        /// <summary>
+        /// list of column fields to hide
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<string> HideColumns();
+
+        AnalogyToolTip? ToolTip { get; set; }
     }
 
     public interface IAnalogyRealTimeDataProvider : IAnalogyDataProvider

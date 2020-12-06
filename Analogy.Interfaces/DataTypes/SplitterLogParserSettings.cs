@@ -54,7 +54,11 @@ namespace Analogy.Interfaces.DataTypes
 
         public bool CanOpenFile(string fileName)
         {
-            if (string.IsNullOrEmpty(fileName)) return false;
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return false;
+            }
+
             return SupportedFilesExtensions.Any(s => s.EndsWith(Path.GetExtension(fileName), StringComparison.InvariantCultureIgnoreCase));
         }
 

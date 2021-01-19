@@ -344,26 +344,31 @@ namespace Analogy.Interfaces
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static AnalogyLogLevel ParseLogLevelFromString(string level)
         {
-            
             switch (level)
             {
+                case "disabled":
                 case "Disabled":
                 case "Off":
                 case "OFF":
+                case "none":
                 case "None":
                 case "NONE":
                     return AnalogyLogLevel.None;
                 case "TCE":
+                case "trc":
                 case "TRC":
+                case "trace":
                 case "Trace":
                 case "TRACE":
                     return AnalogyLogLevel.Trace;
                 case "DBG":
+                case "debug":
                 case "Debug":
                 case "DEBUG":
                 case "DebugVerbose":
                     return AnalogyLogLevel.Debug;
                 case "INF":
+                case "info":
                 case "Info":
                 case "INFO":
                 case "Event":
@@ -371,27 +376,37 @@ namespace Analogy.Interfaces
                 case "information":
                 case "INFORMATION":
                     return AnalogyLogLevel.Information;
+                case "wrn":
                 case "WRN":
+                case "warn":
                 case "Warn":
                 case "WARN":
                 case "Warning":
                 case "WARNING":
                     return AnalogyLogLevel.Warning;
+                case "error":
                 case "Error":
                 case "ERROR":
                 case "ERR":
                 case "Err":
+                case "err":
                     return AnalogyLogLevel.Error;
+                case "ftl":
                 case "FTL":
+                case "crit":
+                case "critical":
                 case "Critical":
+                case "fatal":
                 case "Fatal":
                 case "FATAL":
                     return AnalogyLogLevel.Critical;
+                case "verbose":
                 case "Verbose":
                 case "VERBOSE":
                 case "DebugInfo":
                     return AnalogyLogLevel.Verbose;
                 case "AnalogyInformation":
+                case "analogy":
                 case "Analogy":
                 case "ANALOGY":
                     return AnalogyLogLevel.Analogy;

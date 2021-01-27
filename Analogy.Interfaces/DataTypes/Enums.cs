@@ -45,7 +45,19 @@
         Analogy,
         None
     }
-
+    /// <summary>
+    /// The type of data in the RawText Field
+    /// </summary>
+    public enum AnalogyRowTextType
+    {
+        None,
+        PlainText,
+        RichText,
+        JSON,
+        XML,
+        HTML,
+        Markdown,
+    }
     public enum AnalogChangeLogType
     {
         None,
@@ -70,7 +82,9 @@
         ThreadId,
         Level,
         Class,
-        MachineName
+        MachineName,
+        RawText,
+        RawTextType
     }
 
     public enum AnalogyExtensionType

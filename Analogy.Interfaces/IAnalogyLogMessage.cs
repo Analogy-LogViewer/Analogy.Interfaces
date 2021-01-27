@@ -17,7 +17,7 @@ namespace Analogy.Interfaces
         Guid Id { get; set; }
 
         /// <summary>
-        /// Gets/Sets the log message text
+        /// Gets/Sets the log message text (formatted text to be user readable)
         /// </summary>
         string Text { get; set; }
 
@@ -77,5 +77,13 @@ namespace Analogy.Interfaces
         /// </summary>
         Dictionary<string, string>? AdditionalInformation { get; set; }
         string User { get; set; }
+        /// <summary>
+        /// The raw message text/data (before formatting)
+        /// </summary>
+        string RawText { get; set; }
+        /// <summary>
+        /// The raw message text/data type
+        /// </summary>
+        AnalogyRowTextType RawTextType { get; set; }
     }
 }

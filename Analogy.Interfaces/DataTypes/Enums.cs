@@ -51,6 +51,7 @@
     public enum AnalogyRowTextType
     {
         None,
+        Unknown,
         PlainText,
         RichText,
         JSON,

@@ -151,6 +151,8 @@ namespace Analogy.Interfaces
             AdditionalInformation = additionalInfo;
             User = user ?? string.Empty;
             ThreadId = threadId != 0 ? threadId : System.Threading.Thread.CurrentThread.ManagedThreadId;
+            RawText = text;
+            RawTextType = AnalogyRowTextType.Unknown;
         }
         public AnalogyLogMessage(string text, string rawText, AnalogyRowTextType rawTextType, AnalogyLogLevel level, AnalogyLogClass logClass, string? source,
             string? category = null, string? moduleOrProcessName = null, string? machineName = null, int processId = 0,
@@ -171,9 +173,18 @@ namespace Analogy.Interfaces
             ProcessId = processId != 0 ? processId : CurrentProcessId;
             AdditionalInformation = additionalInfo;
             User = user ?? string.Empty;
-            RawText = !string.IsNullOrEmpty(rawText) ? rawText : string.Empty;
-            RawTextType = string.IsNullOrEmpty(rawText) ? AnalogyRowTextType.None : rawTextType;
             ThreadId = threadId != 0 ? threadId : System.Threading.Thread.CurrentThread.ManagedThreadId;
+            if (string.IsNullOrEmpty(rawText))
+            {
+                RawText = text;
+                RawTextType = AnalogyRowTextType.Unknown;
+            }
+            else
+            {
+                RawText = rawText;
+                RawTextType = rawTextType;
+            }
+
         }
 
         public bool Equals(AnalogyLogMessage? other)

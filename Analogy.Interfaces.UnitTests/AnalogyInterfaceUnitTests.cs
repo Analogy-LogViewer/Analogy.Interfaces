@@ -16,7 +16,16 @@ namespace Analogy.Interfaces.UnitTests
             Assert.IsNotNull(message.MethodName);
             Assert.IsNotNull(message.Module);
             Assert.IsNotNull(message.User);
-        
+
+        }
+
+        public void TestAnalogyMessagesTypes()
+        {
+            AnalogyLogMessage m1 = new AnalogyInformationMessage("text", "Source");
+            AnalogyLogMessage m2 = new AnalogyErrorMessage("text", "Source");
+            AnalogyLogMessage m3 = new AnalogyWarningMessage("text", "Source");
+            AnalogyLogMessage m4 = new AnalogyDebugMessage("text", "Source");
+            AnalogyLogMessage m5 = new AnalogyCriticalMessage("text", "Source");
         }
     }
 }

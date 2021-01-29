@@ -489,7 +489,7 @@ namespace Analogy.Interfaces
 
         }
 
-        public AnalogyInformationMessage(string text, string source = "", string rawText = "", AnalogyRowTextType rawTextType = AnalogyRowTextType.None,
+        public AnalogyInformationMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Information, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
@@ -507,7 +507,7 @@ namespace Analogy.Interfaces
         {
 
         }
-        public AnalogyErrorMessage(string text, string source = "", string rawText = "", AnalogyRowTextType rawTextType = AnalogyRowTextType.None,
+        public AnalogyErrorMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Error, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
@@ -525,7 +525,7 @@ namespace Analogy.Interfaces
         {
 
         }
-        public AnalogyWarningMessage(string text, string source = "", string rawText = "", AnalogyRowTextType rawTextType = AnalogyRowTextType.None,
+        public AnalogyWarningMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Warning, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
@@ -543,7 +543,7 @@ namespace Analogy.Interfaces
         {
 
         }
-        public AnalogyDebugMessage(string text, string source = "", string rawText = "", AnalogyRowTextType rawTextType = AnalogyRowTextType.None,
+        public AnalogyDebugMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Debug, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
@@ -561,7 +561,7 @@ namespace Analogy.Interfaces
         {
 
         }
-        public AnalogyCriticalMessage(string text, string source = "", string rawText = "", AnalogyRowTextType rawTextType = AnalogyRowTextType.None,
+        public AnalogyCriticalMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Critical, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)

@@ -35,6 +35,6 @@ namespace Analogy.Interfaces
         /// The user control to load
         /// </summary>
         UserControl UserControl { get; set; }
-        Task InitUserControl { get; set; }
+        Task InitializeUserControl { get; set; }
     }
 }

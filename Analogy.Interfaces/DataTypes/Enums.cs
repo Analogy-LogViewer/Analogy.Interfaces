@@ -369,4 +369,10 @@
         /// </summary>
         RangeArea3D,
     }
+
+    public enum AnalogyFileReadProgressType
+    {
+        Percentage,
+        Incremental
+    }
 }

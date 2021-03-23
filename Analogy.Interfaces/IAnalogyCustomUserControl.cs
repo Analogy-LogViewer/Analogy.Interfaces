@@ -21,7 +21,7 @@ namespace Analogy.Interfaces
         string Title { get; set; }
         AnalogyToolTip? ToolTip { get; set; }
 
-        Task InitializeUserControl { get; set; }
+        Task InitializeUserControl(Control hostingControl, IAnalogyLogger logger);
 
     }
 }

@@ -9,6 +9,6 @@ namespace Analogy.Interfaces.Factories
              /// </summary>
         Guid FactoryId { get; set; }
         string Title { get; set; }
-        IEnumerable<IAnalogyCustomUserControl> Actions { get; }
+        IEnumerable<IAnalogyCustomUserControl> UserControls { get; }
     }
 }

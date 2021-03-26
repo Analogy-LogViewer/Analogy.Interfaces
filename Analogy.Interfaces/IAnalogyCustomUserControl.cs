@@ -22,6 +22,7 @@ namespace Analogy.Interfaces
         AnalogyToolTip? ToolTip { get; set; }
 
         Task InitializeUserControl(Control hostingControl, IAnalogyLogger logger);
-
+        Task AfterLoad();
+        Task UserControlRemoved();
     }
 }

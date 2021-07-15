@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Analogy.Interfaces
 {
     public interface IAnalogyOnDemandPlottingManager
     {
-        public void ShowPlot(Guid id,AnalogyOnDemandPlottingStartupType startupType);
-        public void ForceClose(Guid id);
-        public void ForceClearData(Guid id, string seriesToClear);
+        public void ShowPlot(Guid id, AnalogyOnDemandPlottingStartupType startupType);
+        public void ClosePlot(Guid id);
+        public void RemoveSeriesFromPlot(Guid id, string seriesName);
+        public void ClearAllData(Guid id, string seriesToClear);
     }
 }

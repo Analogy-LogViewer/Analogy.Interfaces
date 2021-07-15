@@ -15,7 +15,7 @@
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
-		<Version>2.14.0-rc</Version>
+		<Version>2.14.0.1-rc</Version>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>

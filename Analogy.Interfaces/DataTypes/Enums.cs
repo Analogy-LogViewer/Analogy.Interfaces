@@ -375,4 +375,10 @@
         Percentage,
         Incremental
     }
+
+    public enum AnalogyOnDemandPlottingStartupType
+    {
+        TabbedWindow,
+        FloatingWindow
+    }
 }

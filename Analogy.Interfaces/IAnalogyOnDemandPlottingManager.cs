@@ -2,7 +2,7 @@
 
 namespace Analogy.Interfaces
 {
-    public interface IAnalogyOnDemandPlottingManager
+    public interface IAnalogyOnDemandPlottingInteractor
     {
         public void ShowPlot(Guid id, AnalogyOnDemandPlottingStartupType startupType);
         public void ClosePlot(Guid id);

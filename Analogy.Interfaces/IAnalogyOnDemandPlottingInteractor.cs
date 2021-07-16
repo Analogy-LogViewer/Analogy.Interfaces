@@ -4,9 +4,11 @@ namespace Analogy.Interfaces
 {
     public interface IAnalogyOnDemandPlottingInteractor
     {
-        public void ShowPlot(Guid id, AnalogyOnDemandPlottingStartupType startupType);
+        public void ShowPlot(Guid id,string plotTitle, AnalogyOnDemandPlottingStartupType startupType);
         public void ClosePlot(Guid id);
         public void RemoveSeriesFromPlot(Guid id, string seriesName);
-        public void ClearAllData(Guid id, string seriesToClear);
+        public void ClearSeriesData(Guid id, string seriesNameToClear);
+        public void ClearAllData(Guid id);
+
     }
 }

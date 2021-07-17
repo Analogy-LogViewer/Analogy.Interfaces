@@ -19,7 +19,7 @@
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Copyright>Lior Banai @ 2018-2020</Copyright>
+		<Copyright>Lior Banai @ 2018-2021</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
 		<Nullable>enable</Nullable>
 		<LangVersion>8.0</LangVersion>

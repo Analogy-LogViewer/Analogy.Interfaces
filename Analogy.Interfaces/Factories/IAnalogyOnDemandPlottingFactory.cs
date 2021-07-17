@@ -7,7 +7,7 @@ namespace Analogy.Interfaces.Factories
     {
         Guid Id { get; set; }
         string Title { get; set; }
-        IEnumerable<IAnalogyOnDemandPlotting> OnDemandPlottingGenerators { get; set; }
+        List<IAnalogyOnDemandPlotting> OnDemandPlottingGenerators { get; set; }
         event EventHandler<IAnalogyOnDemandPlotting> OnAddedOnDemandPlottingGenerator;
         event EventHandler<IAnalogyOnDemandPlotting> OnRemovedOnDemandPlottingGenerator;
     }

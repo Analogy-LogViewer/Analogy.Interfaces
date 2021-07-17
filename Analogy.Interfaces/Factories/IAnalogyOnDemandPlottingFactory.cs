@@ -5,10 +5,10 @@ namespace Analogy.Interfaces.Factories
 {
     public interface IAnalogyOnDemandPlottingFactory
     {
-        public Guid Id { get; set; }
-        public string Title { get; set; }
-        public IEnumerable<IAnalogyOnDemandPlotting> OnDemandPlottingGenerator { get; set; }
-        public event EventHandler<IAnalogyOnDemandPlotting> OnAddedOnDemandPlottingGenerator;
-        public event EventHandler<IAnalogyOnDemandPlotting> OnRemovedOnDemandPlottingGenerator;
+        Guid Id { get; set; }
+        string Title { get; set; }
+        IEnumerable<IAnalogyOnDemandPlotting> OnDemandPlottingGenerators { get; set; }
+        event EventHandler<IAnalogyOnDemandPlotting> OnAddedOnDemandPlottingGenerator;
+        event EventHandler<IAnalogyOnDemandPlotting> OnRemovedOnDemandPlottingGenerator;
     }
 }

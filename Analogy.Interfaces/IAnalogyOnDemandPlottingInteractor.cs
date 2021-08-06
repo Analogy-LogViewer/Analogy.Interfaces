@@ -10,6 +10,7 @@ namespace Analogy.Interfaces
         public void RemoveSeriesFromPlot(Guid id, string seriesName);
         public void ClearSeriesData(Guid id, string seriesNameToClear);
         public void ClearAllData(Guid id);
+        public void SetDefaultWindow(int numberOfPointsInWindow);
 
     }
 }

@@ -15,7 +15,7 @@ namespace Analogy.Interfaces
         /// </summary>
         Guid FactoryId { get; set; }
         string Title { get; set; }
-        Task InitializePlottingAsync(IAnalogyLogger logger);
+        Task InitializePlottingAsync(IAnalogyPlottingInteractor uiInteractor,IAnalogyLogger logger);
         Task StartPlotting();
         Task StopPlotting();
     }

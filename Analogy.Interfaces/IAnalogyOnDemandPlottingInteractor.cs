@@ -4,13 +4,13 @@ namespace Analogy.Interfaces
 {
     public interface IAnalogyOnDemandPlottingInteractor
     {
-        public void ShowPlot(Guid id,string plotTitle, AnalogyOnDemandPlottingStartupType startupType);
-        public void ClosePlot(Guid id);
-        public void AddSeriesToPlot(Guid id, string seriesName);
-        public void RemoveSeriesFromPlot(Guid id, string seriesName);
-        public void ClearSeriesData(Guid id, string seriesNameToClear);
-        public void ClearAllData(Guid id);
-        public void SetDefaultWindow(int numberOfPointsInWindow);
+        public void ShowPlot(Guid plotId,string plotTitle, AnalogyOnDemandPlottingStartupType startupType);
+        public void ClosePlot(Guid plotId);
+        public void AddSeriesToPlot(Guid plotId, string seriesName);
+        public void RemoveSeriesFromPlot(Guid plotId, string seriesName);
+        public void ClearSeriesData(Guid plotId, string seriesNameToClear);
+        public void ClearAllData(Guid plotId);
+        public void SetDefaultWindow(Guid plotId,int numberOfPointsInWindow);
 
     }
 }

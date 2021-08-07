@@ -381,4 +381,10 @@
         TabbedWindow,
         FloatingWindow
     }
+
+    public enum AnalogyPlottingPointXAxisDataType
+    {
+        DateTime,
+        Numerical,
+    }
 }

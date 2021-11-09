@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0-windows;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
+		<TargetFrameworks>net6.0-windows;net5.0-windows;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
@@ -15,7 +15,7 @@
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
-		<Version>2.14.6</Version>
+		<Version>2.15.0</Version>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>

@@ -15,7 +15,7 @@
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
-		<Version>2.15.0</Version>
+		<Version>2.15.1</Version>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -47,15 +47,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
+		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.1.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="System.Resources.Extensions" Version="5.0.0" />
+		<PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
 	</ItemGroup>
 
 </Project>

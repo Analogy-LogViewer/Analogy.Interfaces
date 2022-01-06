@@ -428,6 +428,8 @@ namespace Analogy.Interfaces
                 case "debug":
                 case "Debug":
                 case "DEBUG":
+                case "Dbug":
+                case "dbug":
                 case "DebugVerbose":
                     return AnalogyLogLevel.Debug;
                 case "INF":

@@ -4,19 +4,24 @@
     {
         public AnalogyFileReadProgressType ProgressType { get; }
         /// <summary>
-        /// total processed entries (lines or messages)
+        ///Number of items processed in this report (normally one message per report).
+        /// </summary>
+        public long TotalProcessedInThisReport { get; }
+        /// <summary>
+        ///Total processed entries (lines or messages)
         /// </summary>
         public long TotalProcessed { get; }
         /// <summary>
-        /// total entries (lines or messages) in file
+        ///Total entries (lines or messages) in file
         /// </summary>
         public long TotalEntries { get; }
 
-        public AnalogyFileReadProgress(AnalogyFileReadProgressType progressType, long totalProcessed, long totalEntries)
+        public AnalogyFileReadProgress(AnalogyFileReadProgressType progressType, long totalProcessedInThisReport, long totalProcessed, long totalEntries)
         {
             ProgressType = progressType;
             TotalProcessed = totalProcessed;
             TotalEntries = totalEntries;
+            TotalProcessedInThisReport = totalProcessedInThisReport;
         }
     }
 }

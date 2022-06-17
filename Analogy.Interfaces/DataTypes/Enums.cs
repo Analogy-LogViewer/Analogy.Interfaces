@@ -387,4 +387,10 @@
         DateTime,
         Numerical,
     }
+
+    public enum AnalogyColumnFilterType
+    {
+        Include,
+        Exclude
+    }
 }

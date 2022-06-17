@@ -124,4 +124,19 @@ namespace Analogy.Interfaces
         Image? SmallImage { get; set; }
         Task<IEnumerable<AnalogyLogMessage>> Execute(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
+
+    public interface IAnalogyProviderSidePagingProvider : IAnalogyDataProvider
+    {
+        /// <summary>
+        /// Optional 32x32 Image (or null)
+        /// </summary>
+        Image? LargeImage { get; set; }
+        /// <summary>
+        /// Optional 16x16 Image (or null)
+        /// </summary>
+        Image? SmallImage { get; set; }
+        Task<IEnumerable<AnalogyLogMessage>> FetchMessages(FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+        Task ShutdownAsync(IAnalogyLogger logger);
+
+    }
 }

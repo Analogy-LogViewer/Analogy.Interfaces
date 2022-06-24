@@ -135,7 +135,16 @@ namespace Analogy.Interfaces
         /// Optional 16x16 Image (or null)
         /// </summary>
         Image? SmallImage { get; set; }
-        Task<IEnumerable<AnalogyLogMessage>> FetchMessages(FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pageNumber">The page number</param>
+        /// <param name="pageCount">Number of messages per page</param>
+        /// <param name="filterCriteria">The filter criteria</param>
+        /// <param name="token">CancellationToken</param>
+        /// <param name="messagesHandler">messagesHandler</param>
+        /// <returns>The filtered messages</returns>
+        Task<IEnumerable<AnalogyLogMessage>> FetchMessages(int pageNumber,int pageCount,FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
         Task ShutdownAsync(IAnalogyLogger logger);
 
     }

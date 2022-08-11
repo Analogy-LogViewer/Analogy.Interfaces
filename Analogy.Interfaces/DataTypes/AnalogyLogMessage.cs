@@ -465,6 +465,7 @@ namespace Analogy.Interfaces
                 case "Fatal":
                 case "FATAL":
                     return AnalogyLogLevel.Critical;
+                case "VRB":
                 case "verbose":
                 case "Verbose":
                 case "VERBOSE":

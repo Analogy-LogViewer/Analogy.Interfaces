@@ -5,6 +5,9 @@ namespace Analogy.Interfaces
     public interface ILogRawSQL
     {
         bool ApplyRawSQLFilter(string filter);
-        public event EventHandler<string> OnSetRawSQLFilter;
+        bool IsRawSQLModeEnabled();
+        bool EnabledRawSQLMode();
+        bool DisableRawSQLMode();
+        public event EventHandler<string> OnRawSQLFilterChanged;
     }
 }

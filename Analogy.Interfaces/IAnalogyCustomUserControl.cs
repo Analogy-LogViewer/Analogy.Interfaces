@@ -20,8 +20,14 @@ namespace Analogy.Interfaces
         Image? LargeImage { get; set; }
         string Title { get; set; }
         AnalogyToolTip? ToolTip { get; set; }
-
-        Task InitializeUserControl(Control hostingControl, IAnalogyLogger logger);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hostingControl">The Forms that holds the User Control</param>
+        /// <param name="rawSQLInteractor">Object that enables the User Control to change the RAW SQL filter</param>
+        /// <param name="logger">The Analogy Log Viewer</param>
+        /// <returns></returns>
+        Task InitializeUserControl(Control hostingControl, ILogRawSQL rawSQLInteractor, IAnalogyLogger logger);
         Task UserControlRemoved();
     }
 }

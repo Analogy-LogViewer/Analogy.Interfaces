@@ -10,9 +10,9 @@ namespace Analogy.Interfaces
     /// <summary>
     /// Interface for changing Loaded Messages instead of creating New one
     /// </summary>
-    internal interface IAnalogyLogMessageUpdater
+    public interface IAnalogyLogMessageUpdater
     {
-        public event EventHandler<AnalogyLogMessageUpdaterEventData> OnMessageChanged;
+        event EventHandler<AnalogyLogMessageUpdaterEventData> OnMessageChanged;
         Task InitializeUpdater(IAnalogyLogger logger);
 
     }

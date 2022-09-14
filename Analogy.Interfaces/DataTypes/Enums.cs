@@ -1,5 +1,10 @@
 ﻿namespace Analogy.Interfaces
 {
+    public enum AnalogyLogMessageUpdaterEventStatus
+    {
+        NewMessage,
+        MessageModified
+    }
     public enum AnalogyCustomActionType
     {
         BelongsToProvider,

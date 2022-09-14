@@ -17,7 +17,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// call to initialize to provider
         /// </summary>
-        Task InitializeDataProviderAsync(IAnalogyLogger logger);
+        Task InitializeDataProvider(IAnalogyLogger logger);
         /// <summary>
         /// //Optional title to display in the ribbon bar
         /// </summary>

@@ -8,8 +8,6 @@ namespace Analogy.Interfaces
 {
     public interface IRawSQLInteractor
     {
-        event EventHandler<string> OnActiveRawSQLHandlerChanged;
-
         /// <summary>
         /// object that enables the User Control to change the RAW SQL filter (normally LogMessage User Control)
         /// </summary>

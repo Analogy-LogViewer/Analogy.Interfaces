@@ -21,7 +21,7 @@ namespace Analogy.Interfaces
         public bool CompareClass { get; set; } = true;
         public bool CompareParameters { get; set; } = true;
 
-        public bool Equals(AnalogyLogMessage x, AnalogyLogMessage y)
+        public bool Equals(AnalogyLogMessage? x, AnalogyLogMessage? y)
         {
             if (x is null || y is null)
             {

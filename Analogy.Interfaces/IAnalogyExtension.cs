@@ -32,7 +32,13 @@ namespace Analogy.Interfaces
         void NewMessage(AnalogyLogMessage message);
         void NewMessages(List<AnalogyLogMessage> messages);
         /// <summary>
-        /// The user control to load
+        /// The Data Provider UI User Control Settings (this will be called on the UI thread)
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <returns></returns>
+        void CreateUserControl(IAnalogyLogger logger);
+        /// <summary>
+        /// The user control to load. Must be created in the CreateUserControl method
         /// </summary>
         UserControl UserControl { get; set; }
         Task InitializeUserControl(Control hostingControl, IAnalogyLogger logger);

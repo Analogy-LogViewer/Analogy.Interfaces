@@ -15,7 +15,7 @@ namespace Analogy.Interfaces
         /// </summary>
         Guid Id { get; set; }
         /// <summary>
-        /// call to initialize to provider
+        /// One time call to initialize the provider during startup or before first time use.
         /// </summary>
         Task InitializeDataProvider(IAnalogyLogger logger);
         /// <summary>
@@ -64,12 +64,26 @@ namespace Analogy.Interfaces
         /// </summary>
         IAnalogyOfflineDataProvider? FileOperationsHandler { get; }
         Task<bool> CanStartReceiving();
+        /// <summary>
+        /// start receiving. called when the hosting window/tab is opening 
+        /// </summary>
+        /// <returns></returns>
         Task StartReceiving();
+        /// <summary>
+        /// pause/stop receiving. called when the hosting window/tab is closed 
+        /// </summary>
+        /// <returns></returns>
+        Task StopReceiving();
+
+        /// <summary>
+        /// called before application exits
+        /// </summary>
+        /// <returns></returns>
+        Task ShutDown();
         Image? ConnectedLargeImage { get; set; }
         Image? ConnectedSmallImage { get; set; }
         Image? DisconnectedLargeImage { get; set; }
         Image? DisconnectedSmallImage { get; set; }
-        Task StopReceiving();
     }
 
     public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider

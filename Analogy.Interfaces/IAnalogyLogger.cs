@@ -6,7 +6,7 @@ namespace Analogy.Interfaces
     /// <summary>
     /// interface for logging information of data provider at the Analogy Log Viewer Ui
     /// </summary>
-    public interface IAnalogyLogger
+    public interface IAnalogyLogger:Microsoft.Extensions.Logging.ILogger
     {
         void LogInformation(string message, string source = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0, [CallerFilePath] string filePath = "");
         void LogWarning(string message, string source = "", string memberName = "", int lineNumber = 0, string filePath = "");

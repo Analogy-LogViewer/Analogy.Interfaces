@@ -6,9 +6,7 @@ using static Analogy.Interfaces.AnalogyLogMessagesArgs;
 namespace Analogy.Interfaces
 {
     public interface ILogMessageCreatedHandler
-    {
-        event EventHandler<AnalogyStartedProcessingArgs> ProcessingStarted;
-        event EventHandler<AnalogyEndProcessingArgs> ProcessingFinished;
+    { 
         bool ForceNoFileCaching { get; set; }
         bool DoNotAddToRecentHistory { get; set; }
         void AppendMessage(IAnalogyLogMessage message, string dataSource);

@@ -88,6 +88,8 @@ namespace Analogy.Interfaces
 
     public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider
     {
+        event EventHandler<AnalogyStartedProcessingArgs> ProcessingStarted;
+        event EventHandler<AnalogyEndProcessingArgs> ProcessingFinished;
         /// <summary>
         /// Optional 32x32 Image (or null)
         /// </summary>
@@ -111,6 +113,8 @@ namespace Analogy.Interfaces
 
     public interface IAnalogySingleFileDataProvider : IAnalogyDataProvider
     {
+        event EventHandler<AnalogyStartedProcessingArgs> ProcessingStarted;
+        event EventHandler<AnalogyEndProcessingArgs> ProcessingFinished;
         /// <summary>
         /// Optional 32x32 Image (or null)
         /// </summary>

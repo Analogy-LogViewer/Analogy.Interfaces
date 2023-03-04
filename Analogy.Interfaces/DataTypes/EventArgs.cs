@@ -114,54 +114,54 @@ namespace Analogy.Interfaces
             HostName = host;
             DataSource = dataSource;
         }
+    }
 
-        public class AnalogyStartedProcessingArgs : EventArgs
+    public class AnalogyStartedProcessingArgs : EventArgs
+    {
+        public DateTime StartTime { get; init; }
+        public string Information { get; init; }
+
+        public AnalogyStartedProcessingArgs() : this(DateTime.Now, "")
         {
-            public DateTime StartTime { get; init; }
-            public string Information { get; init; }
 
-            public AnalogyStartedProcessingArgs() : this(DateTime.Now, "")
-            {
-
-            }
-            public AnalogyStartedProcessingArgs(string information) : this(DateTime.Now, information)
-            {
-            }
-            public AnalogyStartedProcessingArgs(DateTime startTime, string information)
-            {
-                StartTime = startTime;
-                Information = information;
-            }
-
-            public override string ToString()
-            {
-                return $"{nameof(StartTime)}: {StartTime}, {nameof(Information)}: {Information}";
-            }
+        }
+        public AnalogyStartedProcessingArgs(string information) : this(DateTime.Now, information)
+        {
+        }
+        public AnalogyStartedProcessingArgs(DateTime startTime, string information)
+        {
+            StartTime = startTime;
+            Information = information;
         }
 
-
-        public class AnalogyEndProcessingArgs : EventArgs
+        public override string ToString()
         {
-            public DateTime StartTime { get; init; }
-            public DateTime EndTime { get; init; }
-            public string Information { get; init; }
-            public int ProcessedMessages { get; init; }
-            public AnalogyEndProcessingArgs():this(DateTime.Now, DateTime.Now)
-            {
-            }
-            public AnalogyEndProcessingArgs(DateTime startTime, DateTime endTime, string information = "",
-                int processedMessages = 0)
-            {
-                StartTime = startTime;
-                EndTime = endTime;
-                Information = information;
-                ProcessedMessages = processedMessages;
-            }
+            return $"{nameof(StartTime)}: {StartTime}, {nameof(Information)}: {Information}";
+        }
+    }
 
-            public override string ToString()
-            {
-                return $"{nameof(StartTime)}: {StartTime}, {nameof(EndTime)}: {EndTime}, {nameof(Information)}: {Information}, {nameof(ProcessedMessages)}: {ProcessedMessages}";
-            }
+
+    public class AnalogyEndProcessingArgs : EventArgs
+    {
+        public DateTime StartTime { get; init; }
+        public DateTime EndTime { get; init; }
+        public string Information { get; init; }
+        public int ProcessedMessages { get; init; }
+        public AnalogyEndProcessingArgs() : this(DateTime.Now, DateTime.Now)
+        {
+        }
+        public AnalogyEndProcessingArgs(DateTime startTime, DateTime endTime, string information = "",
+            int processedMessages = 0)
+        {
+            StartTime = startTime;
+            EndTime = endTime;
+            Information = information;
+            ProcessedMessages = processedMessages;
+        }
+
+        public override string ToString()
+        {
+            return $"{nameof(StartTime)}: {StartTime}, {nameof(EndTime)}: {EndTime}, {nameof(Information)}: {Information}, {nameof(ProcessedMessages)}: {ProcessedMessages}";
         }
     }
 }

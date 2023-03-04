@@ -24,13 +24,13 @@ namespace Analogy.Interfaces
     {
 
         void CellClicked(object sender, AnalogyCellClickedEventArgs args);
-        object GetValueForCellColumn(AnalogyLogMessage message, string columnName);
+        object GetValueForCellColumn(IAnalogyLogMessage message, string columnName);
         List<AnalogyColumnInfo> GetColumnsInfo();
     }
     public interface IAnalogyExtensionUserControl : IAnalogyExtension
     {
-        void NewMessage(AnalogyLogMessage message);
-        void NewMessages(List<AnalogyLogMessage> messages);
+        void NewMessage(IAnalogyLogMessage message);
+        void NewMessages(List<IAnalogyLogMessage> messages);
         /// <summary>
         /// The Data Provider UI User Control Settings (this will be called on the UI thread)
         /// </summary>

@@ -6,11 +6,11 @@ namespace Analogy.Interfaces
 {
     public class LogMessageArgs : EventArgs
     {
-        public AnalogyLogMessage Message { get; private set; }
-        public string HostName { get; private set; }
-        public string DataSource { get; private set; }
+        public IAnalogyLogMessage Message { get; }
+        public string HostName { get; }
+        public string DataSource { get; }
 
-        public LogMessageArgs(AnalogyLogMessage msg, string host, string dataSource)
+        public LogMessageArgs(IAnalogyLogMessage msg, string host, string dataSource)
         {
             Message = msg;
             HostName = host;
@@ -22,9 +22,9 @@ namespace Analogy.Interfaces
     {
         public string ColumnName { get; }
         public object ColumnValue { get; }
-        public  AnalogyLogMessage Message { get; }
+        public IAnalogyLogMessage Message { get; }
 
-        public AnalogyCellClickedEventArgs(string columnName, object columnValue,  AnalogyLogMessage message)
+        public AnalogyCellClickedEventArgs(string columnName, object columnValue, IAnalogyLogMessage message)
         {
             ColumnName = columnName;
             ColumnValue = columnValue;
@@ -62,9 +62,9 @@ namespace Analogy.Interfaces
     public class AnalogyDataSourceDisconnectedArgs : EventArgs
     {
 
-        public string DisconnectedReason { get; private set; }
-        public string HostName { get; private set; }
-        public Guid DataSourceID { get; private set; }
+        public string DisconnectedReason { get; }
+        public string HostName { get; }
+        public Guid DataSourceID { get; }
 
         public AnalogyDataSourceDisconnectedArgs(string disconnectedReason, string hostName, Guid dataSourceID)
         {
@@ -75,12 +75,12 @@ namespace Analogy.Interfaces
     }
     public class AnalogyLogMessageArgs : EventArgs
     {
-        public  AnalogyLogMessage Message { get; private set; }
-        public string HostName { get; private set; }
-        public string DataSource { get; private set; }
-        public Guid DataSourceID { get; private set; }
+        public IAnalogyLogMessage Message { get; }
+        public string HostName { get; }
+        public string DataSource { get; }
+        public Guid DataSourceID { get; }
 
-        public AnalogyLogMessageArgs(AnalogyLogMessage msg, string host, string dataSource, Guid dataSourceID)
+        public AnalogyLogMessageArgs(IAnalogyLogMessage msg, string host, string dataSource, Guid dataSourceID)
         {
             Message = msg;
             HostName = host;
@@ -90,11 +90,11 @@ namespace Analogy.Interfaces
     }
     public class AnalogyLogFileProcessedArgs : EventArgs
     {
-        public string LogFile { get; private set; }
-        public IEnumerable< AnalogyLogMessage> ProcessedMessages { get; private set; }
-        public Guid DataSourceID { get; private set; }
+        public string LogFile { get; }
+        public IEnumerable<IAnalogyLogMessage> ProcessedMessages { get; }
+        public Guid DataSourceID { get; }
 
-        public AnalogyLogFileProcessedArgs(IEnumerable< AnalogyLogMessage> messages, string logfile, Guid dataSourceID)
+        public AnalogyLogFileProcessedArgs(IEnumerable<IAnalogyLogMessage> messages, string logfile, Guid dataSourceID)
         {
             ProcessedMessages = messages;
             LogFile = logfile;
@@ -104,15 +104,64 @@ namespace Analogy.Interfaces
     }
     public class AnalogyLogMessagesArgs : EventArgs
     {
-        public List< AnalogyLogMessage> Messages { get; private set; }
-        public string HostName { get; private set; }
-        public string DataSource { get; private set; }
+        public List<IAnalogyLogMessage> Messages { get; }
+        public string HostName { get; }
+        public string DataSource { get; }
 
-        public AnalogyLogMessagesArgs(List< AnalogyLogMessage> msgs, string host, string dataSource)
+        public AnalogyLogMessagesArgs(List<IAnalogyLogMessage> msgs, string host, string dataSource)
         {
             Messages = msgs;
             HostName = host;
             DataSource = dataSource;
+        }
+
+        public class AnalogyStartedProcessingArgs : EventArgs
+        {
+            public DateTime StartTime { get; init; }
+            public string Information { get; init; }
+
+            public AnalogyStartedProcessingArgs() : this(DateTime.Now, "")
+            {
+
+            }
+            public AnalogyStartedProcessingArgs(string information) : this(DateTime.Now, information)
+            {
+            }
+            public AnalogyStartedProcessingArgs(DateTime startTime, string information)
+            {
+                StartTime = startTime;
+                Information = information;
+            }
+
+            public override string ToString()
+            {
+                return $"{nameof(StartTime)}: {StartTime}, {nameof(Information)}: {Information}";
+            }
+        }
+
+
+        public class AnalogyEndProcessingArgs : EventArgs
+        {
+            public DateTime StartTime { get; init; }
+            public DateTime EndTime { get; init; }
+            public string Information { get; init; }
+            public int ProcessedMessages { get; init; }
+            public AnalogyEndProcessingArgs():this(DateTime.Now, DateTime.Now)
+            {
+            }
+            public AnalogyEndProcessingArgs(DateTime startTime, DateTime endTime, string information = "",
+                int processedMessages = 0)
+            {
+                StartTime = startTime;
+                EndTime = endTime;
+                Information = information;
+                ProcessedMessages = processedMessages;
+            }
+
+            public override string ToString()
+            {
+                return $"{nameof(StartTime)}: {StartTime}, {nameof(EndTime)}: {EndTime}, {nameof(Information)}: {Information}, {nameof(ProcessedMessages)}: {ProcessedMessages}";
+            }
         }
     }
 }

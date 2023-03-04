@@ -77,7 +77,6 @@
         Date,
         Id,
         Text,
-        Category,
         Source,
         Module,
         MethodName,

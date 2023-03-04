@@ -26,7 +26,7 @@ namespace Analogy.Interfaces
         /// called when the message is open in Analogy in full view mode (detailed view). Should not throw exception
         /// </summary>
         /// <param name="message"></param>
-        void MessageOpened(AnalogyLogMessage message);
+        void MessageOpened(IAnalogyLogMessage message);
         /// <summary>
         /// indicate that the data provider will supply coloring logic per row/message
         /// if true the 
@@ -102,9 +102,9 @@ namespace Analogy.Interfaces
         string? FileSaveDialogFilters { get; }
         IEnumerable<string> SupportFormats { get; }
         string? InitialFolderFullPath { get; }
-        Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+        Task<IEnumerable<IAnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
         IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad);
-        Task SaveAsync(List<AnalogyLogMessage> messages, string fileName);
+        Task SaveAsync(List<IAnalogyLogMessage> messages, string fileName);
         bool CanOpenFile(string fileName);
         bool CanOpenAllFiles(IEnumerable<string> fileNames);
     }
@@ -124,7 +124,7 @@ namespace Analogy.Interfaces
         /// Full path of the file to open
         /// </summary>
         string FileNamePath { get; set; }
-        Task<IEnumerable<AnalogyLogMessage>> Process(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+        Task<IEnumerable<IAnalogyLogMessage>> Process(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
     public interface IAnalogySingleDataProvider : IAnalogyDataProvider
     {
@@ -136,7 +136,7 @@ namespace Analogy.Interfaces
         /// Optional 16x16 Image (or null)
         /// </summary>
         Image? SmallImage { get; set; }
-        Task<IEnumerable<AnalogyLogMessage>> Execute(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+        Task<IEnumerable<IAnalogyLogMessage>> Execute(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
 
     public interface IAnalogyProviderSidePagingProvider : IAnalogyDataProvider
@@ -158,7 +158,7 @@ namespace Analogy.Interfaces
         /// <param name="token">CancellationToken</param>
         /// <param name="messagesHandler">messagesHandler</param>
         /// <returns>The filtered messages</returns>
-        Task<IEnumerable<AnalogyLogMessage>> FetchMessages(int pageNumber,int pageCount,FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+        Task<IEnumerable<IAnalogyLogMessage>> FetchMessages(int pageNumber,int pageCount,FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
         Task ShutdownAsync(IAnalogyLogger logger);
 
     }

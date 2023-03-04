@@ -20,12 +20,6 @@ namespace Analogy.Interfaces
         /// Gets/Sets the log message text (formatted text to be user readable)
         /// </summary>
         string Text { get; set; }
-
-        /// <summary>
-        /// Gets/Sets the category of the log message
-        /// </summary>
-        string Category { get; set; }
-
         /// <summary>
         /// Gets/Sets the source of the log message
         /// </summary>
@@ -75,7 +69,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Additional information that will be presented as new columns in the UI
         /// </summary>
-        Dictionary<string, string>? AdditionalInformation { get; set; }
+        Dictionary<string, string>? AdditionalProperties { get; }
         string User { get; set; }
         /// <summary>
         /// The raw message text/data (before formatting)
@@ -85,5 +79,8 @@ namespace Analogy.Interfaces
         /// The raw message text/data type
         /// </summary>
         AnalogyRowTextType RawTextType { get; set; }
+
+        void AddOrReplaceAdditionalProperty(string key, string value);
+        void AddOrReplaceAdditionalProperty(string key, string value, IEqualityComparer<string> comparer);
     }
 }

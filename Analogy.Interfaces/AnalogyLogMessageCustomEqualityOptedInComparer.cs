@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Analogy.Interfaces
 {
-    public class AnalogyLogMessageCustomEqualityOptedInComparer
+    public class AnalogyLogMessageCustomEqualityOptedInComparer : IEqualityComparer<IAnalogyLogMessage>
     {
         public bool CompareDate { get; set; } 
         public bool CompareId { get; set; } 
         public bool CompareText { get; set; } 
-        public bool CompareCategory { get; set; } 
         public bool CompareSource { get; set; }
         public bool CompareModule { get; set; }
         public bool CompareMethodName { get; set; }
@@ -30,14 +29,13 @@ namespace Analogy.Interfaces
         }
 
         public AnalogyLogMessageCustomEqualityOptedInComparer(bool compareDate, bool compareId, bool compareText,
-            bool compareCategory, bool compareSource, bool compareModule, bool compareMethodName, bool compareFileName,
+            bool compareSource, bool compareModule, bool compareMethodName, bool compareFileName,
             bool compareUser, bool compareLineNumber, bool compareProcessId, bool compareThread, bool compareLevel,
             bool compareClass, bool compareParameters)
         {
             CompareDate = compareDate;
             CompareId = compareId;
             CompareText = compareText;
-            CompareCategory = compareCategory;
             CompareSource = compareSource;
             CompareModule = compareModule;
             CompareMethodName = compareMethodName;
@@ -51,7 +49,7 @@ namespace Analogy.Interfaces
             CompareParameters = compareParameters;
         }
 
-        public bool Equals(AnalogyLogMessage? x, AnalogyLogMessage? y)
+        public bool Equals(IAnalogyLogMessage? x, IAnalogyLogMessage? y)
         {
             if (x is null || y is null)
             {
@@ -77,12 +75,7 @@ namespace Analogy.Interfaces
             {
                 return false;
             }
-
-            if (CompareCategory && x.Category != y.Category)
-            {
-                return false;
-            }
-
+            
             if (CompareSource && x.Source != y.Source)
             {
                 return false;
@@ -134,19 +127,19 @@ namespace Analogy.Interfaces
             }
             if (CompareParameters)
             {
-                if (x.AdditionalInformation is null && y.AdditionalInformation != null ||
-                    x.AdditionalInformation != null && y.AdditionalInformation is null)
+                if (x.AdditionalProperties is null && y.AdditionalProperties != null ||
+                    x.AdditionalProperties != null && y.AdditionalProperties is null)
                 {
                     return false;
                 }
-                return x.AdditionalInformation is null && y.AdditionalInformation is null ||
-                       x.AdditionalInformation.SequenceEqual(y.AdditionalInformation);
+                return x.AdditionalProperties is null && y.AdditionalProperties is null ||
+                       x.AdditionalProperties.SequenceEqual(y.AdditionalProperties);
             }
 
             return true;
         }
 
-        public int GetHashCode(AnalogyLogMessage obj)
+        public int GetHashCode(IAnalogyLogMessage obj)
         {
             unchecked
             {
@@ -160,11 +153,6 @@ namespace Analogy.Interfaces
                 if (CompareText)
                 {
                     hashCode = (hashCode * 397) ^ (obj.Text != null ? obj.Text.GetHashCode() : 0);
-                }
-
-                if (CompareCategory)
-                {
-                    hashCode = (hashCode * 397) ^ (obj.Category != null ? obj.Category.GetHashCode() : 0);
                 }
 
                 if (CompareSource)
@@ -210,9 +198,9 @@ namespace Analogy.Interfaces
                 }
                 if (CompareParameters)
                 {
-                    if (obj.AdditionalInformation != null && obj.AdditionalInformation.Any())
+                    if (obj.AdditionalProperties != null && obj.AdditionalProperties.Any())
                     {
-                        foreach (var parameter in obj.AdditionalInformation)
+                        foreach (var parameter in obj.AdditionalProperties)
                         {
                             hashCode = (hashCode * 397) ^ parameter.GetHashCode();
                         }

@@ -8,9 +8,8 @@ namespace Analogy.Interfaces.UnitTests
         [TestMethod]
         public void TestAnalogyLogMessageIsNotNull()
         {
-            AnalogyLogMessage message = new AnalogyLogMessage();
+            IAnalogyLogMessage message = new AnalogyLogMessage();
             Assert.IsNotNull(message.Text);
-            Assert.IsNotNull(message.Category);
             Assert.IsNotNull(message.Source);
             Assert.IsNotNull(message.FileName);
             Assert.IsNotNull(message.MethodName);
@@ -21,11 +20,11 @@ namespace Analogy.Interfaces.UnitTests
 
         public void TestAnalogyMessagesTypes()
         {
-            AnalogyLogMessage m1 = new AnalogyInformationMessage("text", "Source");
-            AnalogyLogMessage m2 = new AnalogyErrorMessage("text", "Source");
-            AnalogyLogMessage m3 = new AnalogyWarningMessage("text", "Source");
-            AnalogyLogMessage m4 = new AnalogyDebugMessage("text", "Source");
-            AnalogyLogMessage m5 = new AnalogyCriticalMessage("text", "Source");
+           IAnalogyLogMessage m1 = new AnalogyInformationMessage("text", "Source");
+           IAnalogyLogMessage m2 = new AnalogyErrorMessage("text", "Source");
+           IAnalogyLogMessage m3 = new AnalogyWarningMessage("text", "Source");
+           IAnalogyLogMessage m4 = new AnalogyDebugMessage("text", "Source");
+           IAnalogyLogMessage m5 = new AnalogyCriticalMessage("text", "Source");
         }
     }
 }

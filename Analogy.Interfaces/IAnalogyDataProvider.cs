@@ -39,17 +39,22 @@ namespace Analogy.Interfaces
         /// <returns></returns>
         (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
         /// <summary>
-        /// if implemented, return replacement titles/headers for the data grid
+        /// When implemented, return replacement titles/headers for the data grid
         /// OriginalHeader options are:
         /// DataProvider,Date,Text,Source,Level,Class,Category,User,Module,Audit,ProcessID,ThreadID
         /// </summary>
         /// <returns></returns>
         IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders();
         /// <summary>
-        /// list of column fields to hide
+        /// When implemented, return list of Default columns to hide in  he UI
         /// </summary>
         /// <returns></returns>
-        IEnumerable<string> HideColumns();
+        IEnumerable<AnalogyLogMessagePropertyName> HideExistingColumns();
+        /// <summary>
+        /// list of column fields to hide (may by properties in the Additional Properties dictionary of the Message)
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<string> HideAdditionalColumns();
 
         AnalogyToolTip? ToolTip { get; set; }
     }

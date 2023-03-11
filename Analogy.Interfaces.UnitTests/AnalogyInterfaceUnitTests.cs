@@ -18,7 +18,7 @@ namespace Analogy.Interfaces.UnitTests
 
         }
         [TestMethod]
-        public void TestAppendProperty()
+        public void TestAdditionalProperties()
         {
             IAnalogyLogMessage message = new AnalogyLogMessage();
             Assert.IsNotNull(message.AdditionalProperties == null);

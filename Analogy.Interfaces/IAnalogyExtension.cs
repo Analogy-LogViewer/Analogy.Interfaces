@@ -29,19 +29,24 @@ namespace Analogy.Interfaces
     }
     public interface IAnalogyExtensionUserControl : IAnalogyExtension
     {
-        void NewMessage(IAnalogyLogMessage message);
-        void NewMessages(List<IAnalogyLogMessage> messages);
+        void NewMessage(IAnalogyLogMessage message, Guid logWindowsId);
+        void NewMessages(List<IAnalogyLogMessage> messages, Guid logWindowsId);
+
         /// <summary>
-        /// The Data Provider UI User Control Settings (this will be called on the UI thread)
+        /// Create the user control for this specific log window
         /// </summary>
-        /// <param name="logger"></param>
-        /// <returns></returns>
-        void CreateUserControl(IAnalogyLogger logger);
+        ///  /// <param name="logWindowsId">Guid</param>
+        /// <param name="logger">IAnalogyLogger</param>
+        /// <returns>UserControl</returns>
+        UserControl CreateUserControl(Guid logWindowsId, IAnalogyLogger logger);
+
         /// <summary>
-        /// The user control to load. Must be created in the CreateUserControl method
+        /// The user control to load for this specific log window. Must be created in the CreateUserControl method
         /// </summary>
-        UserControl UserControl { get; set; }
-        Task InitializeUserControl(Control hostingControl, IAnalogyLogger logger);
+        /// <param name="logWindowsId">Guid</param>
+        /// <returns>UserControl</returns>
+        UserControl GetUserControl(Guid logWindowsId);
+        Task InitializeUserControl(Control hostingControl, Guid logWindowsId, IAnalogyLogger logger);
 
 
     }

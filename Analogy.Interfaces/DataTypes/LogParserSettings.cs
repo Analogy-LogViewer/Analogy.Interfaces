@@ -54,6 +54,16 @@ namespace Analogy.Interfaces.DataTypes
 
         public void DeleteMap(AnalogyLogMessagePropertyName key, string value)
         {
+#if NET
+            if (Maps.TryGetValue(key, out var val))
+            {
+                if (val == null)
+                {
+                    Maps[key] = new List<string>();
+                }
+                Maps[key].Remove(value);
+            }
+#else
             if (Maps.ContainsKey(key))
             {
                 if (Maps[key] == null)
@@ -61,9 +71,9 @@ namespace Analogy.Interfaces.DataTypes
                     Maps[key] = new List<string>();
                 }
                 Maps[key].Remove(value);
-
             }
-        }
+#endif
+            }
 
         public bool CanOpenFile(string fileName)
         {

@@ -72,7 +72,7 @@ namespace Analogy.Interfaces
             }
 
             if (CompareText && ((x.Text is not null && y.Text is null) || x.Text is null && y.Text is not null) ||
-                (x.Text is not null && y.Text is not null) && !x.Text.Equals(y.Text))
+                ((x.Text is not null && y.Text is not null) && !x.Text.Equals(y.Text)))
             {
                 return false;
             }

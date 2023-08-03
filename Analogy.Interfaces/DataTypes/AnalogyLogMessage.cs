@@ -18,7 +18,7 @@ namespace Analogy.Interfaces
         /// Gets/Sets date and time of arrival of log message
         /// Applicable only at server or pilot adapter
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; }
 
         /// <summary>
         /// Gets/Sets a unique identifier of the log message
@@ -132,7 +132,7 @@ namespace Analogy.Interfaces
         {
             Id = Guid.NewGuid();
             Text = string.Empty;
-            Date = DateTime.Now;
+            Date = DateTimeOffset.Now;
             User = string.Empty;
             Module = string.Empty;
             FileName = string.Empty;
@@ -303,7 +303,7 @@ namespace Analogy.Interfaces
             AnalogyLogMessage m = new AnalogyLogMessage
             {
                 AdditionalProperties = new Dictionary<string, string>(0),
-                Date = DateTime.MinValue,
+                Date = DateTimeOffset.MinValue,
                 Id = Guid.Empty,
                 Module = "Unknown",
                 ThreadId = -1,
@@ -315,7 +315,7 @@ namespace Analogy.Interfaces
                 {
                     case AnalogyLogMessagePropertyName.Date:
 
-                        if (DateTime.TryParse(propertyValue, out DateTime time))
+                        if (DateTimeOffset.TryParse(propertyValue, out DateTimeOffset time))
                         {
                             m.Date = time;
                         }

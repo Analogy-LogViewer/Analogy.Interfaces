@@ -19,33 +19,37 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Time of the commit
         /// </summary>
-        DateTime Date { get; }
+        DateTimeOffset Date { get; }
 
         Uri? IssueUri { get; }
+        string Version { get; }
     }
 
-    public class AnalogyChangeLog: IAnalogyChangeLog
+    public class AnalogyChangeLog : IAnalogyChangeLog
     {
         public string ChangeInformation { get; }
         public AnalogChangeLogType ChangeLogType { get; }
         public string Name { get; }
-        public DateTime Date { get; }
+        public DateTimeOffset Date { get; }
         public Uri? IssueUri { get; }
-        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTime date)
+        public string Version { get; }
+        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTimeOffset date, string? version)
         {
             ChangeInformation = changeInformation;
             ChangeLogType = changeLogType;
             Name = name;
             Date = date;
+            Version = version ?? "";
         }
 
-        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTime date, Uri? issueUri)
+        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTimeOffset date, Uri? issueUri, string version)
         {
             ChangeInformation = changeInformation;
             ChangeLogType = changeLogType;
             Name = name;
             Date = date;
             IssueUri = issueUri;
+            Version = version;
         }
     }
 }

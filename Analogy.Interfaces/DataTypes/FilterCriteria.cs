@@ -16,13 +16,13 @@ namespace Analogy.Interfaces.DataTypes
         public IEnumerable<string> ExcludeModules { get; set; }
         public IEnumerable<AnalogyLogLevel> IncludeLevels { get; set; }
         public IEnumerable<AnalogyLogLevel> ExcludeLevels { get; set; }
-        public DateTime? StartTime { get; set; }
-        public DateTime? EndTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
         public IEnumerable<AnalogyColumnFilter> DynamicColumns { get; set; }
 
         public FilterCriteria(List<string>? includeText = null, List<string>? excludeText = null, List<string>? includeSources = null,
-            List<string>? excludeSources = null, List<string>? includeModules = null, List<string>? excludeModules = null, DateTime? startTime = null,
-            DateTime? endTime = null, List<AnalogyLogLevel>? includeLevels = null, List<AnalogyLogLevel>? excludeLevels = null, List<AnalogyColumnFilter>? dynamicColumns = null)
+            List<string>? excludeSources = null, List<string>? includeModules = null, List<string>? excludeModules = null, DateTimeOffset? startTime = null,
+            DateTimeOffset? endTime = null, List<AnalogyLogLevel>? includeLevels = null, List<AnalogyLogLevel>? excludeLevels = null, List<AnalogyColumnFilter>? dynamicColumns = null)
         {
             IncludeText = includeText ?? Enumerable.Empty<string>();
             ExcludeText = excludeText ?? Enumerable.Empty<string>();

@@ -9,7 +9,7 @@ namespace Analogy.Interfaces
         /// Gets/Sets date and time of arrival of log message
         /// Applicable only at server or pilot adapter
         /// </summary>
-        DateTime Date { get; set; }
+        DateTimeOffset Date { get; set; }
 
         /// <summary>
         /// Gets/Sets a unique identifier of the log message

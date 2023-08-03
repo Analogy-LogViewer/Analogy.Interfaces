@@ -13,7 +13,7 @@ namespace Analogy.Interfaces
     public interface IAnalogyLogMessageUpdater
     {
         event EventHandler<AnalogyLogMessageUpdaterEventData> OnMessageChanged;
-        Task InitializeUpdater(IAnalogyLogger logger);
+        Task InitializeUpdater(Microsoft.Extensions.Logging.ILogger logger);
 
     }
 }

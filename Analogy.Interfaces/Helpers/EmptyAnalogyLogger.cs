@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Analogy.Interfaces.Helpers
 {
-    public class EmptyAnalogyLogger : IAnalogyLogger
+    public class EmptyAnalogyLogger : Microsoft.Extensions.Logging.ILogger
     {
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
         {

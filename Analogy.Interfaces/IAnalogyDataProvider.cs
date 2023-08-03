@@ -17,7 +17,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// One time call to initialize the provider during startup or before first time use.
         /// </summary>
-        Task InitializeDataProvider(IAnalogyLogger logger);
+        Task InitializeDataProvider(Microsoft.Extensions.Logging.ILogger logger);
         /// <summary>
         /// //Optional title to display in the ribbon bar
         /// </summary>
@@ -168,7 +168,7 @@ namespace Analogy.Interfaces
         /// <param name="messagesHandler">messagesHandler</param>
         /// <returns>The filtered messages</returns>
         Task<IEnumerable<IAnalogyLogMessage>> FetchMessages(int pageNumber,int pageCount,FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
-        Task ShutdownAsync(IAnalogyLogger logger);
+        Task ShutdownAsync(Microsoft.Extensions.Logging.ILogger logger);
 
     }
 }

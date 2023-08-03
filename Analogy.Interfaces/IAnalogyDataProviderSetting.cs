@@ -35,7 +35,7 @@ namespace Analogy.Interfaces
         /// </summary>
         /// <param name="logger"></param>
         /// <returns></returns>
-        void CreateUserControl(IAnalogyLogger logger);
+        void CreateUserControl(Microsoft.Extensions.Logging.ILogger logger);
 
         Task SaveSettingsAsync();
     }

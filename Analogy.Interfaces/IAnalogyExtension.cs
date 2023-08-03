@@ -36,9 +36,9 @@ namespace Analogy.Interfaces
         /// Create the user control for this specific log window
         /// </summary>
         ///  /// <param name="logWindowsId">Guid</param>
-        /// <param name="logger">IAnalogyLogger</param>
+        /// <param name="logger">Microsoft.Extensions.Logging.ILogger</param>
         /// <returns>UserControl</returns>
-        UserControl CreateUserControl(Guid logWindowsId, IAnalogyLogger logger);
+        UserControl CreateUserControl(Guid logWindowsId, Microsoft.Extensions.Logging.ILogger logger);
 
         /// <summary>
         /// The user control to load for this specific log window. Must be created in the CreateUserControl method
@@ -46,7 +46,7 @@ namespace Analogy.Interfaces
         /// <param name="logWindowsId">Guid</param>
         /// <returns>UserControl</returns>
         UserControl GetUserControl(Guid logWindowsId);
-        Task InitializeUserControl(Control hostingControl, Guid logWindowsId, IAnalogyLogger logger);
+        Task InitializeUserControl(Control hostingControl, Guid logWindowsId, Microsoft.Extensions.Logging.ILogger logger);
 
 
     }

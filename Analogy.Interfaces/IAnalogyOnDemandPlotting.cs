@@ -18,7 +18,7 @@ namespace Analogy.Interfaces
         /// <param name="onDemandPlottingInteractor"> the object that manager UI interactions</param>
         /// <param name="logger"></param>
         /// <returns></returns>
-        Task InitializeOnDemandPlotting(IAnalogyOnDemandPlottingInteractor onDemandPlottingInteractor, IAnalogyLogger logger);
+        Task InitializeOnDemandPlotting(IAnalogyOnDemandPlottingInteractor onDemandPlottingInteractor, Microsoft.Extensions.Logging.ILogger logger);
 
     }
 }

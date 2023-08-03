@@ -8,24 +8,24 @@ namespace Analogy.Interfaces
 {
     public class AnalogyLogMessageCustomEqualityOptedInComparer : IEqualityComparer<IAnalogyLogMessage>
     {
-        public bool CompareDate { get; set; } 
-        public bool CompareId { get; set; } 
-        public bool CompareText { get; set; } 
+        public bool CompareDate { get; set; }
+        public bool CompareId { get; set; }
+        public bool CompareText { get; set; }
         public bool CompareSource { get; set; }
         public bool CompareModule { get; set; }
         public bool CompareMethodName { get; set; }
         public bool CompareFileName { get; set; }
         public bool CompareUser { get; set; }
         public bool CompareLineNumber { get; set; }
-        public bool CompareProcessId { get; set; } 
-        public bool CompareThread { get; set; } 
-        public bool CompareLevel { get; set; } 
-        public bool CompareClass { get; set; } 
+        public bool CompareProcessId { get; set; }
+        public bool CompareThread { get; set; }
+        public bool CompareLevel { get; set; }
+        public bool CompareClass { get; set; }
         public bool CompareParameters { get; set; }
 
         public AnalogyLogMessageCustomEqualityOptedInComparer()
         {
-            
+
         }
 
         public AnalogyLogMessageCustomEqualityOptedInComparer(bool compareDate, bool compareId, bool compareText,
@@ -71,11 +71,12 @@ namespace Analogy.Interfaces
                 return false;
             }
 
-            if (CompareText && !x.Text.Equals(y.Text))
+            if (CompareText && ((x.Text is not null && y.Text is null) || x.Text is null && y.Text is not null) ||
+                (x.Text is not null && y.Text is not null) && !x.Text.Equals(y.Text))
             {
                 return false;
             }
-            
+
             if (CompareSource && x.Source != y.Source)
             {
                 return false;
@@ -170,7 +171,7 @@ namespace Analogy.Interfaces
                     hashCode = (hashCode * 397) ^ (obj.FileName != null ? obj.FileName.GetHashCode() : 0);
                 }
                 if (CompareLineNumber)
-                { hashCode = (hashCode * 397) ^ obj.LineNumber; }
+                { hashCode = (hashCode * 397) ^ (int)obj.LineNumber; }
 
                 if (CompareClass)
                 {

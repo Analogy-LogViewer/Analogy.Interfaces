@@ -42,7 +42,8 @@ namespace Analogy.Interfaces
                 return false;
             }
 
-            if (CompareText && !x.Text.Equals(y.Text))
+            if (CompareText && ((x.Text is not null && y.Text is null) || x.Text is null && y.Text is not null) ||
+                ((x.Text is not null && y.Text is not null) && !x.Text.Equals(y.Text)))
             {
                 return false;
             }
@@ -141,7 +142,7 @@ namespace Analogy.Interfaces
                     hashCode = (hashCode * 397) ^ (obj.FileName != null ? obj.FileName.GetHashCode() : 0);
                 }
                 if (CompareLineNumber)
-                { hashCode = (hashCode * 397) ^ obj.LineNumber; }
+                { hashCode = (hashCode * 397) ^ (int) obj.LineNumber; }
 
                 if (CompareClass)
                 {
@@ -173,7 +174,7 @@ namespace Analogy.Interfaces
                     {
                         foreach (var parameter in obj.AdditionalProperties)
                         {
-                          hashCode = (hashCode * 397) ^ parameter.GetHashCode();
+                            hashCode = (hashCode * 397) ^ parameter.GetHashCode();
                         }
                     }
                 }

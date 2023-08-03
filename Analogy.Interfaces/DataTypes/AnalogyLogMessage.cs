@@ -28,32 +28,32 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Gets/Sets the log message text
         /// </summary>
-        public string Text { get; set; }
+        public string? Text { get; set; }
         /// <summary>
         /// Gets/Sets the source of the log message
         /// </summary>
-        public string Source { get; set; }
+        public string? Source { get; set; }
 
         /// <summary>
         /// Gets/Sets the method name of message generator
         /// </summary>
-        public string MethodName { get; set; }
+        public string? MethodName { get; set; }
 
         /// <summary>
         /// Gets/Sets the filename of message generator
         /// </summary>
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
 
         /// <summary>
         /// Gets/Sets the line number of message generator
         /// </summary>
-        public int LineNumber { get; set; }
+        public long LineNumber { get; set; }
 
         /// <summary>
         /// Gets/Sets the log class of the message
         /// </summary>
         public AnalogyLogClass Class { get; set; }
-        public string MachineName { get; set; }
+        public string? MachineName { get; set; }
         /// <summary>
         /// Gets/Sets the log level of the message
         /// </summary>
@@ -62,7 +62,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// Gets/Sets the module (process) name of message generator
         /// </summary>
-        public string Module { get; set; }
+        public string? Module { get; set; }
 
         /// <summary>
         /// Gets/Sets the system process ID of message generator
@@ -79,7 +79,7 @@ namespace Analogy.Interfaces
         /// <summary>
         /// The user Name for the message
         /// </summary>
-        public string User { get; set; }
+        public string? User { get; set; }
         public static Dictionary<string, AnalogyLogMessagePropertyName> LogMessagePropertyNames { get; set; }
         /// <summary>
         /// The raw message text/data before formatting
@@ -272,7 +272,7 @@ namespace Analogy.Interfaces
                 hashCode = (hashCode * 397) ^ (MethodName != null ? MethodName.GetHashCode() : 1);
                 hashCode = (hashCode * 397) ^ (FileName != null ? FileName.GetHashCode() : 1);
                 hashCode = (hashCode * 397) ^ (MachineName != null ? MachineName.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ LineNumber;
+                hashCode = (hashCode * 397) ^ (int)LineNumber;
                 hashCode = (hashCode * 397) ^ (int)Class;
                 hashCode = (hashCode * 397) ^ (int)Level;
                 hashCode = (hashCode * 397) ^ (Module != null ? Module.GetHashCode() : 1);

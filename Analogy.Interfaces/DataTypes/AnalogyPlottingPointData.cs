@@ -9,11 +9,11 @@ namespace Analogy.Interfaces.DataTypes
         /// </summary>
         public string Name { get; set; }
         public double Value { get; set; }
-        public DateTimeOffset DateTime { get; }
+        public DateTime DateTime { get; }
         public double XAxisValue { get; }
         public AnalogyPlottingPointXAxisDataType XAxisDataType { get; }
 
-        public AnalogyPlottingPointData(string name, double value, DateTimeOffset dateTime, double xAxisValue, AnalogyPlottingPointXAxisDataType xAxisDataType)
+        public AnalogyPlottingPointData(string name, double value, DateTime dateTime, double xAxisValue, AnalogyPlottingPointXAxisDataType xAxisDataType)
         {
             Name = name;
             Value = value;
@@ -21,7 +21,7 @@ namespace Analogy.Interfaces.DataTypes
             XAxisValue = xAxisValue;
             XAxisDataType = xAxisDataType;
         }
-        public AnalogyPlottingPointData(string name, double value, DateTimeOffset dateTime)
+        public AnalogyPlottingPointData(string name, double value, DateTime dateTime)
         {
             Name = name;
             Value = value;

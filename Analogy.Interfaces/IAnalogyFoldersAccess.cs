@@ -8,6 +8,7 @@ namespace Analogy.Interfaces
 {
     public interface IAnalogyFoldersAccess
     {
+        event EventHandler OnRootFolderChanged;
         string WriteableRootFolder { get; }
         string ConfigurationsFolder { get; }
         string GetConfigurationFilePath(string configFile);

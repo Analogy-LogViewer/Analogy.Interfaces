@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace Analogy.Interfaces.Factories
 {
@@ -31,6 +33,8 @@ namespace Analogy.Interfaces.Factories
         IEnumerable<string>? AdditionalProbingLocation { get; set; }
 
         void RegisterNotificationCallback(INotificationReporter notificationReporter);
+
+        Task InitializeFactory(IAnalogyFoldersAccess foldersAccess, ILogger logger);
     }
 
 }

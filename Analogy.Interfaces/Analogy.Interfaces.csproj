@@ -15,7 +15,7 @@
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
-		<VersionPrefix>5.0.0.0</VersionPrefix>
+		<VersionPrefix>5.0.1.0</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>

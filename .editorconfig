@@ -405,6 +405,9 @@ dotnet_diagnostic.MA0044.severity = error
 dotnet_diagnostic.MA0052.severity = error
 dotnet_diagnostic.SA1139.severity = error
 dotnet_diagnostic.SA1316.severity = error
+dotnet_diagnostic.SA1204.severity = none
+dotnet_diagnostic.SA1623.severity = silent
+dotnet_diagnostic.SA1615.severity = silent
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line

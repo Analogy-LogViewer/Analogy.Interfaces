@@ -9,6 +9,7 @@ namespace Analogy.Interfaces
     public interface IAnalogyExtension
     {
         Guid Id { get; set; }
+
         /// <summary>
         /// //Optional title to display in the ribbon bar
         /// </summary>
@@ -22,7 +23,6 @@ namespace Analogy.Interfaces
 
     public interface IAnalogyExtensionInPlace : IAnalogyExtension
     {
-
         void CellClicked(object sender, AnalogyCellClickedEventArgs args);
         object GetValueForCellColumn(IAnalogyLogMessage message, string columnName);
         List<AnalogyColumnInfo> GetColumnsInfo();
@@ -47,7 +47,5 @@ namespace Analogy.Interfaces
         /// <returns>UserControl</returns>
         UserControl GetUserControl(Guid logWindowsId);
         Task InitializeUserControl(Control hostingControl, Guid logWindowsId, Microsoft.Extensions.Logging.ILogger logger);
-
-
     }
 }

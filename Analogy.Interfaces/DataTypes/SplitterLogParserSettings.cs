@@ -63,6 +63,5 @@ namespace Analogy.Interfaces.DataTypes
         }
 
         public bool CanOpenFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
-
     }
 }

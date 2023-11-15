@@ -12,12 +12,13 @@ namespace Analogy.Interfaces
 
         IEnumerable<(string SeriesName, AnalogyPlottingSeriesType SeriesViewType)> GetChartSeries();
         Guid Id { get; set; }
+
         /// <summary>
         /// the factory id which this Data providers factory belongs to
         /// </summary>
         Guid FactoryId { get; set; }
         string Title { get; set; }
-        Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor,Microsoft.Extensions.Logging.ILogger logger);
+        Task InitializePlotting(IAnalogyPlottingInteractor uiInteractor, Microsoft.Extensions.Logging.ILogger logger);
         Task StartPlotting();
         Task StopPlotting();
     }

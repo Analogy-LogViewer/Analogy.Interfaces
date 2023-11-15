@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,7 +8,6 @@ namespace Analogy.Interfaces
 {
     public class AnalogyLogMessage : IEquatable<AnalogyLogMessage>, IAnalogyLogMessage
     {
-
         private static readonly string CurrentProcessName = Process.GetCurrentProcess().ProcessName;
         private static readonly int CurrentProcessId = Process.GetCurrentProcess().Id;
         private AnalogyRowTextType _rawTextType;
@@ -29,6 +27,7 @@ namespace Analogy.Interfaces
         /// Gets/Sets the log message text
         /// </summary>
         public string? Text { get; set; }
+
         /// <summary>
         /// Gets/Sets the source of the log message
         /// </summary>
@@ -54,6 +53,7 @@ namespace Analogy.Interfaces
         /// </summary>
         public AnalogyLogClass Class { get; set; }
         public string? MachineName { get; set; }
+
         /// <summary>
         /// Gets/Sets the log level of the message
         /// </summary>
@@ -68,19 +68,23 @@ namespace Analogy.Interfaces
         /// Gets/Sets the system process ID of message generator
         /// </summary>
         public int ProcessId { get; set; }
+
         /// <summary>
         /// Gets/Sets the Thread ID of message generator
         /// </summary>
         public int ThreadId { get; set; }
+
         /// <summary>
         /// Key/Value additional information for the message
         /// </summary>
         public Dictionary<string, string>? AdditionalProperties { get; private set; }
+
         /// <summary>
         /// The user Name for the message
         /// </summary>
         public string? User { get; set; }
         public static Dictionary<string, AnalogyLogMessagePropertyName> LogMessagePropertyNames { get; set; }
+
         /// <summary>
         /// The raw message text/data before formatting
         /// </summary>
@@ -106,7 +110,6 @@ namespace Analogy.Interfaces
                 AdditionalProperties[key] = value;
             }
         }
-
 
         public void AddOrReplaceAdditionalProperty(string key, string value, IEqualityComparer<string> comparer)
         {
@@ -148,7 +151,6 @@ namespace Analogy.Interfaces
             [CallerLineNumber] int lineNumber = 0) : this(text, level, AnalogyLogClass.General, source, string.Empty,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
 
         public AnalogyLogMessage(string text, AnalogyLogLevel level, AnalogyLogClass logClass, string? source,
@@ -202,7 +204,6 @@ namespace Analogy.Interfaces
                 RawText = rawText;
                 RawTextType = rawTextType;
             }
-
         }
 
         public bool Equals(AnalogyLogMessage? other)
@@ -224,8 +225,8 @@ namespace Analogy.Interfaces
                             User == other.User && MachineName == other.MachineName &&
                             RawTextType == other.RawTextType &&
                             RawText == other.RawText;
-            if (!areEqual || AdditionalProperties == null && other.AdditionalProperties != null ||
-                AdditionalProperties != null && other.AdditionalProperties == null)
+            if (!areEqual || (AdditionalProperties == null && other.AdditionalProperties != null) ||
+                (AdditionalProperties != null && other.AdditionalProperties == null))
             {
                 return false;
             }
@@ -234,8 +235,8 @@ namespace Analogy.Interfaces
             {
                 return true;
             }
-            if (AdditionalProperties == null && other.AdditionalProperties != null ||
-            AdditionalProperties != null && other.AdditionalProperties == null)
+            if ((AdditionalProperties == null && other.AdditionalProperties != null) ||
+            (AdditionalProperties != null && other.AdditionalProperties == null))
             {
                 return false;
             }
@@ -280,7 +281,7 @@ namespace Analogy.Interfaces
                 hashCode = (hashCode * 397) ^ ThreadId;
                 hashCode = (hashCode * 397) ^ RawTextType.GetHashCode();
                 hashCode = (hashCode * 397) ^ (RawText != null ? RawText.GetHashCode() : 1);
-                if (AdditionalProperties != null && AdditionalProperties.Any())
+                if (AdditionalProperties is { Count: > 0 })
                 {
                     foreach (var parameter in AdditionalProperties)
                     {
@@ -298,7 +299,7 @@ namespace Analogy.Interfaces
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static AnalogyLogMessage Parse(IEnumerable<(AnalogyLogMessagePropertyName PropertyName, string propertyValue)> data)
+        public static AnalogyLogMessage Parse(IEnumerable<(AnalogyLogMessagePropertyName PropertyName, string PropertyValue)> data)
         {
             AnalogyLogMessage m = new AnalogyLogMessage
             {
@@ -307,7 +308,7 @@ namespace Analogy.Interfaces
                 Id = Guid.Empty,
                 Module = "Unknown",
                 ThreadId = -1,
-                ProcessId = -1
+                ProcessId = -1,
             };
             foreach (var (propertyName, propertyValue) in data)
             {
@@ -373,7 +374,7 @@ namespace Analogy.Interfaces
                         continue;
                     case AnalogyLogMessagePropertyName.Level:
 
-                        if (Enum.TryParse(propertyValue, true, out AnalogyLogLevel level) &&
+                        if (Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyLogLevel level) &&
                             Enum.IsDefined(typeof(AnalogyLogLevel), level))
                         {
                             m.Level = level;
@@ -386,7 +387,7 @@ namespace Analogy.Interfaces
                         continue;
                     case AnalogyLogMessagePropertyName.Class:
 
-                        m.Class = Enum.TryParse(propertyValue, true, out AnalogyLogClass cls) &&
+                        m.Class = Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyLogClass cls) &&
                                   Enum.IsDefined(typeof(AnalogyLogClass), cls)
                             ? cls
                             : AnalogyLogClass.General;
@@ -396,7 +397,7 @@ namespace Analogy.Interfaces
                         m.RawText = string.IsNullOrEmpty(propertyValue) ? string.Empty : propertyValue;
                         continue;
                     case AnalogyLogMessagePropertyName.RawTextType:
-                        m.RawTextType = Enum.TryParse(propertyValue, true, out AnalogyRowTextType type) &&
+                        m.RawTextType = Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyRowTextType type) &&
                                   Enum.IsDefined(typeof(AnalogyRowTextType), type)
                             ? type
                             : AnalogyRowTextType.None;
@@ -409,15 +410,15 @@ namespace Analogy.Interfaces
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static AnalogyLogMessage Parse(IEnumerable<(string PropertyName, string propertyValue)> data)
+        public static AnalogyLogMessage Parse(IEnumerable<(string PropertyName, string PropertyValue)> data)
         {
             var valueTuples = data.ToList();
-            var dataProperties = valueTuples.Where(p => LogMessagePropertyNames.ContainsKey(p.PropertyName)).Select(s => (LogMessagePropertyNames[s.PropertyName], s.propertyValue)).ToList();
+            var dataProperties = valueTuples.Where(p => LogMessagePropertyNames.ContainsKey(p.PropertyName)).Select(s => (LogMessagePropertyNames[s.PropertyName], s.PropertyValue)).ToList();
             var m = Parse(dataProperties);
             var dataNotProperties = valueTuples.Where(p => !LogMessagePropertyNames.ContainsKey(p.PropertyName)).ToList();
-            if (dataNotProperties.Any())
+            if (dataNotProperties.Count > 0)
             {
-                m.AdditionalProperties = dataNotProperties.ToDictionary(p => p.PropertyName, p => p.propertyValue);
+                m.AdditionalProperties = dataNotProperties.ToDictionary(p => p.PropertyName, p => p.PropertyValue);
             }
 
             return m;
@@ -507,7 +508,6 @@ namespace Analogy.Interfaces
             [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Information, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
 
         public AnalogyInformationMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
@@ -515,7 +515,6 @@ namespace Analogy.Interfaces
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Information, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
     }
 
@@ -526,16 +525,13 @@ namespace Analogy.Interfaces
             [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Error, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
         public AnalogyErrorMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Error, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
-
     }
     public class AnalogyWarningMessage : AnalogyLogMessage
     {
@@ -544,16 +540,13 @@ namespace Analogy.Interfaces
             [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Warning, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
         public AnalogyWarningMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Warning, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
-
     }
     public class AnalogyDebugMessage : AnalogyLogMessage
     {
@@ -562,16 +555,13 @@ namespace Analogy.Interfaces
             [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Debug, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
         public AnalogyDebugMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Debug, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
-
     }
     public class AnalogyCriticalMessage : AnalogyLogMessage
     {
@@ -580,15 +570,12 @@ namespace Analogy.Interfaces
             [CallerLineNumber] int lineNumber = 0) : base(text, AnalogyLogLevel.Critical, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
         public AnalogyCriticalMessage(string text, string rawText, AnalogyRowTextType rawTextType, string source = "",
             [CallerMemberName] string methodName = "", [CallerFilePath] string fileName = "",
             [CallerLineNumber] int lineNumber = 0) : base(text, rawText, rawTextType, AnalogyLogLevel.Critical, AnalogyLogClass.General, source,
             methodName: methodName, fileName: fileName, lineNumber: lineNumber)
         {
-
         }
-
     }
 }

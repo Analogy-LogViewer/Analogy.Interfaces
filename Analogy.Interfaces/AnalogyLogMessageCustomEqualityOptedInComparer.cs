@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Analogy.Interfaces
 {
@@ -25,7 +22,6 @@ namespace Analogy.Interfaces
 
         public AnalogyLogMessageCustomEqualityOptedInComparer()
         {
-
         }
 
         public AnalogyLogMessageCustomEqualityOptedInComparer(bool compareDate, bool compareId, bool compareText,
@@ -71,7 +67,7 @@ namespace Analogy.Interfaces
                 return false;
             }
 
-            if (CompareText && ((x.Text is not null && y.Text is null) || x.Text is null && y.Text is not null) ||
+            if ((CompareText && ((x.Text is not null && y.Text is null) || (x.Text is null && y.Text is not null))) ||
                 ((x.Text is not null && y.Text is not null) && !x.Text.Equals(y.Text)))
             {
                 return false;
@@ -128,12 +124,12 @@ namespace Analogy.Interfaces
             }
             if (CompareParameters)
             {
-                if (x.AdditionalProperties is null && y.AdditionalProperties != null ||
-                    x.AdditionalProperties != null && y.AdditionalProperties is null)
+                if ((x.AdditionalProperties is null && y.AdditionalProperties != null) ||
+                    (x.AdditionalProperties != null && y.AdditionalProperties is null))
                 {
                     return false;
                 }
-                return x.AdditionalProperties is null && y.AdditionalProperties is null ||
+                return (x.AdditionalProperties is null && y.AdditionalProperties is null) ||
                        x.AdditionalProperties.SequenceEqual(y.AdditionalProperties);
             }
 
@@ -199,7 +195,7 @@ namespace Analogy.Interfaces
                 }
                 if (CompareParameters)
                 {
-                    if (obj.AdditionalProperties != null && obj.AdditionalProperties.Any())
+                    if (obj.AdditionalProperties != null && obj.AdditionalProperties.Count > 0)
                     {
                         foreach (var parameter in obj.AdditionalProperties)
                         {

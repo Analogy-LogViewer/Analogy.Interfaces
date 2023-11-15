@@ -9,7 +9,7 @@ namespace Analogy.Interfaces
         Task<bool> InitializeSender();
         void SendMessage(IAnalogyLogMessage message, string source);
         void SendMessages(List<IAnalogyLogMessage> messages, string source);
-        void SendMessages(byte[] messages, string source); 
+        void SendMessages(byte[] messages, string source);
         Task<bool> CleanupSender();
     }
 }

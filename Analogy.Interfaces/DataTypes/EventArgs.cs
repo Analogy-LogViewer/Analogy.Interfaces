@@ -30,10 +30,7 @@ namespace Analogy.Interfaces
             ColumnValue = columnValue;
             Message = message;
         }
-
-
     }
-
 
     public class AnalogyPageInformation
     {
@@ -61,7 +58,6 @@ namespace Analogy.Interfaces
 
     public class AnalogyDataSourceDisconnectedArgs : EventArgs
     {
-
         public string DisconnectedReason { get; }
         public string HostName { get; }
         public Guid DataSourceID { get; }
@@ -99,7 +95,6 @@ namespace Analogy.Interfaces
             ProcessedMessages = messages;
             LogFile = logfile;
             DataSourceID = dataSourceID;
-
         }
     }
     public class AnalogyLogMessagesArgs : EventArgs
@@ -123,7 +118,6 @@ namespace Analogy.Interfaces
 
         public AnalogyStartedProcessingArgs() : this(DateTime.Now, "")
         {
-
         }
         public AnalogyStartedProcessingArgs(string information) : this(DateTime.Now, information)
         {
@@ -139,7 +133,6 @@ namespace Analogy.Interfaces
             return $"{nameof(StartTime)}: {StartTime}, {nameof(Information)}: {Information}";
         }
     }
-
 
     public class AnalogyEndProcessingArgs : EventArgs
     {

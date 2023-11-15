@@ -8,14 +8,17 @@ namespace Analogy.Interfaces
         /// Information about this change
         /// </summary>
         string ChangeInformation { get; }
+
         /// <summary>
         /// Change type
         /// </summary>
         AnalogChangeLogType ChangeLogType { get; }
+
         /// <summary>
         /// The person who did this commit/fix/change
         /// </summary>
         string Name { get; }
+
         /// <summary>
         /// Time of the commit
         /// </summary>

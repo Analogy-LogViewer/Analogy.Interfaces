@@ -38,4 +38,3 @@ namespace Analogy.Interfaces.DataTypes
         }
     }
 }
-

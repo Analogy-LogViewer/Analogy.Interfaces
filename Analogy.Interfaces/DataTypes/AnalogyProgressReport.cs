@@ -1,5 +1,5 @@
 ﻿namespace Analogy.Interfaces.DataTypes
-{    
+{
     public class AnalogyProgressReport
     {
         public string Prefix { get; set; }

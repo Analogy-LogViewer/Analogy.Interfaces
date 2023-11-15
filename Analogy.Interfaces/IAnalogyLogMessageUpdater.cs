@@ -1,8 +1,5 @@
 ﻿using Analogy.Interfaces.DataTypes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Analogy.Interfaces
@@ -14,6 +11,5 @@ namespace Analogy.Interfaces
     {
         event EventHandler<AnalogyLogMessageUpdaterEventData> OnMessageChanged;
         Task InitializeUpdater(Microsoft.Extensions.Logging.ILogger logger);
-
     }
 }

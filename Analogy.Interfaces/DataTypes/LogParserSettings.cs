@@ -18,7 +18,7 @@ namespace Analogy.Interfaces.DataTypes
             Maps = new Dictionary<AnalogyLogMessagePropertyName, List<string>>();
             foreach (var items in AnalogyLogMessage.LogMessagePropertyNames)
             {
-                Maps[items.Value]=new List<string>{items.Key};
+                Maps[items.Value] = new List<string> { items.Key };
             }
             SupportedFilesExtensions = new List<string>();
             Directory = string.Empty;
@@ -26,7 +26,6 @@ namespace Analogy.Interfaces.DataTypes
 
         public void Configure(List<string> supportedFilesExtension, Dictionary<AnalogyLogMessagePropertyName, List<string>> maps)
         {
-
             SupportedFilesExtensions = supportedFilesExtension;
             Maps = maps ?? new Dictionary<AnalogyLogMessagePropertyName, List<string>>();
             IsConfigured = true;
@@ -36,10 +35,7 @@ namespace Analogy.Interfaces.DataTypes
         {
             if (Maps.ContainsKey(key))
             {
-                if (Maps[key] == null)
-                {
-                    Maps[key] = new List<string>();
-                }
+                Maps[key] ??= new List<string>();
 
                 if (!Maps[key].Contains(value))
                 {
@@ -73,7 +69,7 @@ namespace Analogy.Interfaces.DataTypes
                 Maps[key].Remove(value);
             }
 #endif
-            }
+        }
 
         public bool CanOpenFile(string fileName)
         {
@@ -98,6 +94,5 @@ namespace Analogy.Interfaces.DataTypes
 
             return null;
         }
-
     }
 }

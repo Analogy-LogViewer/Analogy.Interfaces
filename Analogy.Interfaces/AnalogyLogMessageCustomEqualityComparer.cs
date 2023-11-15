@@ -42,7 +42,7 @@ namespace Analogy.Interfaces
                 return false;
             }
 
-            if (CompareText && ((x.Text is not null && y.Text is null) || x.Text is null && y.Text is not null) ||
+            if ((CompareText && ((x.Text is not null && y.Text is null) || (x.Text is null && y.Text is not null))) ||
                 ((x.Text is not null && y.Text is not null) && !x.Text.Equals(y.Text)))
             {
                 return false;
@@ -99,12 +99,12 @@ namespace Analogy.Interfaces
             }
             if (CompareParameters)
             {
-                if (x.AdditionalProperties is null && y.AdditionalProperties != null ||
-                    x.AdditionalProperties != null && y.AdditionalProperties is null)
+                if ((x.AdditionalProperties is null && y.AdditionalProperties != null) ||
+                    (x.AdditionalProperties != null && y.AdditionalProperties is null))
                 {
                     return false;
                 }
-                return x.AdditionalProperties is null && y.AdditionalProperties is null ||
+                return (x.AdditionalProperties is null && y.AdditionalProperties is null) ||
                        x.AdditionalProperties.SequenceEqual(y.AdditionalProperties);
             }
 
@@ -142,7 +142,7 @@ namespace Analogy.Interfaces
                     hashCode = (hashCode * 397) ^ (obj.FileName != null ? obj.FileName.GetHashCode() : 0);
                 }
                 if (CompareLineNumber)
-                { hashCode = (hashCode * 397) ^ (int) obj.LineNumber; }
+                { hashCode = (hashCode * 397) ^ (int)obj.LineNumber; }
 
                 if (CompareClass)
                 {
@@ -170,7 +170,7 @@ namespace Analogy.Interfaces
                 }
                 if (CompareParameters)
                 {
-                    if (obj.AdditionalProperties != null && obj.AdditionalProperties.Any())
+                    if (obj.AdditionalProperties is { Count: > 0 })
                     {
                         foreach (var parameter in obj.AdditionalProperties)
                         {

@@ -15,7 +15,6 @@ namespace Analogy.Interfaces.UnitTests
             Assert.IsNotNull(message.MethodName);
             Assert.IsNotNull(message.Module);
             Assert.IsNotNull(message.User);
-
         }
         [TestMethod]
         public void TestAdditionalProperties()
@@ -25,8 +24,6 @@ namespace Analogy.Interfaces.UnitTests
             message.AddOrReplaceAdditionalProperty("test", "test");
             Assert.IsNotNull(message.AdditionalProperties.Count == 1);
             Assert.IsNotNull(message.AdditionalProperties["test"] == "test");
-
-
         }
         public void TestAnalogyMessagesTypes()
         {

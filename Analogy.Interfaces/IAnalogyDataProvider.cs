@@ -14,42 +14,50 @@ namespace Analogy.Interfaces
         /// ID of the data provider
         /// </summary>
         Guid Id { get; set; }
+
         /// <summary>
         /// One time call to initialize the provider during startup or before first time use.
         /// </summary>
         Task InitializeDataProvider(Microsoft.Extensions.Logging.ILogger logger);
+
         /// <summary>
         /// //Optional title to display in the ribbon bar
         /// </summary>
         string? OptionalTitle { get; set; }
+
         /// <summary>
         /// called when the message is open in Analogy in full view mode (detailed view). Should not throw exception
         /// </summary>
         /// <param name="message"></param>
         void MessageOpened(IAnalogyLogMessage message);
+
         /// <summary>
         /// indicate that the data provider will supply coloring logic per row/message
         /// if true the 
         /// </summary>
         bool UseCustomColors { get; set; }
+
         /// <summary>
         /// get the colors to use in the data grid of Analogy
         /// </summary>
         /// <param name="logMessage"></param>
         /// <returns></returns>
-        (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
+        (Color BackgroundColor, Color ForegroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
+
         /// <summary>
         /// When implemented, return replacement titles/headers for the data grid
         /// OriginalHeader options are:
         /// DataProvider,Date,Text,Source,Level,Class,Category,User,Module,Audit,ProcessID,ThreadID
         /// </summary>
         /// <returns></returns>
-        IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders();
+        IEnumerable<(string OriginalHeader, string ReplacementHeader)> GetReplacementHeaders();
+
         /// <summary>
         /// When implemented, return list of Default columns to hide in  he UI
         /// </summary>
         /// <returns></returns>
         IEnumerable<AnalogyLogMessagePropertyName> HideExistingColumns();
+
         /// <summary>
         /// list of column fields to hide (may by properties in the Additional Properties dictionary of the Message)
         /// </summary>
@@ -64,16 +72,19 @@ namespace Analogy.Interfaces
         event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
+
         /// <summary>
         /// Handler for save/read logs for the online source.
         /// </summary>
         IAnalogyOfflineDataProvider? FileOperationsHandler { get; }
         Task<bool> CanStartReceiving();
+
         /// <summary>
         /// start receiving. called when the hosting window/tab is opening 
         /// </summary>
         /// <returns></returns>
         Task StartReceiving();
+
         /// <summary>
         /// pause/stop receiving. called when the hosting window/tab is closed 
         /// </summary>
@@ -95,10 +106,12 @@ namespace Analogy.Interfaces
     {
         event EventHandler<AnalogyStartedProcessingArgs> ProcessingStarted;
         event EventHandler<AnalogyEndProcessingArgs> ProcessingFinished;
+
         /// <summary>
         /// Optional 32x32 Image (or null)
         /// </summary>
         Image? LargeImage { get; set; }
+
         /// <summary>
         /// Optional 16x16 Image (or null)
         /// </summary>
@@ -120,15 +133,18 @@ namespace Analogy.Interfaces
     {
         event EventHandler<AnalogyStartedProcessingArgs> ProcessingStarted;
         event EventHandler<AnalogyEndProcessingArgs> ProcessingFinished;
+
         /// <summary>
         /// Optional 32x32 Image (or null)
         /// </summary>
         Image? LargeImage { get; set; }
+
         /// <summary>
         /// Optional 16x16 Image (or null)
         /// </summary>
         Image? SmallImage { get; set; }
         bool DisableFilePoolingOption { get; }
+
         /// <summary>
         /// Full path of the file to open
         /// </summary>
@@ -141,6 +157,7 @@ namespace Analogy.Interfaces
         /// Optional 32x32 Image (or null)
         /// </summary>
         Image? LargeImage { get; set; }
+
         /// <summary>
         /// Optional 16x16 Image (or null)
         /// </summary>
@@ -154,10 +171,12 @@ namespace Analogy.Interfaces
         /// Optional 32x32 Image (or null)
         /// </summary>
         Image? LargeImage { get; set; }
+
         /// <summary>
         /// Optional 16x16 Image (or null)
         /// </summary>
         Image? SmallImage { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -167,8 +186,7 @@ namespace Analogy.Interfaces
         /// <param name="token">CancellationToken</param>
         /// <param name="messagesHandler">messagesHandler</param>
         /// <returns>The filtered messages</returns>
-        Task<IEnumerable<IAnalogyLogMessage>> FetchMessages(int pageNumber,int pageCount,FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
+        Task<IEnumerable<IAnalogyLogMessage>> FetchMessages(int pageNumber, int pageCount, FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
         Task ShutdownAsync(Microsoft.Extensions.Logging.ILogger logger);
-
     }
 }

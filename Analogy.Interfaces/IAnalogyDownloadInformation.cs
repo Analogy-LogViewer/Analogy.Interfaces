@@ -35,11 +35,13 @@ namespace Analogy.Interfaces.DataTypes
         /// </summary>
         Version? LatestVersion { get; }
         string? LatestVersionNumber { get; set; }
+
         /// <summary>
         ///     Returns version of the application currently installed on the user's PC.
         /// </summary>
         Version InstalledVersion { get; }
         string InstalledVersionNumber { get; }
+
         /// <summary>
         ///     Shows if the update is required or optional.
         /// </summary>

@@ -1,4 +1,22 @@
 <Project>
+	<PropertyGroup>
+		<UseWindowsForms>true</UseWindowsForms>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<RepositoryType>git</RepositoryType>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
 	<PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
 		<DefineConstants>$(DefineContants);DEBUG</DefineConstants>
 		<Optimize>false</Optimize>

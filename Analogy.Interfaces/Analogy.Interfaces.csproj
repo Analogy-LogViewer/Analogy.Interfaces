@@ -14,8 +14,6 @@
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<Copyright>Lior Banai @ 2018-2024</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
-
-		<PackageIconUrl />
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</RepositoryUrl>
 		<Company>Analogy.LogViewer</Company>
 	</PropertyGroup>

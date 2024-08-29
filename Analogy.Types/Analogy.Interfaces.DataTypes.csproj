@@ -11,7 +11,6 @@
 		<RootNamespace>Analogy.Interfaces.DataTypes</RootNamespace>
 		<PackageId>Analogy.Interfaces.DataTypes</PackageId>
 		<VersionPrefix>1.0.0.0</VersionPrefix>
-		<VersionSuffix>1</VersionSuffix>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.Interfaces.DataTypes</Product>
 		<Copyright>Lior Banai @ 2024</Copyright>

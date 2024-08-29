@@ -57,7 +57,7 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: 'artifactory'
-        path: ./Analogy.Interfaces/bin/${{ matrix.configuration }}
+        path: ./
   push-nuget:
     name: 'Push NuGet Packages'
     needs: build
@@ -86,7 +86,6 @@ jobs:
           Get-ChildItem .\artifactory -Filter *.nupkg |
           Where-Object { !$_.Name.Contains('preview') } |
           ForEach-Object { nuget push $_  -Source "GPR" -SkipDuplicate } 
-
 concurrency: 
   group: ${{ github.ref }}
   cancel-in-progress: true

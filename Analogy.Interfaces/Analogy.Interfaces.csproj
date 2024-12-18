@@ -9,7 +9,7 @@
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
-		<VersionPrefix>7.1.0</VersionPrefix>
+		<VersionPrefix>7.2.0</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
@@ -25,7 +25,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.Interfaces.DataTypes" Version="1.0.0" />
+		<PackageReference Include="Analogy.Interfaces.DataTypes" Version="1.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
 		<PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
 	</ItemGroup>

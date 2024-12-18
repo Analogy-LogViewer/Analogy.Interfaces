@@ -11,7 +11,7 @@ namespace Analogy.Interfaces
     public interface IAnalogyDataProvider
     {
         /// <summary>
-        /// ID of the data provider
+        /// ID of the data provider.
         /// </summary>
         Guid Id { get; set; }
 
@@ -21,27 +21,28 @@ namespace Analogy.Interfaces
         Task InitializeDataProvider(Microsoft.Extensions.Logging.ILogger logger);
 
         /// <summary>
-        /// //Optional title to display in the ribbon bar
+        /// //Optional title to display in the ribbon bar.
         /// </summary>
         string? OptionalTitle { get; set; }
 
         /// <summary>
         /// called when the message is open in Analogy in full view mode (detailed view). Should not throw exception
         /// </summary>
-        /// <param name="message"></param>
         void MessageOpened(IAnalogyLogMessage message);
 
         /// <summary>
+        /// called when the message is selected/focused in Analogy list view. Should not throw exception
+        /// </summary>
+        void MessageSelected(IAnalogyLogMessage message);
+
+        /// <summary>
         /// indicate that the data provider will supply coloring logic per row/message
-        /// if true the 
         /// </summary>
         bool UseCustomColors { get; set; }
 
         /// <summary>
         /// get the colors to use in the data grid of Analogy
         /// </summary>
-        /// <param name="logMessage"></param>
-        /// <returns></returns>
         (Color BackgroundColor, Color ForegroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
 
         /// <summary>

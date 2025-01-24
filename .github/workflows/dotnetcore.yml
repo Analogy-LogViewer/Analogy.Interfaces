@@ -64,6 +64,8 @@ jobs:
     # if: ${{ github.event_name == 'push'}}    
     runs-on: windows-latest
     steps:
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v2.0.1
       - name: 'Download Artifact'
         uses: actions/download-artifact@v4.1.8
         with:
@@ -72,7 +74,7 @@ jobs:
         run: |
           Get-ChildItem ./ -Recurse -Filter *.nupkg |
           Where-Object { !$_.Name.Contains('preview') } |
-          ForEach-Object { dotnet nuget push $_ --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} }
+          ForEach-Object { nuget push $_ -SkipDuplicate -Source nuget.org --api-key ${{secrets.NUGET_API_KEY}} }
         shell: pwsh
 
 concurrency: 

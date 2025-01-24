@@ -7,19 +7,13 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<Description>Interfaces assembly for creating custom data providers for Analogy Log Viewer</Description>
 		<PackageReleaseNotes></PackageReleaseNotes>
-		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</PackageProjectUrl>
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<Copyright>Lior Banai 2018-2025</Copyright>
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>portable</DebugType>
-		<Deterministic>true</Deterministic>
-		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<PackageIcon>icon.png</PackageIcon>
-		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</RepositoryUrl>
 		<Company>Analogy.LogViewer</Company>
 	</PropertyGroup>
 	<ItemGroup>

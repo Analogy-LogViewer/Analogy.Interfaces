@@ -74,7 +74,7 @@ jobs:
         run: |
           Get-ChildItem ./ -Recurse -Filter *.nupkg |
           Where-Object { !$_.Name.Contains('preview') } |
-          ForEach-Object { nuget push $_ -SkipDuplicate -Source nuget.org --api-key ${{secrets.NUGET_API_KEY}} }
+          ForEach-Object { nuget push $_ -SkipDuplicate -Source nuget.org  -ApiKey ${{secrets.NUGET_API_KEY}} }
         shell: pwsh
 
 concurrency: 

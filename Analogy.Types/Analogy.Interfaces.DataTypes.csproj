@@ -17,6 +17,7 @@
 		<Copyright>Lior Banai 2024-2025</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
 		<Company>Analogy.LogViewer</Company>
+		<NeutralLanguage>en-US</NeutralLanguage>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">

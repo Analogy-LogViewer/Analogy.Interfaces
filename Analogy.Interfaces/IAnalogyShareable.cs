@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Analogy.Interfaces.DataTypes;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Analogy.Interfaces

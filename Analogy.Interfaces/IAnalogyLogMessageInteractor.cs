@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Analogy.Interfaces.DataTypes;
+using System.Threading.Tasks;
 
 namespace Analogy.Interfaces
 {

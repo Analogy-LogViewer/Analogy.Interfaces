@@ -1,3 +1,4 @@
+using Analogy.Interfaces.DataTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Analogy.Interfaces.UnitTests

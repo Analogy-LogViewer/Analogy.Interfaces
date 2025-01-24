@@ -10,6 +10,7 @@
 		<AssemblyName>Analogy.Interfaces</AssemblyName>
 		<RootNamespace>Analogy.Interfaces</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.LogViewer.Interfaces</Product>
 		<Copyright>Lior Banai 2018-2025</Copyright>

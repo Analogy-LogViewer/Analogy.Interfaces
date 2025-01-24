@@ -11,6 +11,7 @@
 		<AssemblyName>Analogy.Interfaces.DataTypes</AssemblyName>
 		<RootNamespace>Analogy.Interfaces.DataTypes</RootNamespace>
 		<PackageId>Analogy.Interfaces.DataTypes</PackageId>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.Interfaces.DataTypes</Product>
 		<Copyright>Lior Banai 2024-2025</Copyright>

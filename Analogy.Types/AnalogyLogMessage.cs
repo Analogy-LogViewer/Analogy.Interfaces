@@ -1,4 +1,5 @@
 ﻿#pragma warning disable SA1402
+using Analogy.Interfaces.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,74 +15,73 @@ namespace Analogy.Interfaces
         private AnalogyRowTextType _rawTextType;
 
         /// <summary>
-        /// Gets/Sets date and time of arrival of log message
-        /// Applicable only at server or pilot adapter
+        /// Gets/Sets date and time of arrival of log message.
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; }
 
         /// <summary>
-        /// Gets/Sets a unique identifier of the log message
+        /// Gets/Sets a unique identifier of the log message.
         /// </summary>
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Gets/Sets the log message text
+        /// Gets/Sets the log message text.
         /// </summary>
         public string? Text { get; set; }
 
         /// <summary>
-        /// Gets/Sets the source of the log message
+        /// Gets/Sets the source of the log message.
         /// </summary>
         public string? Source { get; set; }
 
         /// <summary>
-        /// Gets/Sets the method name of message generator
+        /// Gets/Sets the method name of message generator.
         /// </summary>
         public string? MethodName { get; set; }
 
         /// <summary>
-        /// Gets/Sets the filename of message generator
+        /// Gets/Sets the filename of message generator.
         /// </summary>
         public string? FileName { get; set; }
 
         /// <summary>
-        /// Gets/Sets the line number of message generator
+        /// Gets/Sets the line number of message generator.
         /// </summary>
         public long LineNumber { get; set; }
 
         /// <summary>
-        /// Gets/Sets the log class of the message
+        /// Gets/Sets the log class of the message.
         /// </summary>
         public AnalogyLogClass Class { get; set; }
         public string? MachineName { get; set; }
 
         /// <summary>
-        /// Gets/Sets the log level of the message
+        /// Gets/Sets the log level of the message.
         /// </summary>
         public AnalogyLogLevel Level { get; set; }
 
         /// <summary>
-        /// Gets/Sets the module (process) name of message generator
+        /// Gets/Sets the module (process) name of message generator.
         /// </summary>
         public string? Module { get; set; }
 
         /// <summary>
-        /// Gets/Sets the system process ID of message generator
+        /// Gets/Sets the system process ID of message generator.
         /// </summary>
         public int ProcessId { get; set; }
 
         /// <summary>
-        /// Gets/Sets the Thread ID of message generator
+        /// Gets/Sets the Thread ID of message generator.
         /// </summary>
         public int ThreadId { get; set; }
 
         /// <summary>
-        /// Key/Value additional information for the message
+        /// Key/Value additional information for the message.
         /// </summary>
         public Dictionary<string, string>? AdditionalProperties { get; private set; }
 
         /// <summary>
-        /// The user Name for the message
+        /// The userName for the message.
         /// </summary>
         public string? User { get; set; }
         public static Dictionary<string, AnalogyLogMessagePropertyName> LogMessagePropertyNames { get; set; }
@@ -136,7 +136,7 @@ namespace Analogy.Interfaces
         {
             Id = Guid.NewGuid();
             Text = string.Empty;
-            Date = DateTime.Now;
+            Date = DateTimeOffset.Now;
             User = string.Empty;
             Module = string.Empty;
             FileName = string.Empty;
@@ -305,7 +305,7 @@ namespace Analogy.Interfaces
             AnalogyLogMessage m = new AnalogyLogMessage
             {
                 AdditionalProperties = new Dictionary<string, string>(0),
-                Date = DateTime.MinValue,
+                Date = DateTimeOffset.MinValue,
                 Id = Guid.Empty,
                 Module = "Unknown",
                 ThreadId = -1,
@@ -317,7 +317,7 @@ namespace Analogy.Interfaces
                 {
                     case AnalogyLogMessagePropertyName.Date:
 
-                        if (DateTime.TryParse(propertyValue, out DateTime time))
+                        if (DateTimeOffset.TryParse(propertyValue, out DateTimeOffset time))
                         {
                             m.Date = time;
                         }

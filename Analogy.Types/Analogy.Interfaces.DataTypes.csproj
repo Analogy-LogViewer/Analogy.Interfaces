@@ -2,6 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net9.0;net8.0;net48</TargetFrameworks>
+		<VersionPrefix>2.0.0.0</VersionPrefix>
+		<VersionSuffix>1</VersionSuffix>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Description>Data Types assembly for creating custom data providers for Analogy Log Viewer</Description>
@@ -10,10 +12,13 @@
 		<AssemblyName>Analogy.Interfaces.DataTypes</AssemblyName>
 		<RootNamespace>Analogy.Interfaces.DataTypes</RootNamespace>
 		<PackageId>Analogy.Interfaces.DataTypes</PackageId>
-		<VersionPrefix>1.1.0</VersionPrefix>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.Interfaces.DataTypes</Product>
 		<Copyright>Lior Banai 2024-2025</Copyright>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+		<Deterministic>true</Deterministic>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<PackageIcon>icon.png</PackageIcon>
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</RepositoryUrl>
 		<Company>Analogy.LogViewer</Company>

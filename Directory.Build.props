@@ -3,7 +3,6 @@
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -11,6 +10,10 @@
 		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
 		<RepositoryType>git</RepositoryType>
 		<DebugType>portable</DebugType>
+		<Deterministic>true</Deterministic>
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</PackageProjectUrl>
 	</PropertyGroup>
 	<PropertyGroup>
 		<Nullable>enable</Nullable>

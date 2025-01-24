@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Analogy.Interfaces.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -113,16 +114,16 @@ namespace Analogy.Interfaces
 
     public class AnalogyStartedProcessingArgs : EventArgs
     {
-        public DateTime StartTime { get; init; }
+        public DateTimeOffset StartTime { get; init; }
         public string Information { get; init; }
 
-        public AnalogyStartedProcessingArgs() : this(DateTime.Now, "")
+        public AnalogyStartedProcessingArgs() : this(DateTimeOffset.Now, "")
         {
         }
-        public AnalogyStartedProcessingArgs(string information) : this(DateTime.Now, information)
+        public AnalogyStartedProcessingArgs(string information) : this(DateTimeOffset.Now, information)
         {
         }
-        public AnalogyStartedProcessingArgs(DateTime startTime, string information)
+        public AnalogyStartedProcessingArgs(DateTimeOffset startTime, string information)
         {
             StartTime = startTime;
             Information = information;
@@ -136,14 +137,14 @@ namespace Analogy.Interfaces
 
     public class AnalogyEndProcessingArgs : EventArgs
     {
-        public DateTime StartTime { get; init; }
-        public DateTime EndTime { get; init; }
+        public DateTimeOffset StartTime { get; init; }
+        public DateTimeOffset EndTime { get; init; }
         public string Information { get; init; }
         public int ProcessedMessages { get; init; }
-        public AnalogyEndProcessingArgs() : this(DateTime.Now, DateTime.Now)
+        public AnalogyEndProcessingArgs() : this(DateTimeOffset.Now, DateTimeOffset.Now)
         {
         }
-        public AnalogyEndProcessingArgs(DateTime startTime, DateTime endTime, string information = "",
+        public AnalogyEndProcessingArgs(DateTimeOffset startTime, DateTimeOffset endTime, string information = "",
             int processedMessages = 0)
         {
             StartTime = startTime;

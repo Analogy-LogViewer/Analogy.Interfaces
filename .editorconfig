@@ -408,6 +408,8 @@ dotnet_diagnostic.SA1316.severity = error
 dotnet_diagnostic.SA1204.severity = none
 dotnet_diagnostic.SA1623.severity = silent
 dotnet_diagnostic.SA1615.severity = silent
+csharp_prefer_system_threading_lock = true:suggestion
+dotnet_diagnostic.MA0132.severity = error
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line

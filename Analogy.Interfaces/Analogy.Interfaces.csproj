@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net9.0-windows;net8.0-windows;net48</TargetFrameworks>
-		<VersionPrefix>8.0.0.0</VersionPrefix>
+		<VersionPrefix>8.1.0</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Description>Interfaces assembly for creating custom data providers for Analogy Log Viewer</Description>
@@ -26,7 +26,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Analogy.Interfaces.DataTypes" Version="2.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3" />
-		<PackageReference Include="System.Resources.Extensions" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
+		<PackageReference Include="System.Resources.Extensions" Version="9.0.4" />
 	</ItemGroup>
 </Project>

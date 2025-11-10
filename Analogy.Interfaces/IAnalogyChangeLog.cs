@@ -44,7 +44,7 @@ namespace Analogy.Interfaces
         public Uri? IssueUri { get; } = issueUri;
         public string Version { get; } = version;
 
-        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTime date, string? version) : this(changeInformation, changeLogType, name, date, null, version ?? "")
+        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTime date, string? version) : this(changeInformation, changeLogType, name, date, issueUri: null, version ?? "")
         {
         }
     }

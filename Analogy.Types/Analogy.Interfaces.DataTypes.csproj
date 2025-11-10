@@ -14,7 +14,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Lior Banai</Authors>
 		<Product>Analogy.Interfaces.DataTypes</Product>
-		<Copyright>Lior Banai 2024-2025</Copyright>
+		<Copyright>Lior Banai 2024-2026</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
 		<Company>Analogy.LogViewer</Company>
 		<NeutralLanguage>en-US</NeutralLanguage>

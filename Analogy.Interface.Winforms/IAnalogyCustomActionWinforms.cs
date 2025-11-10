@@ -1,6 +1,4 @@
 ﻿using Analogy.Interfaces.Winforms.DataTypes;
-using Analogy.Interfaces;
-using System;
 using System.Drawing;
 
 namespace Analogy.Interfaces.Winforms

@@ -1,7 +1,5 @@
 ﻿using Analogy.Interfaces.DataTypes;
 using System;
-using System.Drawing;
-
 namespace Analogy.Interfaces
 {
     public interface IAnalogyCustomAction

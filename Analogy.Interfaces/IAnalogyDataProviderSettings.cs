@@ -1,6 +1,5 @@
 ﻿using Analogy.Interfaces.DataTypes;
 using System;
-using System.Drawing;
 using System.Threading.Tasks;
 namespace Analogy.Interfaces
 {

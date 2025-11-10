@@ -1,11 +1,6 @@
-﻿using Analogy.Interfaces.Winforms.DataTypes;
-using Analogy.Interfaces.DataTypes;
-using System;
-using System.Collections.Generic;
+﻿using Analogy.Interfaces.DataTypes;
+using Analogy.Interfaces.Winforms.DataTypes;
 using System.Drawing;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Analogy.Interfaces.Winforms
 {

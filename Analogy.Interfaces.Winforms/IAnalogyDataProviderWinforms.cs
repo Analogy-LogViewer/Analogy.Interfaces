@@ -19,6 +19,7 @@ namespace Analogy.Interfaces.Winforms
         Image? ConnectedSmallImage { get; set; }
         Image? DisconnectedLargeImage { get; set; }
         Image? DisconnectedSmallImage { get; set; }
+        new IAnalogyOfflineDataProviderWinforms? FileOperationsHandler { get; }
     }
 
     public interface IAnalogyOfflineDataProviderWinforms : IAnalogyDataProviderWinforms, IAnalogyOfflineDataProvider

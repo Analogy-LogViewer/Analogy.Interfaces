@@ -1,4 +1,7 @@
-﻿using Analogy.Interfaces.DataTypes;
+﻿#pragma warning disable MA0048 // File name must match type name
+#pragma warning disable SA1611 // Element parameters should be documented
+
+using Analogy.Interfaces.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.IO;

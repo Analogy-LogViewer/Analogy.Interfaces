@@ -167,8 +167,11 @@ namespace Analogy.Interfaces
                 {
                     hashCode = (hashCode * 397) ^ (obj.FileName != null ? obj.FileName.GetHashCode() : 0);
                 }
+
                 if (CompareLineNumber)
-                { hashCode = (hashCode * 397) ^ (int)obj.LineNumber; }
+                {
+                    hashCode = (hashCode * 397) ^ (int)obj.LineNumber; 
+                }
 
                 if (CompareClass)
                 {

@@ -1,13 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFrameworks>net10.0;net9.0;net8.0;net48</TargetFrameworks>
+		<TargetFrameworks>net10.0-windows;net9.0-windows;net8.0-windows;net48</TargetFrameworks>
 		<VersionPrefix>8.1.0</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
+		<UseWindowsForms>true</UseWindowsForms>
 		<Description>Interfaces assembly for creating custom data providers for Analogy Log Viewer</Description>
 		<PackageReleaseNotes></PackageReleaseNotes>
-		<AssemblyName>Analogy.Interfaces</AssemblyName>
-		<RootNamespace>Analogy.Interfaces</RootNamespace>
+		<AssemblyName>Analogy.Interfaces.Winforms</AssemblyName>
+		<RootNamespace>Analogy.Interfaces.Winforms</RootNamespace>
 		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Lior Banai</Authors>
@@ -27,5 +28,8 @@
 		<PackageReference Include="Analogy.Interfaces.DataTypes" Version="2.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
 		<PackageReference Include="System.Resources.Extensions" Version="9.0.6" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj" />
 	</ItemGroup>
 </Project>

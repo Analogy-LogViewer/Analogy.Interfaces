@@ -12,7 +12,6 @@ namespace Analogy.Interfaces
         string Title { get; set; }
         string Message { get; set; }
         AnalogyLogLevel Level { get; set; }
-        Image? SmallImage { get; set; }
         int DurationSeconds { get; set; }
         Action? ActionOnClick { get; set; }
     }

@@ -1,30 +1,30 @@
-﻿using Analogy.Interfaces.DataTypes;
+﻿using Analogy.Interfaces.Winforms.DataTypes;
 using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Analogy.Interfaces
+namespace Analogy.Interfaces.Winforms
 {
-    public interface IAnalogyCustomUserControl
+    public interface IAnalogyCustomUserControlWinforms
     {
         UserControl UserControl { get; }
         Guid Id { get; set; }
 
         /// <summary>
-        /// 16x16 Image
+        /// 16x16 Image.
         /// </summary>
         Image? SmallImage { get; set; }
 
         /// <summary>
-        /// 32x32 Image
+        /// 32x32 Image.
         /// </summary>
         Image? LargeImage { get; set; }
         string Title { get; set; }
-        AnalogyToolTip? ToolTip { get; set; }
+        AnalogyToolTipWinforms? ToolTip { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="hostingControl">The Forms that holds the User Control</param>
         /// <param name="logger">The Analogy Log Viewer logger</param>

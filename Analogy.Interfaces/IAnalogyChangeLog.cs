@@ -5,22 +5,22 @@ namespace Analogy.Interfaces
     public interface IAnalogyChangeLog
     {
         /// <summary>
-        /// Information about this change
+        /// Information about this change.
         /// </summary>
         string ChangeInformation { get; }
 
         /// <summary>
-        /// Change type
+        /// Change type.
         /// </summary>
         AnalogChangeLogType ChangeLogType { get; }
 
         /// <summary>
-        /// The person who did this commit/fix/change
+        /// The person who did this commit/fix/change.
         /// </summary>
         string Name { get; }
 
         /// <summary>
-        /// Time of the commit
+        /// Time of the commit.
         /// </summary>
         DateTime Date { get; }
 
@@ -28,31 +28,24 @@ namespace Analogy.Interfaces
         string Version { get; }
     }
 
-    public class AnalogyChangeLog : IAnalogyChangeLog
+    public class AnalogyChangeLog(
+        string changeInformation,
+        AnalogChangeLogType changeLogType,
+        string name,
+        DateTime date,
+        Uri? issueUri,
+        string version)
+        : IAnalogyChangeLog
     {
-        public string ChangeInformation { get; }
-        public AnalogChangeLogType ChangeLogType { get; }
-        public string Name { get; }
-        public DateTime Date { get; }
-        public Uri? IssueUri { get; }
-        public string Version { get; }
-        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTime date, string? version)
-        {
-            ChangeInformation = changeInformation;
-            ChangeLogType = changeLogType;
-            Name = name;
-            Date = date;
-            Version = version ?? "";
-        }
+        public string ChangeInformation { get; } = changeInformation;
+        public AnalogChangeLogType ChangeLogType { get; } = changeLogType;
+        public string Name { get; } = name;
+        public DateTime Date { get; } = date;
+        public Uri? IssueUri { get; } = issueUri;
+        public string Version { get; } = version;
 
-        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTime date, Uri? issueUri, string version)
+        public AnalogyChangeLog(string changeInformation, AnalogChangeLogType changeLogType, string name, DateTime date, string? version) : this(changeInformation, changeLogType, name, date, null, version ?? "")
         {
-            ChangeInformation = changeInformation;
-            ChangeLogType = changeLogType;
-            Name = name;
-            Date = date;
-            IssueUri = issueUri;
-            Version = version;
         }
     }
 }

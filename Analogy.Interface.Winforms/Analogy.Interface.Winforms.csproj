@@ -26,10 +26,8 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Analogy.Interfaces.DataTypes" Version="2.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
-		<PackageReference Include="System.Resources.Extensions" Version="9.0.6" />
-	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\Analogy.Interfaces\Analogy.Interfaces.csproj" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.0-rc1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.10" />
+		<PackageReference Include="System.Resources.Extensions" Version="9.0.10" />
 	</ItemGroup>
 </Project>

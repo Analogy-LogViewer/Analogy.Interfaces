@@ -2,7 +2,8 @@ name: .NET Core Desktop
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - '**' # This wildcard matches all branches on a push event
   pull_request:
     branches: [ main ]
 

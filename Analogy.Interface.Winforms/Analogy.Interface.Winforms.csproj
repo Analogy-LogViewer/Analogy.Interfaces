@@ -9,10 +9,10 @@
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<AssemblyName>Analogy.Interfaces.Winforms</AssemblyName>
 		<RootNamespace>Analogy.Interfaces.Winforms</RootNamespace>
-		<PackageId>Analogy.LogViewer.Interfaces</PackageId>
+		<PackageId>Analogy.LogViewer.Interfaces.Winforms</PackageId>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Lior Banai</Authors>
-		<Product>Analogy.LogViewer.Interfaces</Product>
+		<Product>Analogy.LogViewer.Interfaces.Winforms</Product>
 		<Copyright>Lior Banai 2025-2026</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
 		<Company>Analogy.LogViewer</Company>

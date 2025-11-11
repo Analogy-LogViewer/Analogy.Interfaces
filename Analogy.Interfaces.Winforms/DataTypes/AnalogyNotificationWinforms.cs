@@ -3,15 +3,15 @@ using Analogy.Interfaces.DataTypes;
 using System;
 using System.Drawing;
 
-namespace Analogy.Interfaces.Winforms.DataTypes
+namespace Analogy.Interfaces.WinForms.DataTypes
 {
-    public class AnalogyNotificationWinforms : AnalogyNotification, IAnalogyNotificationWinforms
+    public class AnalogyNotificationWinForms : AnalogyNotification, IAnalogyNotificationWinForms
     {
         public Image? SmallImage { get; set; }
-        public AnalogyNotificationWinforms(Guid primaryFactoryId, string title, string message) : base(primaryFactoryId, title, message)
+        public AnalogyNotificationWinForms(Guid primaryFactoryId, string title, string message) : base(primaryFactoryId, title, message)
         {
         }
-        public AnalogyNotificationWinforms(Guid primaryFactoryId, string title, string message, AnalogyLogLevel level, Image? smallImage, int durationSeconds, Action? actionOnClick) : base(primaryFactoryId, title, message, level, durationSeconds, actionOnClick)
+        public AnalogyNotificationWinForms(Guid primaryFactoryId, string title, string message, AnalogyLogLevel level, Image? smallImage, int durationSeconds, Action? actionOnClick) : base(primaryFactoryId, title, message, level, durationSeconds, actionOnClick)
         {
             Level = level;
             SmallImage = smallImage;

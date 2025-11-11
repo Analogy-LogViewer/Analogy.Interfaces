@@ -1,7 +1,7 @@
-﻿namespace Analogy.Interfaces.Winforms
+﻿namespace Analogy.Interfaces.WinForms
 {
-    public interface INotificationReporterWinforms : INotificationReporter
+    public interface INotificationReporterWinForms : INotificationReporter
     {
-        void RaiseNotification(IAnalogyNotificationWinforms notification, bool showAsPopup);
+        void RaiseNotification(IAnalogyNotificationWinForms notification, bool showAsPopup);
     }
 }

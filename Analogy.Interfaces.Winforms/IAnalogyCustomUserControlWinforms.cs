@@ -1,12 +1,12 @@
-﻿using Analogy.Interfaces.Winforms.DataTypes;
+﻿using Analogy.Interfaces.WinForms.DataTypes;
 using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Analogy.Interfaces.Winforms
+namespace Analogy.Interfaces.WinForms
 {
-    public interface IAnalogyCustomUserControlWinforms
+    public interface IAnalogyCustomUserControlWinForms
     {
         UserControl UserControl { get; }
         Guid Id { get; set; }
@@ -21,7 +21,7 @@ namespace Analogy.Interfaces.Winforms
         /// </summary>
         Image? LargeImage { get; set; }
         string Title { get; set; }
-        AnalogyToolTipWinforms? ToolTip { get; set; }
+        AnalogyToolTipWinForms? ToolTip { get; set; }
 
         /// <summary>
         ///

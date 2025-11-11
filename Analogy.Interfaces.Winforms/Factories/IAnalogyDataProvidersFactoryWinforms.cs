@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Analogy.Interfaces.Winforms.Factories
+namespace Analogy.Interfaces.WinForms.Factories
 {
-    public interface IAnalogyDataProvidersFactoryWinforms: IAnalogyDataProvidersFactory
+    public interface IAnalogyDataProvidersFactoryWinForms: IAnalogyDataProvidersFactory
     {
-       new IEnumerable<IAnalogyDataProviderWinforms> DataProviders { get; }
+       new IEnumerable<IAnalogyDataProviderWinForms> DataProviders { get; }
     }
 }

@@ -2,9 +2,9 @@
 using System;
 using System.Drawing;
 
-namespace Analogy.Interfaces.Winforms
+namespace Analogy.Interfaces.WinForms
 {
-    public interface IAnalogyNotificationWinforms : IAnalogyNotification
+    public interface IAnalogyNotificationWinForms : IAnalogyNotification
     {
         Image? SmallImage { get; set; }
     }

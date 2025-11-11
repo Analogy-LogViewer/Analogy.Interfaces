@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Analogy.Interfaces.Winforms
+namespace Analogy.Interfaces.WinForms
 {
-    public interface IAnalogyExtensionUserControlWinforms : IAnalogyExtension
+    public interface IAnalogyExtensionUserControlWinForms : IAnalogyExtension
     {
         void NewMessage(IAnalogyLogMessage message, Guid logWindowsId);
         void NewMessages(List<IAnalogyLogMessage> messages, Guid logWindowsId);

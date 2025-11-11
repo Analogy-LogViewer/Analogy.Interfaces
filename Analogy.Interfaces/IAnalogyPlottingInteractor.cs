@@ -1,4 +1,6 @@
-﻿namespace Analogy.Interfaces
+﻿using Analogy.Interfaces.DataTypes;
+
+namespace Analogy.Interfaces
 {
     public interface IAnalogyPlottingInteractor
     {

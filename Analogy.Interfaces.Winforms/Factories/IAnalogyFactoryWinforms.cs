@@ -1,9 +1,9 @@
 ﻿using Analogy.Interfaces.Factories;
 using System.Drawing;
 
-namespace Analogy.Interfaces.Winforms.Factories
+namespace Analogy.Interfaces.WinForms.Factories
 {
-    public interface IAnalogyFactoryWinforms : IAnalogyFactory
+    public interface IAnalogyFactoryWinForms : IAnalogyFactory
     {
         /// <summary>
         /// 32x32 image for the Factory (can be null).

@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Analogy.Interfaces.Winforms.Factories
+namespace Analogy.Interfaces.WinForms.Factories
 {
-    public interface IAnalogyCustomActionsFactoryWinforms : IAnalogyCustomActionsFactory
+    public interface IAnalogyCustomActionsFactoryWinForms : IAnalogyCustomActionsFactory
     {
-        new IEnumerable<IAnalogyCustomActionWinforms> Actions { get; }
+        new IEnumerable<IAnalogyCustomActionWinForms> Actions { get; }
     }
 }

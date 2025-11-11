@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Analogy.Interfaces
+namespace Analogy.Interfaces.DataTypes
 {
     public interface ILogParserSettings
     {

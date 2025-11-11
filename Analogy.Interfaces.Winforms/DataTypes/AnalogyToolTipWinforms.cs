@@ -1,9 +1,9 @@
 ﻿using Analogy.Interfaces.DataTypes;
 using System.Drawing;
 
-namespace Analogy.Interfaces.Winforms.DataTypes
+namespace Analogy.Interfaces.WinForms.DataTypes
 {
-    public record AnalogyToolTipWinforms(
+    public record AnalogyToolTipWinForms(
         string Title,
         string Content,
         string Footer,

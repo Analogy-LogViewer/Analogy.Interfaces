@@ -1,10 +1,10 @@
-﻿using Analogy.Interfaces.Winforms.DataTypes;
+﻿using Analogy.Interfaces.WinForms.DataTypes;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Analogy.Interfaces.Winforms
+namespace Analogy.Interfaces.WinForms
 {
-    public interface IAnalogyDataProviderSettingsWinforms : IAnalogyDataProviderSettings
+    public interface IAnalogyDataProviderSettingsWinForms : IAnalogyDataProviderSettings
     {
         /// <summary>
         /// The user control to load. Must be created in the CreateUserControl method
@@ -20,6 +20,6 @@ namespace Analogy.Interfaces.Winforms
         /// 32x32 icon to show in the Analogy UI.
         /// </summary>
         Image? LargeImage { get; set; }
-        new AnalogyToolTipWinforms? ToolTip { get; set; }
+        new AnalogyToolTipWinForms? ToolTip { get; set; }
     }
 }

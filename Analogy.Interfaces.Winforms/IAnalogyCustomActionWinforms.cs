@@ -1,9 +1,9 @@
-﻿using Analogy.Interfaces.Winforms.DataTypes;
+﻿using Analogy.Interfaces.WinForms.DataTypes;
 using System.Drawing;
 
-namespace Analogy.Interfaces.Winforms
+namespace Analogy.Interfaces.WinForms
 {
-    public interface IAnalogyCustomActionWinforms : IAnalogyCustomAction
+    public interface IAnalogyCustomActionWinForms : IAnalogyCustomAction
     {
         /// <summary>
         /// 16x16 Image.
@@ -15,6 +15,6 @@ namespace Analogy.Interfaces.Winforms
         /// </summary>
         Image? LargeImage { get; set; }
 
-        new AnalogyToolTipWinforms? ToolTip { get; set; }
+        new AnalogyToolTipWinForms? ToolTip { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Analogy.Interfaces.DataTypes;
+using System;
 
 namespace Analogy.Interfaces
 {

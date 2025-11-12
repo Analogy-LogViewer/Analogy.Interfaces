@@ -1,9 +1,8 @@
-﻿using Analogy.Interfaces.DataTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace Analogy.Interfaces
+namespace Analogy.Interfaces.DataTypes
 {
     public class LogMessageArgs : EventArgs
     {

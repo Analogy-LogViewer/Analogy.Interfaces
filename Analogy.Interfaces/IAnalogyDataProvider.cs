@@ -1,7 +1,9 @@
-﻿using Analogy.Interfaces.DataTypes;
+﻿#pragma warning disable MA0048 // File name must match type name
+#pragma warning disable SA1611 // Element parameters should be documented
+
+using Analogy.Interfaces.DataTypes;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,11 +41,6 @@ namespace Analogy.Interfaces
         /// indicate that the data provider will supply coloring logic per row/message
         /// </summary>
         bool UseCustomColors { get; set; }
-
-        /// <summary>
-        /// get the colors to use in the data grid of Analogy
-        /// </summary>
-        (Color BackgroundColor, Color ForegroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
 
         /// <summary>
         /// When implemented, return replacement titles/headers for the data grid
@@ -97,26 +94,12 @@ namespace Analogy.Interfaces
         /// </summary>
         /// <returns></returns>
         Task ShutDown();
-        Image? ConnectedLargeImage { get; set; }
-        Image? ConnectedSmallImage { get; set; }
-        Image? DisconnectedLargeImage { get; set; }
-        Image? DisconnectedSmallImage { get; set; }
     }
 
     public interface IAnalogyOfflineDataProvider : IAnalogyDataProvider
     {
         event EventHandler<AnalogyStartedProcessingArgs> ProcessingStarted;
         event EventHandler<AnalogyEndProcessingArgs> ProcessingFinished;
-
-        /// <summary>
-        /// Optional 32x32 Image (or null)
-        /// </summary>
-        Image? LargeImage { get; set; }
-
-        /// <summary>
-        /// Optional 16x16 Image (or null)
-        /// </summary>
-        Image? SmallImage { get; set; }
         bool DisableFilePoolingOption { get; }
         bool CanSaveToLogFile { get; }
         string FileOpenDialogFilters { get; }
@@ -134,16 +117,6 @@ namespace Analogy.Interfaces
     {
         event EventHandler<AnalogyStartedProcessingArgs> ProcessingStarted;
         event EventHandler<AnalogyEndProcessingArgs> ProcessingFinished;
-
-        /// <summary>
-        /// Optional 32x32 Image (or null)
-        /// </summary>
-        Image? LargeImage { get; set; }
-
-        /// <summary>
-        /// Optional 16x16 Image (or null)
-        /// </summary>
-        Image? SmallImage { get; set; }
         bool DisableFilePoolingOption { get; }
 
         /// <summary>
@@ -154,32 +127,13 @@ namespace Analogy.Interfaces
     }
     public interface IAnalogySingleDataProvider : IAnalogyDataProvider
     {
-        /// <summary>
-        /// Optional 32x32 Image (or null)
-        /// </summary>
-        Image? LargeImage { get; set; }
-
-        /// <summary>
-        /// Optional 16x16 Image (or null)
-        /// </summary>
-        Image? SmallImage { get; set; }
         Task<IEnumerable<IAnalogyLogMessage>> Execute(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
     }
 
     public interface IAnalogyProviderSidePagingProvider : IAnalogyDataProvider
     {
         /// <summary>
-        /// Optional 32x32 Image (or null)
-        /// </summary>
-        Image? LargeImage { get; set; }
-
-        /// <summary>
-        /// Optional 16x16 Image (or null)
-        /// </summary>
-        Image? SmallImage { get; set; }
-
-        /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pageNumber">The page number</param>
         /// <param name="pageCount">Number of messages per page</param>

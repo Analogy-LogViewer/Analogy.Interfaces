@@ -1,50 +1,24 @@
-﻿using Analogy.Interfaces.DataTypes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Analogy.Interfaces
+namespace Analogy.Interfaces.DataTypes
 {
-    public class AnalogyLogMessageCustomEqualityOptedInComparer : IEqualityComparer<IAnalogyLogMessage>
+    public class AnalogyLogMessageCustomEqualityComparer : IEqualityComparer<IAnalogyLogMessage>
     {
-        public bool CompareDate { get; set; }
-        public bool CompareId { get; set; }
-        public bool CompareText { get; set; }
-        public bool CompareSource { get; set; }
-        public bool CompareModule { get; set; }
-        public bool CompareMethodName { get; set; }
-        public bool CompareFileName { get; set; }
-        public bool CompareUser { get; set; }
-        public bool CompareLineNumber { get; set; }
-        public bool CompareProcessId { get; set; }
-        public bool CompareThread { get; set; }
-        public bool CompareLevel { get; set; }
-        public bool CompareClass { get; set; }
-        public bool CompareParameters { get; set; }
-
-        public AnalogyLogMessageCustomEqualityOptedInComparer()
-        {
-        }
-
-        public AnalogyLogMessageCustomEqualityOptedInComparer(bool compareDate, bool compareId, bool compareText,
-            bool compareSource, bool compareModule, bool compareMethodName, bool compareFileName,
-            bool compareUser, bool compareLineNumber, bool compareProcessId, bool compareThread, bool compareLevel,
-            bool compareClass, bool compareParameters)
-        {
-            CompareDate = compareDate;
-            CompareId = compareId;
-            CompareText = compareText;
-            CompareSource = compareSource;
-            CompareModule = compareModule;
-            CompareMethodName = compareMethodName;
-            CompareFileName = compareFileName;
-            CompareUser = compareUser;
-            CompareLineNumber = compareLineNumber;
-            CompareProcessId = compareProcessId;
-            CompareThread = compareThread;
-            CompareLevel = compareLevel;
-            CompareClass = compareClass;
-            CompareParameters = compareParameters;
-        }
+        public bool CompareDate { get; set; } = true;
+        public bool CompareId { get; set; } = true;
+        public bool CompareText { get; set; } = true;
+        public bool CompareSource { get; set; } = true;
+        public bool CompareModule { get; set; } = true;
+        public bool CompareMethodName { get; set; } = true;
+        public bool CompareFileName { get; set; } = true;
+        public bool CompareUser { get; set; } = true;
+        public bool CompareLineNumber { get; set; } = true;
+        public bool CompareProcessId { get; set; } = true;
+        public bool CompareThread { get; set; } = true;
+        public bool CompareLevel { get; set; } = true;
+        public bool CompareClass { get; set; } = true;
+        public bool CompareParameters { get; set; } = true;
 
         public bool Equals(IAnalogyLogMessage? x, IAnalogyLogMessage? y)
         {
@@ -167,8 +141,11 @@ namespace Analogy.Interfaces
                 {
                     hashCode = (hashCode * 397) ^ (obj.FileName != null ? obj.FileName.GetHashCode() : 0);
                 }
+
                 if (CompareLineNumber)
-                { hashCode = (hashCode * 397) ^ (int)obj.LineNumber; }
+                {
+                    hashCode = (hashCode * 397) ^ (int)obj.LineNumber; 
+                }
 
                 if (CompareClass)
                 {
@@ -196,7 +173,7 @@ namespace Analogy.Interfaces
                 }
                 if (CompareParameters)
                 {
-                    if (obj.AdditionalProperties != null && obj.AdditionalProperties.Count > 0)
+                    if (obj.AdditionalProperties is { Count: > 0 })
                     {
                         foreach (var parameter in obj.AdditionalProperties)
                         {

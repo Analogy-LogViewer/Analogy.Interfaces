@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Analogy.Interfaces.DataTypes
+namespace Analogy.Interfaces
 {
     public interface IAnalogyDownloadInformation
     {
         /// <summary>
-        /// ID of the primary Factory it belongs to
+        /// ID of the primary Factory it belongs to.
         /// </summary>
         Guid FactoryId { get; set; }
 
         /// <summary>
-        /// The component Title/Name
+        /// The component Title/Name.
         /// </summary>
         string Name { get; set; }
 
@@ -37,7 +37,7 @@ namespace Analogy.Interfaces.DataTypes
         string? LatestVersionNumber { get; set; }
 
         /// <summary>
-        ///     Returns version of the application currently installed on the user's PC.
+        /// Returns version of the application currently installed on the user's PC.
         /// </summary>
         Version InstalledVersion { get; }
         string InstalledVersionNumber { get; }
@@ -48,20 +48,19 @@ namespace Analogy.Interfaces.DataTypes
         bool Mandatory { get; set; }
 
         /// <summary>
-        ///Command line arguments used by Installer.
+        /// Command line arguments used by Installer.
         /// </summary>
         string? InstallerArgs { get; set; }
 
         /// <summary>
-        ///Checksum of the update file.
+        /// Checksum of the update file.
         /// </summary>
         string? Checksum { get; set; }
 
         /// <summary>
-        ///Hash algorithm that generated the checksum.
+        /// Hash algorithm that generated the checksum.
         /// </summary>
         string? HashingAlgorithm { get; set; }
-
         Task<bool> CheckVersion();
     }
 }

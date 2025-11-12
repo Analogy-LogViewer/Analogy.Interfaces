@@ -1,4 +1,4 @@
-﻿namespace Analogy.Interfaces
+﻿namespace Analogy.Interfaces.DataTypes
 {
     public enum AnalogyLogMessageUpdaterEventStatus
     {

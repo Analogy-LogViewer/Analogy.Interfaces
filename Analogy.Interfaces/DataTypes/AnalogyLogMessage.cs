@@ -1,12 +1,11 @@
 ﻿#pragma warning disable SA1402
-using Analogy.Interfaces.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace Analogy.Interfaces
+namespace Analogy.Interfaces.DataTypes
 {
     public class AnalogyLogMessage : IEquatable<AnalogyLogMessage>, IAnalogyLogMessage
     {

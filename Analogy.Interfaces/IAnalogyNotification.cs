@@ -1,18 +1,17 @@
-﻿using System;
-using System.Drawing;
+﻿using Analogy.Interfaces.DataTypes;
+using System;
 
 namespace Analogy.Interfaces
 {
     public interface IAnalogyNotification
     {
         /// <summary>
-        /// ID of the primary Factory it belongs to
+        /// ID of the primary Factory it belongs to.
         /// </summary>
         Guid PrimaryFactoryId { get; set; }
         string Title { get; set; }
         string Message { get; set; }
         AnalogyLogLevel Level { get; set; }
-        Image? SmallImage { get; set; }
         int DurationSeconds { get; set; }
         Action? ActionOnClick { get; set; }
     }

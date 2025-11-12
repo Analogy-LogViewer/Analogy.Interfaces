@@ -1,4 +1,7 @@
-﻿namespace Analogy.Interfaces.DataTypes
+﻿using System;
+using System.Collections.Generic;
+
+namespace Analogy.Interfaces.DataTypes
 {
     public interface IAnalogyLogMessage
     {

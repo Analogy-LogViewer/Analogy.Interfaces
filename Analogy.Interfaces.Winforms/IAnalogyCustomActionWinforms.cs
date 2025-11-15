@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Analogy.Interfaces.WinForms
 {
-    public interface IAnalogyCustomActionWinForms : IAnalogyCustomAction
+    public interface IAnalogyCustomActionWinForms : IAnalogyCustomAction, IAnalogyCustomActionImages
     {
         /// <summary>
         /// 16x16 Image.
@@ -14,7 +14,5 @@ namespace Analogy.Interfaces.WinForms
         /// 32x32 Image.
         /// </summary>
         Image? LargeImage { get; set; }
-
-        new AnalogyToolTipWinForms? ToolTip { get; set; }
     }
 }

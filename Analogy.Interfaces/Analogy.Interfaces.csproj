@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net10.0;net9.0;net8.0;net48</TargetFrameworks>
-		<VersionPrefix>9.0.1</VersionPrefix>
+		<VersionPrefix>9.0.2</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Description>Interfaces assembly for creating custom data providers for Analogy Log Viewer</Description>
 		<PackageReleaseNotes></PackageReleaseNotes>

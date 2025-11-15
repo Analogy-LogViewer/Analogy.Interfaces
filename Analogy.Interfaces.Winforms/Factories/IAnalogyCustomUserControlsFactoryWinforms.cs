@@ -10,6 +10,6 @@ namespace Analogy.Interfaces.WinForms.Factories
         /// </summary>
         Guid FactoryId { get; set; }
         string Title { get; set; }
-        new IEnumerable<IAnalogyCustomUserControlWinForms> UserControls { get; }
+        IEnumerable<IAnalogyCustomUserControlWinForms> UserControls { get; }
     }
 }

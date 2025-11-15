@@ -4,6 +4,7 @@
 using Analogy.Interfaces.DataTypes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -41,6 +42,11 @@ namespace Analogy.Interfaces
         /// indicate that the data provider will supply coloring logic per row/message
         /// </summary>
         bool UseCustomColors { get; set; }
+
+        /// <summary>
+        /// get the colors to use in the data grid of Analogy.
+        /// </summary>
+        (Color BackgroundColor, Color ForegroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
 
         /// <summary>
         /// When implemented, return replacement titles/headers for the data grid

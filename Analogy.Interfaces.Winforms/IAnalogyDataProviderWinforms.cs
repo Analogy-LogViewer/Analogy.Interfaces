@@ -4,25 +4,15 @@ using System.Drawing;
 
 namespace Analogy.Interfaces.WinForms
 {
-    public interface IAnalogyDataProviderWinForms : IAnalogyDataProvider
-    {
-        /// <summary>
-        /// get the colors to use in the data grid of Analogy.
-        /// </summary>
-        (Color BackgroundColor, Color ForegroundColor) GetColorForMessage(IAnalogyLogMessage logMessage);
-        new AnalogyToolTipWinForms? ToolTip { get; set; }
-    }
-
-    public interface IAnalogyRealTimeDataProviderWinForms : IAnalogyDataProviderWinForms, IAnalogyRealTimeDataProvider
+    public interface IAnalogyRealTimeDataProviderWinForms : IAnalogyRealTimeDataProvider, IAnalogyStreamingDataProviderImages
     {
         Image? ConnectedLargeImage { get; set; }
         Image? ConnectedSmallImage { get; set; }
         Image? DisconnectedLargeImage { get; set; }
         Image? DisconnectedSmallImage { get; set; }
-        new IAnalogyOfflineDataProviderWinForms? FileOperationsHandler { get; }
     }
 
-    public interface IAnalogyOfflineDataProviderWinForms : IAnalogyDataProviderWinForms, IAnalogyOfflineDataProvider
+    public interface IAnalogyOfflineDataProviderWinForms : IAnalogyOfflineDataProvider, IAnalogyDataProviderImages
     {
         /// <summary>
         /// Optional 32x32 Image (or null).
@@ -35,7 +25,7 @@ namespace Analogy.Interfaces.WinForms
         Image? SmallImage { get; set; }
     }
 
-    public interface IAnalogySingleFileDataProviderWinForms : IAnalogyDataProviderWinForms, IAnalogySingleFileDataProvider
+    public interface IAnalogySingleFileDataProviderWinForms : IAnalogySingleFileDataProvider, IAnalogyDataProviderImages
     {
         /// <summary>
         /// Optional 32x32 Image (or null).
@@ -47,7 +37,7 @@ namespace Analogy.Interfaces.WinForms
         /// </summary>
         Image? SmallImage { get; set; }
     }
-    public interface IAnalogySingleDataProviderWinForms : IAnalogyDataProviderWinForms, IAnalogySingleDataProvider
+    public interface IAnalogySingleDataProviderWinForms : IAnalogySingleDataProvider, IAnalogyDataProviderImages
     {
         /// <summary>
         /// Optional 32x32 Image (or null).
@@ -60,7 +50,7 @@ namespace Analogy.Interfaces.WinForms
         Image? SmallImage { get; set; }
     }
 
-    public interface IAnalogyProviderSidePagingProviderWinForms : IAnalogyDataProviderWinForms, IAnalogyProviderSidePagingProvider
+    public interface IAnalogyProviderSidePagingProviderWinForms : IAnalogyProviderSidePagingProvider, IAnalogyDataProviderImages
     {
         /// <summary>
         /// Optional 32x32 Image (or null).

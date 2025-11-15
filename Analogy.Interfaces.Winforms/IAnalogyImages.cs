@@ -1,8 +1,43 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 
 namespace Analogy.Interfaces
 {
+    public interface IAnalogyCustomActionImages
+    {
+        Image? GetCustomActionSmallImage(Guid componentId);
+        Image? GetCustomActionLargeImage(Guid componentId);
+        Image? GetCustomActionToolTipSmallImage(Guid componentId);
+        Image? GetCustomActionToolTipLargeImage(Guid componentId);
+    }
+    public interface IAnalogyDataProviderSettingsImages
+    {
+        Image? GetDataProviderSettingsSmallImage();
+        Image? GetDataProviderSettingsLargeImage();
+        Image? GetDataProviderSettingsToolTipSmallImage();
+        Image? GetDataProviderSettingsToolTipLargeImage();
+    }
+    public interface IAnalogyDataProviderImages
+    {
+        Image? GetDataProviderSmallImage();
+        Image? GetDataProviderLargeImage();
+        Image? GetDataProviderToolTipSmallImage();
+        Image? GetDataProviderToolTipLargeImage();
+    }
+    public interface IAnalogyDataFactoryImages
+    {
+        Image? GetDataFactorySmallImage(Guid componentId);
+        Image? GetDataFacoryLargeImage(Guid componentId);
+    }
+    public interface IAnalogyStreamingDataProviderImages
+    {
+        Image GetStreamingConnectedLargeImage();
+        Image GetStreamingConnectedSmallImage();
+        Image GetStreamingDisconnectedLargeImage();
+        Image GetStreamingDisconnectedSmallImage();
+    }
+
     public interface IAnalogyImages
     {
         Image GetLargeBookmarksImage(Guid analogyComponentId);
@@ -25,9 +60,5 @@ namespace Analogy.Interfaces
         Image GetSmallCombineLogsImage(Guid analogyComponentId);
         Image GetLargeCompareLogsImage(Guid analogyComponentId);
         Image GetSmallCompareLogsImage(Guid analogyComponentId);
-        Image GetRealTimeConnectedLargeImage(Guid analogyComponentId);
-        Image GetRealTimeConnectedSmallImage(Guid analogyComponentId);
-        Image GetRealTimeDisconnectedLargeImage(Guid analogyComponentId);
-        Image GetRealTimeDisconnectedSmallImage(Guid analogyComponentId);
     }
 }

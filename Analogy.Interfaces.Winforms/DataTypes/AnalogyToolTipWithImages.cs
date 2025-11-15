@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Analogy.Interfaces.WinForms.DataTypes
 {
-    public record AnalogyToolTipWinForms(
+    public record AnalogyToolTipWithImages(
         string Title,
         string Content,
         string Footer,

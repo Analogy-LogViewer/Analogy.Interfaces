@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Analogy.Interfaces.WinForms.Factories
 {
-    public interface IAnalogyFactoryWinForms : IAnalogyFactory, IAnalogyDataFactoryImages
+    public interface IAnalogyFactoryWinForms : IAnalogyFactory
     {
         /// <summary>
         /// 32x32 image for the Factory (can be null).

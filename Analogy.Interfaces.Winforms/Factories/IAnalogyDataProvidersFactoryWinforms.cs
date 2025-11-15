@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Analogy.Interfaces.WinForms.Factories
 {
-    public interface IAnalogyDataProvidersFactoryWinForms : IAnalogyDataProvidersFactory, IAnalogyDataFactoryImages
+    public interface IAnalogyDataProvidersFactoryWinForms : IAnalogyDataProvidersFactory, IAnalogyDataProvidersFactoryImages
     {
     }
 }

@@ -25,7 +25,7 @@ namespace Analogy.Interfaces
         Image? GetDataProviderToolTipSmallImage();
         Image? GetDataProviderToolTipLargeImage();
     }
-    public interface IAnalogyDataFactoryImages
+    public interface IAnalogyDataProvidersFactoryImages
     {
         Image? GetDataFactorySmallImage(Guid componentId);
         Image? GetDataFacoryLargeImage(Guid componentId);

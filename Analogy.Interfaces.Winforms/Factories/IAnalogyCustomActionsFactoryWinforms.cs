@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Analogy.Interfaces.WinForms.Factories
 {
-    public interface IAnalogyCustomActionsFactoryWinForms : IAnalogyCustomActionsFactory, IAnalogyCustomActionImages
+    public interface IAnalogyCustomActionsFactoryWinForms : IAnalogyCustomActionsFactory, IAnalogyCustomActionsFactoryImages
     {
     }
 }

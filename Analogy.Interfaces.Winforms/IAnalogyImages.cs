@@ -6,6 +6,13 @@ namespace Analogy.Interfaces
 {
     public interface IAnalogyCustomActionImages
     {
+        Image? GetCustomActionSmallImage();
+        Image? GetCustomActionLargeImage();
+        Image? GetCustomActionToolTipSmallImage();
+        Image? GetCustomActionToolTipLargeImage();
+    }
+    public interface IAnalogyCustomActionsFactoryImages
+    {
         Image? GetCustomActionSmallImage(Guid componentId);
         Image? GetCustomActionLargeImage(Guid componentId);
         Image? GetCustomActionToolTipSmallImage(Guid componentId);

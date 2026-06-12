@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-windows;net9.0-windows;net8.0-windows;net48</TargetFrameworks>
-		<VersionPrefix>9.0.5</VersionPrefix>
+		<VersionPrefix>9.0.6</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<UseWindowsForms>true</UseWindowsForms>
 		<OutputType>Library</OutputType>
@@ -25,7 +25,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.3" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.6" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Update="Microsoft.SourceLink.GitHub" Version="10.0.300" />

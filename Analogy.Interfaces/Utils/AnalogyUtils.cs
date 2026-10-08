@@ -7,6 +7,15 @@ namespace Analogy.Interfaces.Utils
 {
     public static class AnalogyUtils
     {
-        public static IEnumerable<AnalogyLogLevel> AllLogLevels { get; } = Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>();
+        public static IEnumerable<AnalogyLogLevel> AllLogLevels { get; } = GetLevels();
+
+        private static IEnumerable<AnalogyLogLevel> GetLevels()
+        {
+#if NET
+            return Enum.GetValues<AnalogyLogLevel>();
+#else
+            return Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>();
+#endif
+        }
     }
 }

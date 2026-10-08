@@ -15,6 +15,7 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<Company>Analogy.LogViewer</Company>
 		<NeutralLanguage>en-US</NeutralLanguage>
+		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">
@@ -23,9 +24,9 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.9" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.SourceLink.GitHub" Version="10.0.300" />
+	  <PackageReference Update="Microsoft.SourceLink.GitHub" Version="10.0.401" />
 	</ItemGroup>
 </Project>

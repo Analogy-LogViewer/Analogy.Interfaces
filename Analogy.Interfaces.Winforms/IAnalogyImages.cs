@@ -1,4 +1,5 @@
-﻿using System;
+﻿#pragma warning disable MA0048 // File name must match type name
+using System;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -32,6 +33,7 @@ namespace Analogy.Interfaces
         Image? GetDataProviderToolTipSmallImage();
         Image? GetDataProviderToolTipLargeImage();
     }
+
     public interface IAnalogyDataProvidersFactoryImages
     {
         Image? GetDataFactorySmallImage(Guid componentId);

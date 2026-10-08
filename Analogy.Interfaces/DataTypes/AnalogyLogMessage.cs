@@ -1,4 +1,5 @@
-﻿#pragma warning disable SA1402
+﻿#pragma warning disable MA0048 // File name must match type name
+#pragma warning disable SA1402
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -126,10 +127,17 @@ namespace Analogy.Interfaces.DataTypes
         static AnalogyLogMessage()
         {
             LogMessagePropertyNames = new Dictionary<string, AnalogyLogMessagePropertyName>(StringComparer.InvariantCultureIgnoreCase);
+#if NET
+            foreach (var property in Enum.GetValues<AnalogyLogMessagePropertyName>())
+            {
+                LogMessagePropertyNames.Add(property.ToString(), property);
+            }
+#else
             foreach (var property in Enum.GetValues(typeof(AnalogyLogMessagePropertyName)).Cast<AnalogyLogMessagePropertyName>())
             {
                 LogMessagePropertyNames.Add(property.ToString(), property);
             }
+#endif
         }
         public AnalogyLogMessage()
         {

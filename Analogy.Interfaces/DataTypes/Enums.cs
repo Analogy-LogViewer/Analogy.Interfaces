@@ -1,4 +1,5 @@
-﻿namespace Analogy.Interfaces.DataTypes
+﻿#pragma warning disable MA0048 // File name must match type name
+namespace Analogy.Interfaces.DataTypes
 {
     public enum AnalogyLogMessageUpdaterEventStatus
     {
@@ -16,23 +17,9 @@
     /// </summary>
     public enum AnalogyLogClass
     {
-        /// <summary>
-        /// Most log events
-        /// </summary>
         General,
-
-        /// <summary>
-        /// Security logs (audit trails)
-        /// </summary>
         Security,
-
-        /// <summary>
-        /// Hazard issues
-        /// </summary>
         Hazard,
-        //
-        // Summary:
-        //Protected Health Information
         PHI,
     }
 

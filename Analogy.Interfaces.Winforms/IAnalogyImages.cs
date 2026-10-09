@@ -1,6 +1,5 @@
 ﻿#pragma warning disable MA0048 // File name must match type name
 using System;
-using System.ComponentModel;
 using System.Drawing;
 
 namespace Analogy.Interfaces

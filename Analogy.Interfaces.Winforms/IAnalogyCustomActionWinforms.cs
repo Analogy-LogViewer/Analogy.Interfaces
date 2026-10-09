@@ -1,5 +1,4 @@
-﻿using Analogy.Interfaces.WinForms.DataTypes;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Analogy.Interfaces.WinForms
 {

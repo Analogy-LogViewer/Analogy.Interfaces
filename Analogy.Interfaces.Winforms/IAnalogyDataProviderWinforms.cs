@@ -1,5 +1,4 @@
-﻿using Analogy.Interfaces.DataTypes;
-using Analogy.Interfaces.WinForms.DataTypes;
+﻿#pragma warning disable MA0048 // File name must match type name
 using System.Drawing;
 
 namespace Analogy.Interfaces.WinForms

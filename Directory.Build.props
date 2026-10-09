@@ -27,7 +27,6 @@
 		<Optimize>true</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
-		<!--<SourceRoot Include="$(MSBuildThisFileDirectory)/" />-->
 		<AdditionalFiles Include="$(MSBuildThisFileDirectory)/BannedSymbols.txt" Link="Properties/BannedSymbols.txt" />
 	</ItemGroup>
 </Project>

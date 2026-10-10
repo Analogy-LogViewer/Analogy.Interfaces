@@ -26,7 +26,7 @@ namespace Analogy.Interfaces.WinForms
         /// <summary>
         /// </summary>
         /// <param name="hostingControl">The Forms that holds the User Control.</param>
-        /// <param name="logger">The Analogy Log Viewer logger</param>
+        /// <param name="logger">The Analogy Log Viewer logger.</param>
         /// <returns></returns>
         Task InitializeUserControl(Control hostingControl, Microsoft.Extensions.Logging.ILogger logger);
         Task UserControlRemoved();

@@ -29,17 +29,17 @@ namespace Analogy.Interfaces
         string? OptionalTitle { get; set; }
 
         /// <summary>
-        /// called when the message is open in Analogy in full view mode (detailed view). Should not throw exception
+        /// called when the message is open in Analogy in full view mode (detailed view). Should not throw exception.
         /// </summary>
         void MessageOpened(IAnalogyLogMessage message);
 
         /// <summary>
-        /// called when the message is selected/focused in Analogy list view. Should not throw exception
+        /// called when the message is selected/focused in Analogy list view. Should not throw exception.
         /// </summary>
         void MessageSelected(IAnalogyLogMessage message);
 
         /// <summary>
-        /// indicate that the data provider will supply coloring logic per row/message
+        /// indicate that the data provider will supply coloring logic per row/message.
         /// </summary>
         bool UseCustomColors { get; set; }
 
@@ -51,19 +51,19 @@ namespace Analogy.Interfaces
         /// <summary>
         /// When implemented, return replacement titles/headers for the data grid
         /// OriginalHeader options are:
-        /// DataProvider,Date,Text,Source,Level,Class,Category,User,Module,Audit,ProcessID,ThreadID
+        /// DataProvider,Date,Text,Source,Level,Class,Category,User,Module,Audit,ProcessID,ThreadID.
         /// </summary>
         /// <returns></returns>
         IEnumerable<(string OriginalHeader, string ReplacementHeader)> GetReplacementHeaders();
 
         /// <summary>
-        /// When implemented, return list of Default columns to hide in  he UI
+        /// When implemented, return list of Default columns to hide in  he UI.
         /// </summary>
         /// <returns></returns>
         IEnumerable<AnalogyLogMessagePropertyName> HideExistingColumns();
 
         /// <summary>
-        /// list of column fields to hide (may by properties in the Additional Properties dictionary of the Message)
+        /// list of column fields to hide (may by properties in the Additional Properties dictionary of the Message).
         /// </summary>
         /// <returns></returns>
         IEnumerable<string> HideAdditionalColumns();
@@ -84,19 +84,19 @@ namespace Analogy.Interfaces
         Task<bool> CanStartReceiving();
 
         /// <summary>
-        /// start receiving. called when the hosting window/tab is opening 
+        /// start receiving. called when the hosting window/tab is opening.
         /// </summary>
         /// <returns></returns>
         Task StartReceiving();
 
         /// <summary>
-        /// pause/stop receiving. called when the hosting window/tab is closed 
+        /// pause/stop receiving. called when the hosting window/tab is closed.
         /// </summary>
         /// <returns></returns>
         Task StopReceiving();
 
         /// <summary>
-        /// called before application exits
+        /// called before application exits.
         /// </summary>
         /// <returns></returns>
         Task ShutDown();
@@ -126,7 +126,7 @@ namespace Analogy.Interfaces
         bool DisableFilePoolingOption { get; }
 
         /// <summary>
-        /// Full path of the file to open
+        /// Full path of the file to open.
         /// </summary>
         string FileNamePath { get; set; }
         Task<IEnumerable<IAnalogyLogMessage>> Process(CancellationToken token, ILogMessageCreatedHandler messagesHandler);
@@ -141,12 +141,12 @@ namespace Analogy.Interfaces
         /// <summary>
         ///
         /// </summary>
-        /// <param name="pageNumber">The page number</param>
-        /// <param name="pageCount">Number of messages per page</param>
-        /// <param name="filterCriteria">The filter criteria</param>
-        /// <param name="token">CancellationToken</param>
-        /// <param name="messagesHandler">messagesHandler</param>
-        /// <returns>The filtered messages</returns>
+        /// <param name="pageNumber">The page number.</param>
+        /// <param name="pageCount">Number of messages per page.</param>
+        /// <param name="filterCriteria">The filter criteria.</param>
+        /// <param name="token">CancellationToken.</param>
+        /// <param name="messagesHandler">messagesHandler.</param>
+        /// <returns>The filtered messages.</returns>
         Task<IEnumerable<IAnalogyLogMessage>> FetchMessages(int pageNumber, int pageCount, FilterCriteria filterCriteria, CancellationToken token, ILogMessageCreatedHandler messagesHandler);
         Task ShutdownAsync(Microsoft.Extensions.Logging.ILogger logger);
     }

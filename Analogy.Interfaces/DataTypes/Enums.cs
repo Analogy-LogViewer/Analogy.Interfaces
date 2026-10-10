@@ -41,7 +41,7 @@ namespace Analogy.Interfaces.DataTypes
     }
 
     /// <summary>
-    /// The type of data in the RawText Field
+    /// The type of data in the RawText Field.
     /// </summary>
     public enum AnalogyRowTextType
     {

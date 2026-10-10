@@ -6,7 +6,7 @@ namespace Analogy.Interfaces.WinForms
     public interface IAnalogyDataProviderSettingsWinForms : IAnalogyDataProviderSettings, IAnalogyDataProviderSettingsImages
     {
         /// <summary>
-        /// The user control to load. Must be created in the CreateUserControl method
+        /// The user control to load. Must be created in the CreateUserControl method.
         /// </summary>
         UserControl DataProviderSettings { get; }
 

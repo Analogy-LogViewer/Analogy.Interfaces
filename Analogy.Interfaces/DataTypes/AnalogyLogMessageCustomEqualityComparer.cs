@@ -144,7 +144,7 @@ namespace Analogy.Interfaces.DataTypes
 
                 if (CompareLineNumber)
                 {
-                    hashCode = (hashCode * 397) ^ (int)obj.LineNumber; 
+                    hashCode = (hashCode * 397) ^ (int)obj.LineNumber;
                 }
 
                 if (CompareClass)

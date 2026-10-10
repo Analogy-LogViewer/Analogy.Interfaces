@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Analogy.Interfaces
 {
     /// <summary>
-    /// interface to allow message modification before presenting in the UI 
+    /// interface to allow message modification before presenting in the UI.
     /// </summary>
     internal interface IAnalogyLogMessageInteractor
     {

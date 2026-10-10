@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Analogy.Interfaces
 {
     /// <summary>
-    /// Interface for changing Loaded Messages instead of creating New one
+    /// Interface for changing Loaded Messages instead of creating New one.
     /// </summary>
     public interface IAnalogyLogMessageUpdater
     {

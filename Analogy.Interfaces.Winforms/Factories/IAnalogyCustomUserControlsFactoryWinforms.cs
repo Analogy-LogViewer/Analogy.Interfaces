@@ -6,7 +6,7 @@ namespace Analogy.Interfaces.WinForms.Factories
     public interface IAnalogyCustomUserControlsFactoryWinForms
     {
         /// <summary>
-        /// the factory id which this actions providers factory belongs to
+        /// the factory id which this actions providers factory belongs to.
         /// </summary>
         Guid FactoryId { get; set; }
         string Title { get; set; }

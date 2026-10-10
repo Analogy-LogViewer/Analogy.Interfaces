@@ -10,12 +10,12 @@
         public long TotalProcessedInThisReport { get; }
 
         /// <summary>
-        ///Total processed entries (lines or messages)
+        ///Total processed entries (lines or messages).
         /// </summary>
         public long TotalProcessed { get; }
 
         /// <summary>
-        ///Total entries (lines or messages) in file
+        ///Total entries (lines or messages) in file.
         /// </summary>
         public long TotalEntries { get; }
 

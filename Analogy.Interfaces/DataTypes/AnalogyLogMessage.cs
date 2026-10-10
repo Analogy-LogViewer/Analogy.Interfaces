@@ -87,12 +87,12 @@ namespace Analogy.Interfaces.DataTypes
         public static Dictionary<string, AnalogyLogMessagePropertyName> LogMessagePropertyNames { get; set; }
 
         /// <summary>
-        /// The raw message text/data before formatting
+        /// The raw message text/data before formatting.
         /// </summary>
         public string RawText { get; set; }
 
         /// <summary>
-        /// The raw message text/data type
+        /// The raw message text/data type.
         /// </summary>
         public AnalogyRowTextType RawTextType
         {

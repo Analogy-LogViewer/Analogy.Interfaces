@@ -1,7 +1,7 @@
 ﻿namespace Analogy.Interfaces
 {
     /// <summary>
-    /// when implemented, override any Application setting
+    /// when implemented, override any Application setting.
     /// </summary>
     public interface IAnalogyPolicyEnforcer
     {

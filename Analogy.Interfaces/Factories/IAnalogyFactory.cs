@@ -16,7 +16,7 @@ namespace Analogy.Interfaces.Factories
         IEnumerable<string> Contributors { get; set; }
 
         /// <summary>
-        /// Description of the Factory e.g: "Serilog Parser for Analogy Log Viewer"
+        /// Description of the Factory e.g: "Serilog Parser for Analogy Log Viewer".
         /// </summary>
         string About { get; set; }
 

@@ -18,7 +18,7 @@ namespace Analogy.Interfaces
         AnalogyToolTip? ToolTip { get; set; }
 
         /// <summary>
-        /// The Data Provider UI User Control Settings (this will be called on the UI thread)
+        /// The Data Provider UI User Control Settings (this will be called on the UI thread).
         /// </summary>
         /// <param name="logger"></param>
         /// <returns></returns>

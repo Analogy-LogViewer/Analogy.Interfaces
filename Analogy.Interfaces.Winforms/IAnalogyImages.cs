@@ -3,7 +3,7 @@
 using System;
 using System.Drawing;
 
-namespace Analogy.Interfaces
+namespace Analogy.Interfaces.WinForms
 {
     public interface IAnalogyCustomActionImages
     {
@@ -37,7 +37,7 @@ namespace Analogy.Interfaces
     public interface IAnalogyDataProvidersFactoryImages
     {
         Image? GetDataFactorySmallImage(Guid componentId);
-        Image? GetDataFacoryLargeImage(Guid componentId);
+        Image? GetDataFactoryLargeImage(Guid componentId);
     }
     public interface IAnalogyStreamingDataProviderImages
     {

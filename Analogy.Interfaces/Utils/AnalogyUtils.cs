@@ -9,12 +9,12 @@ namespace Analogy.Interfaces.Utils
     {
         public static IEnumerable<AnalogyLogLevel> AllLogLevels { get; } = GetLevels();
 
-        private static IEnumerable<AnalogyLogLevel> GetLevels()
+        private static AnalogyLogLevel[] GetLevels()
         {
 #if NET
             return Enum.GetValues<AnalogyLogLevel>();
 #else
-            return Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>();
+            return [.. Enum.GetValues(typeof(AnalogyLogLevel)).Cast<AnalogyLogLevel>()];
 #endif
         }
     }

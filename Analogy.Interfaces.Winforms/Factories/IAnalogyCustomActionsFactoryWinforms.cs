@@ -2,7 +2,5 @@
 
 namespace Analogy.Interfaces.WinForms.Factories
 {
-    public interface IAnalogyCustomActionsFactoryWinForms : IAnalogyCustomActionsFactory, IAnalogyCustomActionsFactoryImages
-    {
-    }
+    public interface IAnalogyCustomActionsFactoryWinForms : IAnalogyCustomActionsFactory, IAnalogyCustomActionsFactoryImages;
 }

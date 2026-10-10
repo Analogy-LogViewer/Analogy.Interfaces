@@ -53,7 +53,7 @@ namespace Analogy.Interfaces.DataTypes
 #if NET
             if (Maps.TryGetValue(key, out var val))
             {
-                if (val == null)
+                if (val is null)
                 {
                     Maps[key] = new List<string>();
                 }
@@ -62,7 +62,7 @@ namespace Analogy.Interfaces.DataTypes
 #else
             if (Maps.ContainsKey(key))
             {
-                if (Maps[key] == null)
+                if (Maps[key] is null)
                 {
                     Maps[key] = new List<string>();
                 }

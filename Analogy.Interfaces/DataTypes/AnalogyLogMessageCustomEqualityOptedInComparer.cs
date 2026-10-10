@@ -124,8 +124,7 @@ namespace Analogy.Interfaces.DataTypes
             }
             if (CompareParameters)
             {
-                if ((x.AdditionalProperties is null && y.AdditionalProperties != null) ||
-                    (x.AdditionalProperties != null && y.AdditionalProperties is null))
+                if ((x.AdditionalProperties is null && y.AdditionalProperties is not null) || (x.AdditionalProperties is not null && y.AdditionalProperties is null))
                 {
                     return false;
                 }
@@ -149,22 +148,22 @@ namespace Analogy.Interfaces.DataTypes
 
                 if (CompareText)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.Text != null ? obj.Text.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.Text is not null ? obj.Text.GetHashCode() : 0);
                 }
 
                 if (CompareSource)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.Source != null ? obj.Source.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.Source is not null ? obj.Source.GetHashCode() : 0);
                 }
 
                 if (CompareMethodName)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.MethodName != null ? obj.MethodName.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.MethodName is not null ? obj.MethodName.GetHashCode() : 0);
                 }
 
                 if (CompareFileName)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.FileName != null ? obj.FileName.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.FileName is not null ? obj.FileName.GetHashCode() : 0);
                 }
 
                 if (CompareLineNumber)
@@ -184,7 +183,7 @@ namespace Analogy.Interfaces.DataTypes
 
                 if (CompareModule)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.Module != null ? obj.Module.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.Module is not null ? obj.Module.GetHashCode() : 0);
                 }
 
                 if (CompareProcessId)
@@ -198,7 +197,7 @@ namespace Analogy.Interfaces.DataTypes
                 }
                 if (CompareParameters)
                 {
-                    if (obj.AdditionalProperties != null && obj.AdditionalProperties.Count > 0)
+                    if (obj.AdditionalProperties?.Count > 0)
                     {
                         foreach (var parameter in obj.AdditionalProperties)
                         {
@@ -209,7 +208,7 @@ namespace Analogy.Interfaces.DataTypes
 
                 if (CompareUser)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.User != null ? obj.User.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.User is not null ? obj.User.GetHashCode() : 0);
                 }
                 return hashCode;
             }

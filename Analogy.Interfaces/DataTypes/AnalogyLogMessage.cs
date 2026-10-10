@@ -11,8 +11,8 @@ namespace Analogy.Interfaces.DataTypes
     public class AnalogyLogMessage : IEquatable<AnalogyLogMessage>, IAnalogyLogMessage
     {
         private static readonly string CurrentProcessName = Process.GetCurrentProcess().ProcessName;
-        private static readonly int CurrentProcessId = Process.GetCurrentProcess().Id;
-        private AnalogyRowTextType _rawTextType;
+        private static readonly int CurrentProcessId = Environment.ProcessId;
+        private AnalogyRowTextType rawTextType;
 
         /// <summary>
         /// Gets/Sets date and time of arrival of log message.
@@ -96,15 +96,15 @@ namespace Analogy.Interfaces.DataTypes
         /// </summary>
         public AnalogyRowTextType RawTextType
         {
-            get => string.IsNullOrEmpty(RawText) ? AnalogyRowTextType.None : _rawTextType;
-            set => _rawTextType = value;
+            get => string.IsNullOrEmpty(RawText) ? AnalogyRowTextType.None : rawTextType;
+            set => rawTextType = value;
         }
 
         public void AddOrReplaceAdditionalProperty(string key, string value)
         {
-            if (AdditionalProperties == null)
+            if (AdditionalProperties is null)
             {
-                AdditionalProperties = new Dictionary<string, string>() { { key, value } };
+                AdditionalProperties = new Dictionary<string, string>(StringComparer.Ordinal) { { key, value } };
             }
             else
             {
@@ -114,7 +114,7 @@ namespace Analogy.Interfaces.DataTypes
 
         public void AddOrReplaceAdditionalProperty(string key, string value, IEqualityComparer<string> comparer)
         {
-            if (AdditionalProperties == null)
+            if (AdditionalProperties is null)
             {
                 AdditionalProperties = new Dictionary<string, string>(comparer) { { key, value } };
             }
@@ -176,10 +176,10 @@ namespace Analogy.Interfaces.DataTypes
             Class = logClass;
             Level = level;
             Module = moduleOrProcessName ?? CurrentProcessName;
-            ProcessId = processId != 0 ? processId : CurrentProcessId;
+            ProcessId = processId is not 0 ? processId : CurrentProcessId;
             AdditionalProperties = additionalInfo;
             User = user ?? string.Empty;
-            ThreadId = threadId != 0 ? threadId : System.Threading.Thread.CurrentThread.ManagedThreadId;
+            ThreadId = threadId is not 0 ? threadId : Environment.CurrentManagedThreadId;
             RawText = text;
             RawTextType = AnalogyRowTextType.Unknown;
         }
@@ -198,10 +198,10 @@ namespace Analogy.Interfaces.DataTypes
             Class = logClass;
             Level = level;
             Module = moduleOrProcessName ?? CurrentProcessName;
-            ProcessId = processId != 0 ? processId : CurrentProcessId;
+            ProcessId = processId is not 0 ? processId : CurrentProcessId;
             AdditionalProperties = additionalInfo;
             User = user ?? string.Empty;
-            ThreadId = threadId != 0 ? threadId : System.Threading.Thread.CurrentThread.ManagedThreadId;
+            ThreadId = threadId is not 0 ? threadId : Environment.CurrentManagedThreadId;
             if (string.IsNullOrEmpty(rawText))
             {
                 RawText = text;
@@ -233,22 +233,20 @@ namespace Analogy.Interfaces.DataTypes
                             User == other.User && MachineName == other.MachineName &&
                             RawTextType == other.RawTextType &&
                             RawText == other.RawText;
-            if (!areEqual || (AdditionalProperties == null && other.AdditionalProperties != null) ||
-                (AdditionalProperties != null && other.AdditionalProperties == null))
+            if (!areEqual || (AdditionalProperties is null && other.AdditionalProperties is not null) || (AdditionalProperties is not null && other.AdditionalProperties is null))
             {
                 return false;
             }
 
-            if (AdditionalProperties == null && other.AdditionalProperties == null)
+            if (AdditionalProperties is null && other.AdditionalProperties is null)
             {
                 return true;
             }
-            if ((AdditionalProperties == null && other.AdditionalProperties != null) ||
-            (AdditionalProperties != null && other.AdditionalProperties == null))
+            if ((AdditionalProperties is null && other.AdditionalProperties is not null) || (AdditionalProperties is not null && other.AdditionalProperties is null))
             {
                 return false;
             }
-            if (AdditionalProperties != null && other.AdditionalProperties != null)
+            if (AdditionalProperties is not null && other.AdditionalProperties is not null)
             {
                 return AdditionalProperties.SequenceEqual(other.AdditionalProperties);
             }
@@ -276,19 +274,19 @@ namespace Analogy.Interfaces.DataTypes
             {
                 var hashCode = Date.GetHashCode();
                 hashCode = (hashCode * 397) ^ Id.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Text != null ? Text.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ (Source != null ? Source.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ (MethodName != null ? MethodName.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ (FileName != null ? FileName.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ (MachineName != null ? MachineName.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (Text is not null ? Text.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (Source is not null ? Source.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (MethodName is not null ? MethodName.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (FileName is not null ? FileName.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (MachineName is not null ? MachineName.GetHashCode() : 1);
                 hashCode = (hashCode * 397) ^ (int)LineNumber;
                 hashCode = (hashCode * 397) ^ (int)Class;
                 hashCode = (hashCode * 397) ^ (int)Level;
-                hashCode = (hashCode * 397) ^ (Module != null ? Module.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (Module is not null ? Module.GetHashCode() : 1);
                 hashCode = (hashCode * 397) ^ ProcessId;
                 hashCode = (hashCode * 397) ^ ThreadId;
                 hashCode = (hashCode * 397) ^ RawTextType.GetHashCode();
-                hashCode = (hashCode * 397) ^ (RawText != null ? RawText.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (RawText is not null ? RawText.GetHashCode() : 1);
                 if (AdditionalProperties is { Count: > 0 })
                 {
                     foreach (var parameter in AdditionalProperties)
@@ -296,14 +294,13 @@ namespace Analogy.Interfaces.DataTypes
                         hashCode = (hashCode * 397) ^ parameter.GetHashCode();
                     }
                 }
-                hashCode = (hashCode * 397) ^ (User != null ? User.GetHashCode() : 0);
-                return hashCode;
+                return (hashCode * 397) ^ (User is not null ? User.GetHashCode() : 0);
             }
         }
 
         public override string ToString()
         {
-            return $"{nameof(Date)}: {Date}, {nameof(Level)}: {Level}, {nameof(Text)}: {Text}, {nameof(Source)}: {Source}, {nameof(Module)}: {Module}, {nameof(MethodName)}: {MethodName}, {nameof(FileName)}: {FileName}, {nameof(LineNumber)}: {LineNumber}, {nameof(Class)}: {Class}, {nameof(ProcessId)}: {ProcessId}, {nameof(ThreadId)}: {ThreadId}, {nameof(User)}: {User}, {nameof(RawText)}: {RawText}, {nameof(RawTextType)}: {RawTextType}, {nameof(AdditionalProperties)}: {(AdditionalProperties != null ? string.Join(",", AdditionalProperties) : string.Empty)}, {nameof(Id)}: {Id}";
+            return $"{nameof(Date)}: {Date}, {nameof(Level)}: {Level}, {nameof(Text)}: {Text}, {nameof(Source)}: {Source}, {nameof(Module)}: {Module}, {nameof(MethodName)}: {MethodName}, {nameof(FileName)}: {FileName}, {nameof(LineNumber)}: {LineNumber}, {nameof(Class)}: {Class}, {nameof(ProcessId)}: {ProcessId}, {nameof(ThreadId)}: {ThreadId}, {nameof(User)}: {User}, {nameof(RawText)}: {RawText}, {nameof(RawTextType)}: {RawTextType}, {nameof(AdditionalProperties)}: {(AdditionalProperties is not null ? string.Join(",", AdditionalProperties) : string.Empty)}, {nameof(Id)}: {Id}";
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -311,7 +308,7 @@ namespace Analogy.Interfaces.DataTypes
         {
             AnalogyLogMessage m = new AnalogyLogMessage
             {
-                AdditionalProperties = new Dictionary<string, string>(0),
+                AdditionalProperties = new Dictionary<string, string>(0, StringComparer.Ordinal),
                 Date = DateTimeOffset.MinValue,
                 Id = Guid.Empty,
                 Module = "Unknown",
@@ -383,7 +380,7 @@ namespace Analogy.Interfaces.DataTypes
                     case AnalogyLogMessagePropertyName.Level:
 
                         if (Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyLogLevel level) &&
-                            Enum.IsDefined(typeof(AnalogyLogLevel), level))
+                            Enum.IsDefined(level))
                         {
                             m.Level = level;
                         }
@@ -396,7 +393,7 @@ namespace Analogy.Interfaces.DataTypes
                     case AnalogyLogMessagePropertyName.Class:
 
                         m.Class = Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyLogClass cls) &&
-                                  Enum.IsDefined(typeof(AnalogyLogClass), cls)
+                                  Enum.IsDefined(cls)
                             ? cls
                             : AnalogyLogClass.General;
 
@@ -406,7 +403,7 @@ namespace Analogy.Interfaces.DataTypes
                         continue;
                     case AnalogyLogMessagePropertyName.RawTextType:
                         m.RawTextType = Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyRowTextType type) &&
-                                  Enum.IsDefined(typeof(AnalogyRowTextType), type)
+                                  Enum.IsDefined(type)
                             ? type
                             : AnalogyRowTextType.None;
                         continue;
@@ -426,7 +423,7 @@ namespace Analogy.Interfaces.DataTypes
             var dataNotProperties = valueTuples.Where(p => !LogMessagePropertyNames.ContainsKey(p.PropertyName)).ToList();
             if (dataNotProperties.Count > 0)
             {
-                m.AdditionalProperties = dataNotProperties.ToDictionary(p => p.PropertyName, p => p.PropertyValue);
+                m.AdditionalProperties = dataNotProperties.ToDictionary(p => p.PropertyName, p => p.PropertyValue, StringComparer.Ordinal);
             }
 
             return m;

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
@@ -226,13 +227,18 @@ namespace Analogy.Interfaces.DataTypes
                 return true;
             }
 
-            bool areEqual = Date.Equals(other.Date) && Id.Equals(other.Id) && Text == other.Text &&
-                            Source == other.Source && MethodName == other.MethodName && FileName == other.FileName &&
+            bool areEqual = Date.Equals(other.Date) && Id.Equals(other.Id) &&
+                            string.Equals(Text, other.Text, StringComparison.Ordinal) &&
+                            string.Equals(Source, other.Source, StringComparison.Ordinal) &&
+                            string.Equals(MethodName, other.MethodName, StringComparison.Ordinal) &&
+                            string.Equals(FileName, other.FileName, StringComparison.Ordinal) &&
                             LineNumber == other.LineNumber && Class == other.Class && Level == other.Level &&
-                            Module == other.Module && ProcessId == other.ProcessId && ThreadId == other.ThreadId &&
-                            User == other.User && MachineName == other.MachineName &&
+                            string.Equals(Module, other.Module, StringComparison.Ordinal) &&
+                            ProcessId == other.ProcessId && ThreadId == other.ThreadId &&
+                            string.Equals(User, other.User, StringComparison.Ordinal) &&
+                            string.Equals(MachineName, other.MachineName, StringComparison.Ordinal) &&
                             RawTextType == other.RawTextType &&
-                            RawText == other.RawText;
+                            string.Equals(RawText, other.RawText, StringComparison.Ordinal);
             if (!areEqual || (AdditionalProperties is null && other.AdditionalProperties is not null) || (AdditionalProperties is not null && other.AdditionalProperties is null))
             {
                 return false;
@@ -274,27 +280,28 @@ namespace Analogy.Interfaces.DataTypes
             {
                 var hashCode = Date.GetHashCode();
                 hashCode = (hashCode * 397) ^ Id.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Text is not null ? Text.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ (Source is not null ? Source.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ (MethodName is not null ? MethodName.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ (FileName is not null ? FileName.GetHashCode() : 1);
-                hashCode = (hashCode * 397) ^ (MachineName is not null ? MachineName.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (Text is not null ? StringComparer.Ordinal.GetHashCode(Text) : 1);
+                hashCode = (hashCode * 397) ^ (Source is not null ? StringComparer.Ordinal.GetHashCode(Source) : 1);
+                hashCode = (hashCode * 397) ^ (MethodName is not null ? StringComparer.Ordinal.GetHashCode(MethodName) : 1);
+                hashCode = (hashCode * 397) ^ (FileName is not null ? StringComparer.Ordinal.GetHashCode(FileName) : 1);
+                hashCode = (hashCode * 397) ^ (MachineName is not null ? StringComparer.Ordinal.GetHashCode(MachineName) : 1);
                 hashCode = (hashCode * 397) ^ (int)LineNumber;
                 hashCode = (hashCode * 397) ^ (int)Class;
                 hashCode = (hashCode * 397) ^ (int)Level;
-                hashCode = (hashCode * 397) ^ (Module is not null ? Module.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (Module is not null ? StringComparer.Ordinal.GetHashCode(Module) : 1);
                 hashCode = (hashCode * 397) ^ ProcessId;
                 hashCode = (hashCode * 397) ^ ThreadId;
                 hashCode = (hashCode * 397) ^ RawTextType.GetHashCode();
-                hashCode = (hashCode * 397) ^ (RawText is not null ? RawText.GetHashCode() : 1);
+                hashCode = (hashCode * 397) ^ (RawText is not null ? StringComparer.Ordinal.GetHashCode(RawText) : 1);
                 if (AdditionalProperties is { Count: > 0 })
                 {
                     foreach (var parameter in AdditionalProperties)
                     {
-                        hashCode = (hashCode * 397) ^ parameter.GetHashCode();
+                        hashCode = (hashCode * 397) ^ StringComparer.Ordinal.GetHashCode(parameter.Key);
+                        hashCode = (hashCode * 397) ^ StringComparer.Ordinal.GetHashCode(parameter.Value);
                     }
                 }
-                return (hashCode * 397) ^ (User is not null ? User.GetHashCode() : 0);
+                return (hashCode * 397) ^ (User is not null ? StringComparer.Ordinal.GetHashCode(User) : 0);
             }
         }
 
@@ -321,7 +328,7 @@ namespace Analogy.Interfaces.DataTypes
                 {
                     case AnalogyLogMessagePropertyName.Date:
 
-                        if (DateTimeOffset.TryParse(propertyValue, out DateTimeOffset time))
+                        if (DateTimeOffset.TryParse(propertyValue, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out DateTimeOffset time))
                         {
                             m.Date = time;
                         }
@@ -356,7 +363,7 @@ namespace Analogy.Interfaces.DataTypes
                         continue;
                     case AnalogyLogMessagePropertyName.LineNumber:
 
-                        if (int.TryParse(propertyValue, out int lineNumber))
+                        if (int.TryParse(propertyValue, NumberStyles.Integer, CultureInfo.InvariantCulture, out int lineNumber))
                         {
                             m.LineNumber = lineNumber;
                         }
@@ -364,7 +371,7 @@ namespace Analogy.Interfaces.DataTypes
                         continue;
                     case AnalogyLogMessagePropertyName.ProcessId:
 
-                        if (int.TryParse(propertyValue, out int processId))
+                        if (int.TryParse(propertyValue, NumberStyles.Integer, CultureInfo.InvariantCulture, out int processId))
                         {
                             m.ProcessId = processId;
                         }
@@ -372,7 +379,7 @@ namespace Analogy.Interfaces.DataTypes
                         continue;
                     case AnalogyLogMessagePropertyName.ThreadId:
 
-                        if (int.TryParse(propertyValue, out int threadId))
+                        if (int.TryParse(propertyValue, NumberStyles.Integer, CultureInfo.InvariantCulture, out int threadId))
                         {
                             m.ThreadId = threadId;
                         }

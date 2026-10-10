@@ -1,4 +1,5 @@
-﻿using System;
+﻿#pragma warning disable MA0046 // Keep existing event payload API for compatibility
+using System;
 using System.Collections.Generic;
 
 namespace Analogy.Interfaces.Factories

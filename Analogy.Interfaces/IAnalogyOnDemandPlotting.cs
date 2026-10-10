@@ -1,4 +1,5 @@
-﻿using Analogy.Interfaces.DataTypes;
+﻿#pragma warning disable MA0046 // Keep existing event payload API for compatibility
+using Analogy.Interfaces.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

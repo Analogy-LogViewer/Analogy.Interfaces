@@ -15,11 +15,16 @@
 		<Product>Analogy.LogViewer.Interfaces.WinForms</Product>
 		<Copyright>Lior Banai 2025-2026</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Company>Analogy.LogViewer</Company>
 		<NeutralLanguage>en-US</NeutralLanguage>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\README.md">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
 		</None>

@@ -1,6 +1,8 @@
-﻿namespace Analogy.Interfaces.DataTypes
+﻿using System;
+
+namespace Analogy.Interfaces.DataTypes
 {
-    public class AnalogyLogMessageUpdaterEventData
+    public class AnalogyLogMessageUpdaterEventData : EventArgs
     {
         public IAnalogyLogMessage Message { get; set; }
         public AnalogyLogMessageUpdaterEventStatus Type { get; set; }

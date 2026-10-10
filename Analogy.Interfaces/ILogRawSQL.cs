@@ -1,3 +1,4 @@
+#pragma warning disable MA0046 // Keep existing event payload API for compatibility
 using System;
 
 namespace Analogy.Interfaces

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Analogy.Interfaces.DataTypes
@@ -48,27 +49,27 @@ namespace Analogy.Interfaces.DataTypes
                 return false;
             }
 
-            if (CompareSource && x.Source != y.Source)
+            if (CompareSource && !string.Equals(x.Source, y.Source, StringComparison.Ordinal))
             {
                 return false;
             }
 
-            if (CompareModule && x.Module != y.Module)
+            if (CompareModule && !string.Equals(x.Module, y.Module, StringComparison.Ordinal))
             {
                 return false;
             }
 
-            if (CompareMethodName && x.MethodName != y.MethodName)
+            if (CompareMethodName && !string.Equals(x.MethodName, y.MethodName, StringComparison.Ordinal))
             {
                 return false;
             }
 
-            if (CompareFileName && x.FileName != y.FileName)
+            if (CompareFileName && !string.Equals(x.FileName, y.FileName, StringComparison.Ordinal))
             {
                 return false;
             }
 
-            if (CompareUser && x.User != y.User)
+            if (CompareUser && !string.Equals(x.User, y.User, StringComparison.Ordinal))
             {
                 return false;
             }
@@ -103,7 +104,14 @@ namespace Analogy.Interfaces.DataTypes
                 {
                     return false;
                 }
-                return (x.AdditionalProperties is null && y.AdditionalProperties is null) ||
+
+                if (x.AdditionalProperties is null && y.AdditionalProperties is null)
+                {
+                    return true;
+                }
+
+                return x.AdditionalProperties is not null &&
+                       y.AdditionalProperties is not null &&
                        x.AdditionalProperties.SequenceEqual(y.AdditionalProperties);
             }
 
@@ -123,22 +131,22 @@ namespace Analogy.Interfaces.DataTypes
 
                 if (CompareText)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.Text is not null ? obj.Text.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.Text is not null ? StringComparer.Ordinal.GetHashCode(obj.Text) : 0);
                 }
 
                 if (CompareSource)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.Source is not null ? obj.Source.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.Source is not null ? StringComparer.Ordinal.GetHashCode(obj.Source) : 0);
                 }
 
                 if (CompareMethodName)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.MethodName is not null ? obj.MethodName.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.MethodName is not null ? StringComparer.Ordinal.GetHashCode(obj.MethodName) : 0);
                 }
 
                 if (CompareFileName)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.FileName is not null ? obj.FileName.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.FileName is not null ? StringComparer.Ordinal.GetHashCode(obj.FileName) : 0);
                 }
 
                 if (CompareLineNumber)
@@ -158,7 +166,7 @@ namespace Analogy.Interfaces.DataTypes
 
                 if (CompareModule)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.Module is not null ? obj.Module.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.Module is not null ? StringComparer.Ordinal.GetHashCode(obj.Module) : 0);
                 }
 
                 if (CompareProcessId)
@@ -176,14 +184,15 @@ namespace Analogy.Interfaces.DataTypes
                     {
                         foreach (var parameter in obj.AdditionalProperties)
                         {
-                            hashCode = (hashCode * 397) ^ parameter.GetHashCode();
+                            hashCode = (hashCode * 397) ^ StringComparer.Ordinal.GetHashCode(parameter.Key);
+                            hashCode = (hashCode * 397) ^ StringComparer.Ordinal.GetHashCode(parameter.Value);
                         }
                     }
                 }
 
                 if (CompareUser)
                 {
-                    hashCode = (hashCode * 397) ^ (obj.User is not null ? obj.User.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (obj.User is not null ? StringComparer.Ordinal.GetHashCode(obj.User) : 0);
                 }
                 return hashCode;
             }

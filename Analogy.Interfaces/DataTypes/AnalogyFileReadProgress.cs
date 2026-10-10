@@ -1,5 +1,8 @@
-﻿namespace Analogy.Interfaces.DataTypes
+﻿using System.Runtime.InteropServices;
+
+namespace Analogy.Interfaces.DataTypes
 {
+    [StructLayout(LayoutKind.Auto)]
     public struct AnalogyFileReadProgress
     {
         public AnalogyFileReadProgressType ProgressType { get; }

@@ -12,6 +12,11 @@
 		<DebugType>portable</DebugType>
 		<Deterministic>true</Deterministic>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+		<DisableImplicitLibraryPacksFolder>true</DisableImplicitLibraryPacksFolder>
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.Interfaces</PackageProjectUrl>
 	</PropertyGroup>

@@ -16,5 +16,7 @@
 		<PackageVersion Include="MSTest.TestFramework" Version="4.5.1" />
 		<PackageVersion Include="Roslynator.Analyzers" Version="5.0.1" />
 		<PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
+		<PackageVersion Include="SkiaSharp" Version="4.154.0" />
+		<PackageVersion Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.154.0" />
 	</ItemGroup>
 </Project>

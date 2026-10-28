@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net10.0;net9.0;net8.0</TargetFrameworks>
+		<VersionPrefix>9.0.6</VersionPrefix>
+		<VersionSuffix></VersionSuffix>
+		<OutputType>Library</OutputType>
+		<Description>Interfaces assembly for creating custom data providers for Analogy Log Viewer</Description>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<AssemblyName>Analogy.Interfaces.Drawing</AssemblyName>
+		<RootNamespace>Analogy.Interfaces.Drawing</RootNamespace>
+		<PackageId>Analogy.LogViewer.Interfaces.Drawing</PackageId>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Authors>Lior Banai</Authors>
+		<Product>Analogy.LogViewer.Interfaces.Drawing</Product>
+		<Copyright>Lior Banai 2026-2027</Copyright>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README_NUGET.md</PackageReadmeFile>
+		<Company>Analogy.LogViewer</Company>
+		<NeutralLanguage>en-US</NeutralLanguage>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\README_NUGET.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Analogy.LogViewer.Interfaces" />
+		<PackageReference Include="SkiaSharp" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" />
+	</ItemGroup>
+	<!-- Analyzers (Roslyn, Meziantou, StyleCop, ...) -->
+	<ItemGroup>
+		<PackageReference Include="Meziantou.Analyzer">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeStyle">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Roslynator.Analyzers">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="StyleCop.Analyzers">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+	</ItemGroup>
+</Project>

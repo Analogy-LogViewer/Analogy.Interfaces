@@ -399,8 +399,7 @@ namespace Analogy.Interfaces.DataTypes
                         continue;
                     case AnalogyLogMessagePropertyName.Class:
 
-                        m.Class = Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyLogClass cls) &&
-                                  Enum.IsDefined(cls)
+                        m.Class = Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyLogClass cls) && Enum.IsDefined(cls)
                             ? cls
                             : AnalogyLogClass.General;
 
@@ -409,10 +408,11 @@ namespace Analogy.Interfaces.DataTypes
                         m.RawText = string.IsNullOrEmpty(propertyValue) ? string.Empty : propertyValue;
                         continue;
                     case AnalogyLogMessagePropertyName.RawTextType:
-                        m.RawTextType = Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyRowTextType type) &&
-                                  Enum.IsDefined(type)
-                            ? type
-                            : AnalogyRowTextType.None;
+                        m.RawTextType =
+                            Enum.TryParse(propertyValue, ignoreCase: true, out AnalogyRowTextType type) &&
+                            Enum.IsDefined(type)
+                                ? type
+                                : AnalogyRowTextType.None;
                         continue;
                     default: continue;
                 }

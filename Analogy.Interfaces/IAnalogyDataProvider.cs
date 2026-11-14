@@ -132,15 +132,6 @@ namespace Analogy.Interfaces
 
     public interface IAnalogyProviderSidePagingProvider : IAnalogyDataProvider
     {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="pageNumber">The page number.</param>
-        /// <param name="pageCount">Number of messages per page.</param>
-        /// <param name="filterCriteria">The filter criteria.</param>
-        /// <param name="token">CancellationToken.</param>
-        /// <param name="messagesHandler">messagesHandler.</param>
-        /// <returns>The filtered messages.</returns>
         Task<IEnumerable<IAnalogyLogMessage>> FetchMessages(int pageNumber, int pageCount, FilterCriteria filterCriteria, ILogMessageCreatedHandler messagesHandler, CancellationToken token);
         Task ShutdownAsync(Microsoft.Extensions.Logging.ILogger logger);
     }

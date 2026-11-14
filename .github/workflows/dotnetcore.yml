@@ -62,7 +62,7 @@ jobs:
       uses: actions/upload-artifact@v7.0.2
       with:
         name: artifactory_${{ matrix.configuration }}
-        path: ./
+        path: '**/*.nupkg'
   push-nuget:
     name: 'Push NuGet Packages'
     needs: build
@@ -73,6 +73,10 @@ jobs:
       contents: read
       id-token: write
     steps:
+      - name: Install .NET 11
+        uses: actions/setup-dotnet@v6.1.0
+        with:
+          dotnet-version: 11.0.x
       - name: Setup NuGet.exe for use with actions
         uses: NuGet/setup-nuget@v4
       - name: 'Download Artifact'

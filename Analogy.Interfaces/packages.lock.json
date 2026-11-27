@@ -4,15 +4,15 @@
     ".NETFramework,Version=v4.8": {
       "Meziantou.Analyzer": {
         "type": "Direct",
-        "requested": "[3.0.340, )",
-        "resolved": "3.0.340",
-        "contentHash": "0Dj49/kQSH0UgitHPNUH9o76+2Awo0TEvnOnSKaYG11vWdu85zmutX3es7ltfPeDddIzPx8mhjBVFq5LfrRmAQ=="
+        "requested": "[3.0.342, )",
+        "resolved": "3.0.342",
+        "contentHash": "g8p2VDRGOui0eTVEOG0MOS6ib4IPNVDwSSier3o95S1xeJltMF8ntpuBWzzmn6A6Y5a0VcEmeGkrMLNXPs/QeQ=="
       },
       "Meziantou.Polyfill": {
         "type": "Direct",
-        "requested": "[1.0.171, )",
-        "resolved": "1.0.171",
-        "contentHash": "Q6LX6l3sxv0BIoUIQ0zamVehV/ApKYRwCXdsnnJaarn43FTsJYfsX8MHuiv2uFiDmaSBqYWZjYMmI68ipukNGw=="
+        "requested": "[1.0.173, )",
+        "resolved": "1.0.173",
+        "contentHash": "u0ZEDKlpNT8pgQ6kk0I49Tf/qRs6GPWd3JJHgVzQp1sRVRmEaahcrVfcgIIkZrzkyHAv24jijrfzrzYI1rfy6Q=="
       },
       "Microsoft.Bcl.HashCode": {
         "type": "Direct",
@@ -36,6 +36,15 @@
           "System.Buffers": "4.6.1",
           "System.Diagnostics.DiagnosticSource": "11.0.0",
           "System.Memory": "4.6.3"
+        }
+      },
+      "Microsoft.NETFramework.ReferenceAssemblies": {
+        "type": "Direct",
+        "requested": "[1.0.3, )",
+        "resolved": "1.0.3",
+        "contentHash": "vUc9Npcs14QsyOD01tnv/m8sQUnGTGOw1BCmKcv77LBJY7OxhJ+zJF7UD/sCL3lYNFuqmQEVlkfS4Quif6FyYg==",
+        "dependencies": {
+          "Microsoft.NETFramework.ReferenceAssemblies.net48": "1.0.3"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -85,6 +94,11 @@
           "Microsoft.Bcl.AsyncInterfaces": "11.0.0",
           "System.Threading.Tasks.Extensions": "4.6.3"
         }
+      },
+      "Microsoft.NETFramework.ReferenceAssemblies.net48": {
+        "type": "Transitive",
+        "resolved": "1.0.3",
+        "contentHash": "zMk4D+9zyiEWByyQ7oPImPN/Jhpj166Ky0Nlla4eXlNL8hI/BtSJsgR8Inldd4NNpIAH3oh8yym0W2DrhXdSLQ=="
       },
       "Microsoft.SourceLink.Common": {
         "type": "Transitive",
@@ -146,9 +160,9 @@
     "net10.0": {
       "Meziantou.Analyzer": {
         "type": "Direct",
-        "requested": "[3.0.340, )",
-        "resolved": "3.0.340",
-        "contentHash": "0Dj49/kQSH0UgitHPNUH9o76+2Awo0TEvnOnSKaYG11vWdu85zmutX3es7ltfPeDddIzPx8mhjBVFq5LfrRmAQ=="
+        "requested": "[3.0.342, )",
+        "resolved": "3.0.342",
+        "contentHash": "g8p2VDRGOui0eTVEOG0MOS6ib4IPNVDwSSier3o95S1xeJltMF8ntpuBWzzmn6A6Y5a0VcEmeGkrMLNXPs/QeQ=="
       },
       "Microsoft.CodeAnalysis.CSharp.CodeStyle": {
         "type": "Direct",
@@ -227,9 +241,9 @@
     "net11.0": {
       "Meziantou.Analyzer": {
         "type": "Direct",
-        "requested": "[3.0.340, )",
-        "resolved": "3.0.340",
-        "contentHash": "0Dj49/kQSH0UgitHPNUH9o76+2Awo0TEvnOnSKaYG11vWdu85zmutX3es7ltfPeDddIzPx8mhjBVFq5LfrRmAQ=="
+        "requested": "[3.0.342, )",
+        "resolved": "3.0.342",
+        "contentHash": "g8p2VDRGOui0eTVEOG0MOS6ib4IPNVDwSSier3o95S1xeJltMF8ntpuBWzzmn6A6Y5a0VcEmeGkrMLNXPs/QeQ=="
       },
       "Microsoft.CodeAnalysis.CSharp.CodeStyle": {
         "type": "Direct",
